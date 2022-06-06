@@ -65,7 +65,7 @@
         app:layout_constraintTop_toTopOf="@+id/textViewHost" />
 
     <TextView
-        android:id="@+id/textViewHostName"
+        android:id="@+id/textViewGroupHost"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
@@ -87,7 +87,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textViewHost" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/textViewGroupContact"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -109,7 +109,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textViewContact" />
 
     <TextView
-        android:id="@+id/textViewDistanceMile"
+        android:id="@+id/textViewGroupDistance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
