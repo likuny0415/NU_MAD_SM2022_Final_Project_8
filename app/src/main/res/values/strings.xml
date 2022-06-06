@@ -60,6 +60,7 @@
     <string name="editCGroup">Edit</string>
     <string name="deleteCGroup">Delete</string>
 
+    // login page
     <string name="login_text_title">Please Login</string>
     <string name="login_hint_email">Email</string>
     <string name="login_hint_password">Password</string>
@@ -70,11 +71,45 @@
     // register page
     <string name="register_text_title">Please Sign Up</string>
     <string name="register_hint_mobile">Mobile</string>
+    <string name="register_hint_name">Name</string>
     <string name="register_hint_email">Email</string>
     <string name="register_hint_password">Password</string>
     <string name="register_button_login">Sign in</string>
     <string name="register_text_signup">Already have an account</string>
     <string name="register_button_register">Sign up</string>
     <string name="title_activity_groups">GroupsActivity</string>
+
+    // create group page
+    <string name="createGroup_text_title">Create your group</string>
+    <string name="createGroup_text_destination">Destination:</string>
+    <string name="createGroup_text_total">Total members:</string>
+    <string name="createGroup_text_current">Current members:</string>
+    <string name="createGroup_text_Date">Date:</string>
+    <string name="createGroup_text_avgcost">Average Cost:</string>
+    <string name="createGroup_text_note">Note:</string>
+    <string name="createGroup_button_post">Post</string>
+
+    // update group page
+    <string name="updateGroup_text_title">Update your group</string>
+    <string name="updateGroup_text_destination">Destination:</string>
+    <string name="updateGroup_text_total">Total members:</string>
+    <string name="updateGroup_text_current">Current members:</string>
+    <string name="updateGroup_text_Date">Date:</string>
+    <string name="updateGroup_text_avgcost">Average Cost:</string>
+    <string name="updateGroup_text_note">Note:</string>
+    <string name="updateGroup_button_post">Update</string>
+
+    // groups page
+    <string name="group_button_groups">Groups</string>
+    <string name="group_button_create">Create</string>
+    <string name="group_button_Account">Account</string>
+
+    // update profile page
+    <string name="updateProfile_text_title">Update your profile</string>
+    <string name="updateProfile_text_username">Username:</string>
+    <string name="updateProfile_text_mobile">Mobile:</string>
+    <string name="updateProfile_text_email">Email:</string>
+    <string name="updateProfile_text_picture">Picture:</string>
+    <string name="updateProfile_button_update">Update profile</string>
 
 </resources>
