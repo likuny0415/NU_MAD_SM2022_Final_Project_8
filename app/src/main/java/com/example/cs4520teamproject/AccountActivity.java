@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
-public class Account extends AppCompatActivity {
+public class AccountActivity extends AppCompatActivity {
     private final String TAG = "Demo";
 
     @Override
