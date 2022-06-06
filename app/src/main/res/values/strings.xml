@@ -1,3 +1,63 @@
 <resources>
     <string name="app_name">CS4520TeamProject</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    // group information fragment
+    <string name="resort">Ski Resort Name</string>
+    <string name="host">Host:</string>
+    <string name="hostName">Apple_0612</string>
+    <string name="contact">Contact:</string>
+    <string name="contactDetail">Apple@gmail.com</string>
+    <string name="distance">Distance:</string>
+    <string name="distanceNumber">14.2mile</string>
+    <string name="members">Members:</string>
+    <string name="joined">Joined:</string>
+    <string name="joinedNumber">4</string>
+    <string name="joinedOutOf">out of</string>
+    <string name="joinedTotal">7</string>
+    <string name="date">Date:</string>
+    <string name="dateDetail">06/22/2022</string>
+    <string name="averageCost">Average Cost:</string>
+    <string name="averageCostNumber">$100/person</string>
+    <string name="note">Note:</string>
+    <string name="noteDetail">It will be a two hour trip. Please bring your IDs for checking the hotel</string>
+    <string name="joinButton">JOIN</string>
+
+
+    //Account Information
+    <string name="emailAccount">Email:</string>
+    <string name="emailAccountDetail">Apple@gmail.com</string>
+    <string name="phoneAccount">Phone:</string>
+    <string name="phoneAccountDetail">(888)-888-8888</string>
+    <string name="nameAccount">Apple_0612</string>
+    <string name="bioAccount">Bio:</string>
+    <string name="bioAccountDetail">I am so happy to be here! ^_^</string>
+    <string name="editProfileAccount">Edit Profile</string>
+    <string name="logOut">Log Out</string>
+    <string name="createdAccount">Created</string>
+    <string name="joinedAccount">Joined</string>
+    
+    
+    //Account joined group Information
+    <string name="skiResortJGroup">Blue Hill Ski Area</string>
+    <string name="hostNameJGroup">Banana_0613</string>
+    <string name="dateJGroup">06/27/2022</string>
+    <string name="joinedJGroup">4</string>
+    <string name="outOfJGroup">Out of</string>
+    <string name="capacityJGroup">6</string>
+    <string name="quitJGroup">Quit</string>
+
+
+    //Account joined group Information
+    <string name="skiResortCGroup">Pats Peak Ski Area</string>
+    <string name="hostNameCGroup">Apple_0612</string>
+    <string name="dateCGroup">06/22/2022</string>
+    <string name="joinedCGroup">4</string>
+    <string name="outOfCGroup">Out of</string>
+    <string name="capacityCGroup">7</string>
+    <string name="editCGroup">Edit</string>
+    <string name="deleteCGroup">Delete</string>
+
 </resources>
