@@ -13,8 +13,10 @@
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.2203125" />
         <entry key="app/src/main/res/layout/fragment_register.xml" value="0.20555555555555555" />
         <entry key="app/src/main/res/layout/fragment_update_group.xml" value="0.24747325755931715" />
+        <entry key="app/src/main/res/layout/fragment_update_profile.xml" value="0.28050548412181714" />
         <entry key="app/src/main/res/layout/groups_created_row.xml" value="0.15052083333333333" />
         <entry key="app/src/main/res/layout/groups_joined_row.xml" value="0.15052083333333333" />
+        <entry key="app/src/main/res/layout/groups_list.xml" value="0.228680419921875" />
       </map>
     </option>
   </component>
