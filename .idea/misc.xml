@@ -7,6 +7,7 @@
         <entry key="app/src/main/res/layout/activity_groups.xml" value="0.20936787923177083" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.20625" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_register.xml" value="0.1734375" />
         <entry key="app/src/main/res/layout/fragment_account_information.xml" value="0.5509114583333334" />
         <entry key="app/src/main/res/layout/fragment_create_group.xml" value="0.24137624104817706" />
         <entry key="app/src/main/res/layout/fragment_group_information.xml" value="0.30186055501302084" />
