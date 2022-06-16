@@ -10,19 +10,19 @@
         android:id="@+id/textView28"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="15dp"
         android:text="@string/login_text_signup"
         android:textSize="16dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonInClass07RegisterRegsiter" />
+        app:layout_constraintTop_toBottomOf="@+id/registerPageButtonSignup" />
 
     <TextView
         android:id="@+id/textView26"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:text="@string/register_text_title"
         android:textSize="28dp"
         android:textStyle="bold"
@@ -31,59 +31,59 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
     <EditText
-        android:id="@+id/editTextRegisterMobile"
+        android:id="@+id/registerPageEditTextMobile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="15dp"
         android:ems="10"
         android:hint="@string/register_hint_mobile"
         android:inputType="textPersonName"
         android:minHeight="48dp"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+        app:layout_constraintStart_toStartOf="@+id/registerPageEditTextName"
+        app:layout_constraintTop_toBottomOf="@+id/registerPageEditTextName" />
 
     <EditText
-        android:id="@+id/editTextRegisterEmail"
+        android:id="@+id/registerPageEditTextEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="15dp"
         android:ems="10"
         android:hint="@string/login_hint_email"
         android:inputType="textEmailAddress"
         android:minHeight="48dp"
-        app:layout_constraintStart_toStartOf="@+id/editTextRegisterMobile"
-        app:layout_constraintTop_toBottomOf="@+id/editTextRegisterMobile"
+        app:layout_constraintStart_toStartOf="@+id/registerPageEditTextMobile"
+        app:layout_constraintTop_toBottomOf="@+id/registerPageEditTextMobile"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <EditText
-        android:id="@+id/editTextRegisterPassword"
+        android:id="@+id/registerPageEditTextPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="15dp"
         android:ems="10"
         android:hint="@string/register_hint_password"
         android:inputType="textPassword"
         android:minHeight="48dp"
-        app:layout_constraintStart_toStartOf="@+id/editTextRegisterEmail"
-        app:layout_constraintTop_toBottomOf="@+id/editTextRegisterEmail"
+        app:layout_constraintStart_toStartOf="@+id/registerPageEditTextEmail"
+        app:layout_constraintTop_toBottomOf="@+id/registerPageEditTextEmail"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <Button
-        android:id="@+id/buttonInClass07RegisterRegsiter"
+        android:id="@+id/registerPageButtonSignup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="5dp"
         android:text="@string/register_button_register"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextRegisterPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/registerPageEditTextConfirmPassword" />
 
     <Button
-        android:id="@+id/buttonInClass07RegisterLogin"
+        android:id="@+id/registerPageButtonToLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="15dp"
         android:text="@string/register_button_login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -93,17 +93,17 @@
         android:id="@+id/imageView3"
         android:layout_width="130dp"
         android:layout_height="130dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:src="@drawable/weski_logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/registerPageEditTextName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="15dp"
         android:ems="10"
         android:hint="@string/register_hint_name"
         android:inputType="textPersonName"
@@ -111,5 +111,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView26" />
+
+    <EditText
+        android:id="@+id/registerPageEditTextConfirmPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:ems="10"
+        android:hint="@string/register_hint_confirm_email"
+        android:inputType="textPassword"
+        android:minHeight="48dp"
+        app:layout_constraintStart_toStartOf="@+id/registerPageEditTextPassword"
+        app:layout_constraintTop_toBottomOf="@+id/registerPageEditTextPassword"
+        tools:ignore="SpeakableTextPresentCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

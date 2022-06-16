@@ -74,6 +74,7 @@
     <string name="register_hint_name">Name</string>
     <string name="register_hint_email">Email</string>
     <string name="register_hint_password">Password</string>
+    <string name="register_hint_confirm_email">Confirm Password</string>
     <string name="register_button_login">Sign in</string>
     <string name="register_text_signup">Already have an account</string>
     <string name="register_button_register">Sign up</string>
