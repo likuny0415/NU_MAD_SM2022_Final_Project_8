@@ -89,6 +89,8 @@
     <string name="createGroup_text_avgcost">Average Cost:</string>
     <string name="createGroup_text_note">Note:</string>
     <string name="createGroup_button_post">Post</string>
+    <string name="createGroup_button_search">Search</string>
+    <string name="createGroup_edittext_search">Enter your destination</string>
 
     // update group page
     <string name="updateGroup_text_title">Update your group</string>
