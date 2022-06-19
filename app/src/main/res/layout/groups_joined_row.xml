@@ -19,7 +19,7 @@
             android:padding="2dp">
 
             <TextView
-                android:id="@+id/textViewSkiCGroup"
+                android:id="@+id/joinedGroupListTextViewMountain"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -33,48 +33,48 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/textViewAvatarNameCGroup"
+                android:id="@+id/joinedGroupListTextViewName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:text="@string/hostNameJGroup"
                 android:textColor="@color/black"
-                app:layout_constraintBottom_toBottomOf="@+id/imageViewAvatarCGroup"
-                app:layout_constraintStart_toEndOf="@+id/imageViewAvatarCGroup"
-                app:layout_constraintTop_toTopOf="@+id/imageViewAvatarCGroup" />
+                app:layout_constraintBottom_toBottomOf="@+id/joinedGroupListImageViewAvatar"
+                app:layout_constraintStart_toEndOf="@+id/joinedGroupListImageViewAvatar"
+                app:layout_constraintTop_toTopOf="@+id/joinedGroupListImageViewAvatar" />
 
             <TextView
-                android:id="@+id/textViewDateCGroup"
+                android:id="@+id/joinedGroupListTextViewDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
                 android:text="@string/dateJGroup"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/imageViewAvatarCGroup"
-                app:layout_constraintTop_toBottomOf="@+id/textViewAvatarNameCGroup" />
+                app:layout_constraintStart_toStartOf="@+id/joinedGroupListImageViewAvatar"
+                app:layout_constraintTop_toBottomOf="@+id/joinedGroupListTextViewName" />
 
             <TextView
-                android:id="@+id/textViewJoinedCGroup"
+                android:id="@+id/joinedGroupListTextViewJoined"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="50dp"
                 android:text="@string/joinedJGroup"
-                app:layout_constraintBottom_toBottomOf="@+id/textViewDateCGroup"
-                app:layout_constraintStart_toEndOf="@+id/textViewDateCGroup"
-                app:layout_constraintTop_toTopOf="@+id/textViewDateCGroup" />
+                app:layout_constraintBottom_toBottomOf="@+id/joinedGroupListTextViewDate"
+                app:layout_constraintStart_toEndOf="@+id/joinedGroupListTextViewDate"
+                app:layout_constraintTop_toTopOf="@+id/joinedGroupListTextViewDate" />
 
             <ImageView
-                android:id="@+id/imageViewAvatarCGroup"
+                android:id="@+id/joinedGroupListImageViewAvatar"
                 android:layout_width="25dp"
                 android:layout_height="28dp"
                 android:layout_marginTop="15dp"
-                app:layout_constraintStart_toStartOf="@+id/textViewSkiCGroup"
-                app:layout_constraintTop_toBottomOf="@+id/textViewSkiCGroup"
+                app:layout_constraintStart_toStartOf="@+id/joinedGroupListTextViewMountain"
+                app:layout_constraintTop_toBottomOf="@+id/joinedGroupListTextViewMountain"
                 app:srcCompat="@drawable/googleg_standard_color_18" />
 
             <Button
-                android:id="@+id/buttonEditCGroup"
+                android:id="@+id/joinedGroupListButtonQuit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="20dp"
@@ -85,24 +85,24 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/textViewOutOfCGroup"
+                android:id="@+id/joinedGroupListTextViewOutOf"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
                 android:text="@string/outOfJGroup"
-                app:layout_constraintBottom_toBottomOf="@+id/textViewJoinedCGroup"
-                app:layout_constraintStart_toEndOf="@+id/textViewJoinedCGroup"
-                app:layout_constraintTop_toTopOf="@+id/textViewJoinedCGroup" />
+                app:layout_constraintBottom_toBottomOf="@+id/joinedGroupListTextViewJoined"
+                app:layout_constraintStart_toEndOf="@+id/joinedGroupListTextViewJoined"
+                app:layout_constraintTop_toTopOf="@+id/joinedGroupListTextViewJoined" />
 
             <TextView
-                android:id="@+id/textViewCapacityCGroup"
+                android:id="@+id/joinedGroupListTextViewTotal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
                 android:text="@string/capacityJGroup"
-                app:layout_constraintBottom_toBottomOf="@+id/textViewOutOfCGroup"
-                app:layout_constraintStart_toEndOf="@+id/textViewOutOfCGroup"
-                app:layout_constraintTop_toTopOf="@+id/textViewOutOfCGroup" />
+                app:layout_constraintBottom_toBottomOf="@+id/joinedGroupListTextViewOutOf"
+                app:layout_constraintStart_toEndOf="@+id/joinedGroupListTextViewOutOf"
+                app:layout_constraintTop_toTopOf="@+id/joinedGroupListTextViewOutOf" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
