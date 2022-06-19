@@ -1,7 +1,6 @@
 package com.example.cs4520teamproject.adapter;
 
 import android.content.Context;
-import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,7 +8,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -17,14 +15,9 @@ import com.example.cs4520teamproject.Model.Group;
 import com.example.cs4520teamproject.Model.User;
 import com.example.cs4520teamproject.R;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 
@@ -40,16 +33,21 @@ public class GroupsListAdapter extends RecyclerView.Adapter<GroupsListAdapter.Vi
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView textViewDate, textViewDestination, textViewTotal, textViewCurrent;
+        private TextView textViewDate, textViewDestination, textViewTotal, textViewCurrent, textViewHostName;
         private ImageView imageViewPhoto;
 
         public ViewHolder(@NonNull View v) {
             super(v);
             textViewDate = v.findViewById(R.id.groupTextViewDate);
-            textViewDestination = v.findViewById(R.id.groupTextViewDestination);
+            textViewDestination = v.findViewById(R.id.groupTextViewDestination1);
             textViewTotal = v.findViewById(R.id.groupTextViewTotal);
             textViewCurrent = v.findViewById(R.id.groupTextViewCurrent);
+            textViewHostName = v.findViewById(R.id.groupTextViewHostName);
             imageViewPhoto = v.findViewById(R.id.groupImageViewPhoto);
+        }
+
+        public TextView getTextViewHostName() {
+            return textViewHostName;
         }
 
         public TextView getTextViewDate() {
@@ -101,7 +99,7 @@ public class GroupsListAdapter extends RecyclerView.Adapter<GroupsListAdapter.Vi
                                     .load(user.getProfile_url())
                                     .centerCrop()
                                     .into(holder.getImageViewPhoto());
-
+                            holder.getTextViewHostName().setText(user.getName());
 
                         }
                     }
