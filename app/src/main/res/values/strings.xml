@@ -109,8 +109,11 @@
 
     // groups page
     <string name="group_button_groups">Groups</string>
-    <string name="group_button_create">Create</string>
     <string name="group_button_Account">Account</string>
+    <string name="group_text_total_number_members">Total:</string>
+    <string name="group_text_current_number_members">Current:</string>
+
+
 
     // update profile page
     <string name="updateProfile_text_title">Update your profile</string>

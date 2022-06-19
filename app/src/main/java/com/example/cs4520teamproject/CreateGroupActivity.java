@@ -122,8 +122,8 @@ public class CreateGroupActivity extends AppCompatActivity implements View.OnCli
 
             if (Integer.valueOf(totalMembers) > 10) {
                 Toast.makeText(this, "Total number of members must less than 10", Toast.LENGTH_SHORT).show();
-            } else if (curM > totalM) {
-                Toast.makeText(this, "Current number of members can't exceed total number of members", Toast.LENGTH_SHORT).show();
+            } else if (curM >= totalM) {
+                Toast.makeText(this, "Current number of members should less than total number of members", Toast.LENGTH_SHORT).show();
             } else if (avgC > 1000) {
                 Toast.makeText(this, "Average cost can't more than 1000 dollars", Toast.LENGTH_SHORT).show();
             } else {
@@ -145,6 +145,7 @@ public class CreateGroupActivity extends AppCompatActivity implements View.OnCli
                 curGroup.put("destination", selectDestination);
                 curGroup.put("latitude", address.getLatitude());
                 curGroup.put("longitude", address.getLongitude());
+                curGroup.put("isFull", false);
 
                 db.collection("group")
                         .add(curGroup)

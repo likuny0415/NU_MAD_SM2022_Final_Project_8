@@ -1,21 +1,37 @@
 package com.example.cs4520teamproject;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
+import com.example.cs4520teamproject.Model.Group;
+import com.example.cs4520teamproject.adapter.GroupsListAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.ArrayList;
 
 public class GroupsActivity extends AppCompatActivity implements View.OnClickListener {
 
     private FloatingActionButton buttonAdd;
     private ImageView imageViewRequestLocation;
 
+    private RecyclerView recyclerView;
+    private RecyclerView.LayoutManager recyclerViewLayoutManager;
+    private GroupsListAdapter groupsListAdapter;
     private FirebaseAuth mAuth;
     private FirebaseFirestore db;
 
@@ -29,8 +45,30 @@ public class GroupsActivity extends AppCompatActivity implements View.OnClickLis
         db = FirebaseFirestore.getInstance();
 
         buttonAdd = findViewById(R.id.buttonGroupsPageAdd);
-
         buttonAdd.setOnClickListener(this);
+
+        db.collection("group")
+                .whereEqualTo("isFull", false)
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                        if (error != null) {
+                            Toast.makeText(GroupsActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                        } else {
+                            ArrayList<Group> groups = new ArrayList<>();
+                            for (DocumentSnapshot document: value.getDocuments()) {
+                                Group g = document.toObject(Group.class);
+                                groups.add(g);
+                            }
+
+                            recyclerView = findViewById(R.id.groupsRecyclerView);
+                            recyclerViewLayoutManager = new LinearLayoutManager(GroupsActivity.this);
+                            recyclerView.setLayoutManager(recyclerViewLayoutManager);
+                            groupsListAdapter = new GroupsListAdapter(groups, GroupsActivity.this);
+                            recyclerView.setAdapter(groupsListAdapter);
+                        }
+                    }
+                });
     }
 
     @Override

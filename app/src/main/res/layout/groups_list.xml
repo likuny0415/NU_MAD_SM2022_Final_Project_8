@@ -10,53 +10,79 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="2dp"
-        android:background="#E4CBCB"
+        android:elevation="10dp"
         android:padding="2dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/groupTextViewDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
                 android:text="06/22/2022"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageView
-                android:id="@+id/imageView6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                app:layout_constraintStart_toStartOf="@+id/textView3"
-                app:layout_constraintTop_toBottomOf="@+id/textView3"
-                app:srcCompat="@drawable/common_google_signin_btn_icon_light" />
-
             <TextView
-                android:id="@+id/textView12"
+                android:id="@+id/groupTextViewDestination"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="48dp"
-                android:text="2/6"
-                android:textSize="20dp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/textView13"
-                app:layout_constraintTop_toTopOf="@+id/imageView6" />
-
-            <TextView
-                android:id="@+id/textView13"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:layout_marginEnd="30dp"
+                android:layout_marginStart="36dp"
                 android:text="Blue Hills Ski Area"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:textSize="18dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/groupTextViewDate"
+                app:layout_constraintStart_toEndOf="@+id/groupTextViewDate"
+                app:layout_constraintTop_toTopOf="@+id/groupTextViewDate" />
+
+            <ImageView
+                android:id="@+id/groupImageViewPhoto"
+                android:layout_width="68dp"
+                android:layout_height="61dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/groupTextViewDate"
+                app:layout_constraintTop_toBottomOf="@+id/groupTextViewDate"
+                app:layout_constraintVertical_bias="1.0"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/group_text_total_number_members"
+                app:layout_constraintStart_toStartOf="@+id/groupTextViewDestination"
+                app:layout_constraintTop_toTopOf="@+id/groupImageViewPhoto" />
+
+            <TextView
+                android:id="@+id/groupTextViewTotal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                app:layout_constraintStart_toEndOf="@+id/textView5"
+                app:layout_constraintTop_toTopOf="@+id/textView5" />
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/group_text_current_number_members"
+                app:layout_constraintStart_toStartOf="@+id/textView5"
+                app:layout_constraintTop_toBottomOf="@+id/groupTextViewTotal" />
+
+            <TextView
+                android:id="@+id/groupTextViewCurrent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@+id/groupTextViewTotal"
+                app:layout_constraintTop_toTopOf="@+id/textView14" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
