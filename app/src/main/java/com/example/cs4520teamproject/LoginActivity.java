@@ -2,8 +2,11 @@ package com.example.cs4520teamproject;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Patterns;
@@ -41,7 +44,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         buttonLogin.setOnClickListener(this);
         buttonToSignup.setOnClickListener(this);
 
+
+
     }
+
 
     private void login() {
         isValidEmailAndPassword();

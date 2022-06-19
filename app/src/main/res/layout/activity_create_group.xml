@@ -2,10 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/frameLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FragmentCreateGroup">
+    tools:context=".CreateGroupActivity">
 
     <TextView
         android:id="@+id/textViewUpdateGroup3"
@@ -38,7 +37,7 @@
         android:text="@string/createGroup_text_total"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/textViewUpdateGroup4"
-        app:layout_constraintTop_toBottomOf="@+id/editTextUpdateGroupDestination" />
+        app:layout_constraintTop_toBottomOf="@+id/createGroupTextViewDestination" />
 
     <TextView
         android:id="@+id/textViewUpdateGroup7"
@@ -81,86 +80,102 @@
         app:layout_constraintTop_toBottomOf="@+id/textViewUpdateGroup6" />
 
     <Button
-        android:id="@+id/buttonUpdateGroup2"
+        android:id="@+id/createGroupButtonPost"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:text="@string/createGroup_button_post"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextUpdateGroupNote" />
+        app:layout_constraintTop_toBottomOf="@+id/createGroupEditTextNote" />
 
     <EditText
-        android:id="@+id/editTextUpdateGroupDestination"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        app:layout_constraintBottom_toBottomOf="@+id/textViewUpdateGroup4"
-        app:layout_constraintStart_toEndOf="@+id/textViewUpdateGroup4"
-        app:layout_constraintTop_toTopOf="@+id/textViewUpdateGroup4"
-        app:layout_constraintVertical_bias="0.423"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-    <EditText
-        android:id="@+id/editTextUpdateGroupTotal"
+        android:id="@+id/createGroupEditTextTotalNumbers"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="number"
         android:minHeight="48dp"
         app:layout_constraintBottom_toBottomOf="@+id/textViewUpdateGroup6"
-        app:layout_constraintStart_toStartOf="@+id/editTextUpdateGroupDestination"
+        app:layout_constraintStart_toStartOf="@+id/createGroupTextViewDestination"
         app:layout_constraintTop_toTopOf="@+id/textViewUpdateGroup6"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <EditText
-        android:id="@+id/editTextNumber2"
+        android:id="@+id/createGroupEditTextCurrentNumbers"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="number"
         android:minHeight="48dp"
         app:layout_constraintBottom_toBottomOf="@+id/textViewUpdateGroup10"
-        app:layout_constraintStart_toStartOf="@+id/editTextUpdateGroupTotal"
+        app:layout_constraintStart_toStartOf="@+id/createGroupEditTextTotalNumbers"
         app:layout_constraintTop_toTopOf="@+id/textViewUpdateGroup10"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <EditText
-        android:id="@+id/editTextUpdateGroupDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="date"
-        android:minHeight="48dp"
-        app:layout_constraintBottom_toBottomOf="@+id/textViewUpdateGroup7"
-        app:layout_constraintStart_toStartOf="@+id/editTextNumber2"
-        app:layout_constraintTop_toTopOf="@+id/textViewUpdateGroup7"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-    <EditText
-        android:id="@+id/editTextUpdateGroupAverageCost"
+        android:id="@+id/createGroupEditTextAvgCost"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="number"
         android:minHeight="48dp"
         app:layout_constraintBottom_toBottomOf="@+id/textViewUpdateGroup8"
-        app:layout_constraintStart_toStartOf="@+id/editTextUpdateGroupDate"
+        app:layout_constraintStart_toStartOf="@+id/createGroupTextViewDate"
         app:layout_constraintTop_toTopOf="@+id/textViewUpdateGroup8"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <EditText
-        android:id="@+id/editTextUpdateGroupNote"
+        android:id="@+id/createGroupEditTextNote"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         app:layout_constraintBottom_toBottomOf="@+id/textViewUpdateGroup9"
-        app:layout_constraintStart_toStartOf="@+id/editTextUpdateGroupAverageCost"
+        app:layout_constraintStart_toStartOf="@+id/createGroupEditTextAvgCost"
         app:layout_constraintTop_toTopOf="@+id/textViewUpdateGroup9"
         tools:ignore="SpeakableTextPresentCheck" />
+
+    <ImageView
+        android:id="@+id/imageViewRequestDestination"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        app:layout_constraintStart_toEndOf="@+id/createGroupTextViewDestination"
+        app:layout_constraintTop_toTopOf="@+id/createGroupTextViewDestination"
+        app:srcCompat="@drawable/location_icon" />
+
+    <TextView
+        android:id="@+id/createGroupTextViewDestination"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:text="@string/createGroup_text_hint_destination"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/textViewUpdateGroup4"
+        app:layout_constraintTop_toTopOf="@+id/textViewUpdateGroup4" />
+
+    <TextView
+        android:id="@+id/createGroupTextViewDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/createGroup_text_hint_Date"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewUpdateGroup7"
+        app:layout_constraintStart_toStartOf="@+id/createGroupEditTextCurrentNumbers"
+        app:layout_constraintTop_toTopOf="@+id/textViewUpdateGroup7" />
+
+    <ImageView
+        android:id="@+id/createGroupImageViewDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/createGroupTextViewDate"
+        app:layout_constraintStart_toEndOf="@+id/createGroupTextViewDate"
+        app:layout_constraintTop_toTopOf="@+id/createGroupTextViewDate"
+        app:srcCompat="@drawable/calendar_icon" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
