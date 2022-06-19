@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/calendar_icon.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/group.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_account.xml" value="0.30386657714843746" />
         <entry key="app/src/main/res/layout/activity_create_group.xml" value="0.23415052625868057" />

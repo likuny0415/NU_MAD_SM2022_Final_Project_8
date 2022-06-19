@@ -83,13 +83,18 @@
     // create group page
     <string name="createGroup_text_title">Create your group</string>
     <string name="createGroup_text_destination">Destination:</string>
+    <string name="createGroup_text_hint_destination">Find destination</string>
     <string name="createGroup_text_total">Total members:</string>
     <string name="createGroup_text_current">Current members:</string>
     <string name="createGroup_text_Date">Date:</string>
     <string name="createGroup_text_avgcost">Average Cost:</string>
     <string name="createGroup_text_note">Note:</string>
+    <string name="createGroup_text_hint_Date">Select Date</string>
+
+
     <string name="createGroup_button_post">Post</string>
     <string name="createGroup_button_search">Search</string>
+    <string name="createGroup_button_save">Save</string>
     <string name="createGroup_edittext_search">Enter your destination</string>
 
     // update group page

@@ -7,6 +7,7 @@ import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -42,16 +43,18 @@ import java.util.concurrent.ExecutionException;
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback, View.OnClickListener, GoogleMap.OnMarkerDragListener {
     private final String TAG = "Demo";
     private final int PERMISSION_CODE = 0x001;
+    private static final int REQUEST_GET_MAP_LOCATION = 0;
 
 
     private LocationRequest locationRequest;
     private FusedLocationProviderClient fusedLocationClient;
     private GoogleMap mGoogleMap;
     private Geocoder geocoder;
-    private Address findDestination;
+    private Address finalAddress;
+    private String finalDestination;
 
     private EditText editTextSearch;
-    private Button buttonSearch;
+    private Button buttonSearch, buttonSave;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,8 +64,10 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         editTextSearch = findViewById(R.id.editTextMapsSearch);
         buttonSearch = findViewById(R.id.buttonMapsSearch);
+        buttonSave = findViewById(R.id.buttonMapsSave);
 
         buttonSearch.setOnClickListener(this);
+        buttonSave.setOnClickListener(this);
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         geocoder = new Geocoder(this);
@@ -149,7 +154,22 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             case R.id.buttonMapsSearch:
                 fetchLocation();
                 break;
+            case R.id.buttonMapsSave:
+                saveLocation();
+                break;
         }
+    }
+
+    private void saveLocation() {
+        if (finalAddress != null) {
+            Intent toCreateGroup = new Intent(this, CreateGroupActivity.class);
+            toCreateGroup.putExtra("address", finalAddress);
+            toCreateGroup.putExtra("destination", finalDestination);
+            setResult(RESULT_OK, toCreateGroup);
+            finish();
+        }
+
+
     }
 
     private void fetchLocation() {
@@ -159,7 +179,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         try {
             Address result = myTask.execute(new String[]{destination}).get();
             if (result != null) {
-                findDestination = result;
+                finalAddress = result;
+                finalDestination = destination;
             }
         } catch (ExecutionException | InterruptedException e) {
 
@@ -178,9 +199,9 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         try {
             Address result = myTask.execute(new LatLng[]{latLng}).get();
             if (result != null) {
-                findDestination = result;
+                finalAddress = result;
                 marker.setTitle(result.getThoroughfare());
-
+                finalDestination = result.getThoroughfare();
             }
         } catch (ExecutionException | InterruptedException e) {
 
