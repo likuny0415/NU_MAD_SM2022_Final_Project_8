@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -28,6 +29,7 @@ public class GroupsActivity extends AppCompatActivity implements View.OnClickLis
 
     private FloatingActionButton buttonAdd;
     private ImageView imageViewRequestLocation;
+    private Button buttonToGroups, buttonToAccount;
 
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager recyclerViewLayoutManager;
@@ -45,7 +47,9 @@ public class GroupsActivity extends AppCompatActivity implements View.OnClickLis
         db = FirebaseFirestore.getInstance();
 
         buttonAdd = findViewById(R.id.buttonGroupsPageAdd);
+        buttonToAccount = findViewById(R.id.accountPageButtonToAccount);
         buttonAdd.setOnClickListener(this);
+        buttonToAccount.setOnClickListener(this);
 
         db.collection("group")
                 .whereEqualTo("isFull", false)
@@ -77,8 +81,15 @@ public class GroupsActivity extends AppCompatActivity implements View.OnClickLis
             case R.id.buttonGroupsPageAdd:
                 toCreatePage();
                 break;
-
+            case R.id.accountPageButtonToAccount:
+                toAccount();
+                break;
         }
+    }
+
+    private void toAccount() {
+        Intent toAccount = new Intent(GroupsActivity.this, AccountActivity.class);
+        startActivity(toAccount);
     }
 
     private void toCreatePage() {

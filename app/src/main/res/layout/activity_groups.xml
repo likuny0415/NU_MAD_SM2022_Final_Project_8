@@ -27,7 +27,6 @@
 
         <Button
             android:id="@+id/accountPageButtonGroups"
-            android:id="@+id/button5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -37,7 +36,7 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
-            android:id="@+id/accountPageButtonAccount"
+            android:id="@+id/accountPageButtonToAccount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"

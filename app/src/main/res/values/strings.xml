@@ -4,50 +4,65 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
-    // group information fragment
-    <string name="resort">Ski Resort Name</string>
-    <string name="host">Host:</string>
-    <string name="hostName">Apple_0612</string>
-    <string name="contact">Contact:</string>
-    <string name="contactDetail">Apple@gmail.com</string>
-    <string name="distance">Distance:</string>
-    <string name="distanceNumber">14.2mile</string>
-    <string name="members">Members:</string>
-    <string name="joined">Joined:</string>
-    <string name="joinedNumber">4</string>
-    <string name="joinedOutOf">out of</string>
-    <string name="joinedTotal">7</string>
-    <string name="date">Date:</string>
-    <string name="dateDetail">06/22/2022</string>
-    <string name="averageCost">Average Cost:</string>
-    <string name="averageCostNumber">$100/person</string>
-    <string name="note">Note:</string>
-    <string name="noteDetail">It will be a two hour trip. Please bring your IDs for checking the hotel</string>
-    <string name="joinButton">JOIN</string>
 
-
-    //Account Information
-    <string name="emailAccount">Email:</string>
-    <string name="emailAccountDetail">Apple@gmail.com</string>
-    <string name="phoneAccount">Phone:</string>
-    <string name="phoneAccountDetail">(888)-888-8888</string>
-    <string name="nameAccount">Apple_0612</string>
-    <string name="bioAccount">Bio:</string>
-    <string name="bioAccountDetail">I am so happy to be here! ^_^</string>
-    <string name="editProfileAccount">Edit Profile</string>
-    <string name="logOut">Log Out</string>
-    <string name="createdAccount">Created</string>
-    <string name="joinedAccount">Joined</string>
+    // group information activity
+    <string name="groupInformation_text_Resort">Ski Resort Name</string>
+    <string name="groupInformation_text_host">Host:</string>
+    <string name="groupInformation_text_hostName">Apple_0612</string>
+    <string name="groupInformation_text_contact">Contact:</string>
+    <string name="groupInformation_text_contactDetail">Apple@gmail.com</string>
+    <string name="groupInformation_text_distance">Distance:</string>
+    <string name="groupInformation_text_distanceNumber">14.2mile</string>
+    <string name="groupInformation_text_members">Members:</string>
+    <string name="groupInformation_text_joined">Joined:</string>
+    <string name="groupInformation_text_joinedNumber">4</string>
+    <string name="groupInformation_text_joinedOutOf">out of</string>
+    <string name="groupInformation_text_joinedTotal">7</string>
+    <string name="groupInformation_text_date">Date:</string>
+    <string name="groupInformation_text_dateDetail">06/22/2022</string>
+    <string name="groupInformation_text_averageCost">Average Cost:</string>
+    <string name="groupInformation_text_averageCostNumber">$100/person</string>
+    <string name="groupInformation_text_note">Note:</string>
+    <string name="groupInformation_text_noteDetail">It will be a two hour trip. Please bring your IDs for checking the hotel</string>
+    <string name="groupInformation_button_join">JOIN</string>
 
 
     //Account joined group Information
-    <string name="skiResortJGroup">Blue Hill Ski Area</string>
-    <string name="hostNameJGroup">Banana_0613</string>
-    <string name="dateJGroup">06/27/2022</string>
-    <string name="joinedJGroup">4</string>
-    <string name="outOfJGroup">Out of</string>
-    <string name="capacityJGroup">6</string>
-    <string name="quitJGroup">Quit</string>
+    <string name="joinedGroup_text_skiResort">Blue Hill Ski Area</string>
+    <string name="joinedGroup_text_hostName">Banana_0613</string>
+    <string name="joinedGroup_text_date">06/27/2022</string>
+    <string name="joinedGroup_text_joined">4</string>
+    <string name="joinedGroup_text_outOf">Out of</string>
+    <string name="joinedGroup_text_capacity">6</string>
+    <string name="joinedGroup_button_quit">Quit</string>
+
+
+
+    //Account created group Information
+    <string name="createdGroup_text_skiResort">Pats Peak Ski Area</string>
+    <string name="createdGroup_text_hostName">Apple_0612</string>
+    <string name="createdGroup_text_date">06/22/2022</string>
+    <string name="createdGroup_text_joined">4</string>
+    <string name="createdGroup_text_outOf">Out of</string>
+    <string name="createdGroup_text_capacity">7</string>
+    <string name="createdGroup_button_edit">Edit</string>
+    <string name="createdGroup_button_delete">Delete</string>
+
+
+    //Account Information
+    <string name="accountInformation_text_email">Email:</string>
+    <string name="accountInformation_text_emailDetail">Apple@gmail.com</string>
+    <string name="accountInformation_text_phone">Phone:</string>
+    <string name="accountInformation_text_phoneDetail">(888)-888-8888</string>
+    <string name="accountInformation_text_name">Apple_0612</string>
+    <string name="accountInformation_text_bio">Bio:</string>
+    <string name="accountInformation_text_bioDetail">I am so happy to be here! ^_^</string>
+    <string name="accountInformation_button_editProfile">Edit Profile</string>
+    <string name="accountInformation_button_logOut">Log Out</string>
+    <string name="accountInformation_button_created">Created</string>
+    <string name="accountInformation_button_joined">Joined</string>
+    <string name="accountInformation_button_joinedList">View My Joined List</string>
+    <string name="accountInformation_button_createdList">View My Created List</string>
 
 
     //Account joined group Information
@@ -113,7 +128,6 @@
     <string name="group_text_total_number_members">Total:</string>
     <string name="group_text_current_number_members">out of</string>
     <string name="group_text_destination">Destination:</string>
-
 
 
     // update profile page

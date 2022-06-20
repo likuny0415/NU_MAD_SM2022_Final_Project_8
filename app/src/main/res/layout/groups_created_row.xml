@@ -24,7 +24,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
-                android:text="@string/skiResortCGroup"
+                android:text="@string/createdGroup_text_skiResort"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -37,7 +37,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:text="@string/hostNameCGroup"
+                android:text="@string/createdGroup_text_hostName"
                 android:textColor="@color/black"
                 app:layout_constraintBottom_toBottomOf="@+id/joinedGroupListImageViewAvatar"
                 app:layout_constraintStart_toEndOf="@+id/joinedGroupListImageViewAvatar"
@@ -49,7 +49,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
-                android:text="@string/dateCGroup"
+                android:text="@string/createdGroup_text_date"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/joinedGroupListImageViewAvatar"
                 app:layout_constraintTop_toBottomOf="@+id/joinedGroupListTextViewName" />
@@ -59,7 +59,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="50dp"
-                android:text="@string/joinedJGroup"
+                android:text="@string/createdGroup_text_joined"
                 app:layout_constraintBottom_toBottomOf="@+id/joinedGroupListTextViewDate"
                 app:layout_constraintStart_toEndOf="@+id/joinedGroupListTextViewDate"
                 app:layout_constraintTop_toTopOf="@+id/joinedGroupListTextViewDate" />
@@ -79,7 +79,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:layout_marginEnd="20dp"
-                android:text="@string/editCGroup"
+                android:text="@string/createdGroup_button_edit"
                 android:textAllCaps="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -89,7 +89,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
-                android:text="@string/outOfCGroup"
+                android:text="@string/createdGroup_text_outOf"
                 app:layout_constraintBottom_toBottomOf="@+id/joinedGroupListTextViewJoined"
                 app:layout_constraintStart_toEndOf="@+id/joinedGroupListTextViewJoined"
                 app:layout_constraintTop_toTopOf="@+id/joinedGroupListTextViewJoined" />
@@ -99,7 +99,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
-                android:text="@string/capacityCGroup"
+                android:text="@string/createdGroup_text_capacity"
                 app:layout_constraintBottom_toBottomOf="@+id/joinedGroupListTextViewOutOf"
                 app:layout_constraintStart_toEndOf="@+id/joinedGroupListTextViewOutOf"
                 app:layout_constraintTop_toTopOf="@+id/joinedGroupListTextViewOutOf" />
@@ -108,7 +108,7 @@
                 android:id="@+id/createdGroupListButtonDelete"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/deleteCGroup"
+                android:text="@string/createdGroup_button_delete"
                 android:textAllCaps="false"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/joinedGroupListButtonQuit"
@@ -121,3 +121,5 @@
 
 
 </FrameLayout>
+
+

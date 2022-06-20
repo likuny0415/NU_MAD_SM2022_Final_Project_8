@@ -1,6 +1,7 @@
 package com.example.cs4520teamproject.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,9 +9,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.cs4520teamproject.GroupActivity;
 import com.example.cs4520teamproject.Model.Group;
 import com.example.cs4520teamproject.Model.User;
 import com.example.cs4520teamproject.R;
@@ -35,6 +38,7 @@ public class GroupsListAdapter extends RecyclerView.Adapter<GroupsListAdapter.Vi
     public class ViewHolder extends RecyclerView.ViewHolder {
         private TextView textViewDate, textViewDestination, textViewTotal, textViewCurrent, textViewHostName;
         private ImageView imageViewPhoto;
+        private CardView cardViewGroup;
 
         public ViewHolder(@NonNull View v) {
             super(v);
@@ -44,6 +48,11 @@ public class GroupsListAdapter extends RecyclerView.Adapter<GroupsListAdapter.Vi
             textViewCurrent = v.findViewById(R.id.groupTextViewCurrent);
             textViewHostName = v.findViewById(R.id.groupTextViewHostName);
             imageViewPhoto = v.findViewById(R.id.groupImageViewPhoto);
+            cardViewGroup = v.findViewById(R.id.cardViewGroup);
+        }
+
+        public CardView getCardViewGroup() {
+            return cardViewGroup;
         }
 
         public TextView getTextViewHostName() {
@@ -86,6 +95,14 @@ public class GroupsListAdapter extends RecyclerView.Adapter<GroupsListAdapter.Vi
         holder.getTextViewTotal().setText("" + groups.get(holder.getAdapterPosition()).getTotalNumberOfMembers());
         holder.getTextViewDate().setText(groups.get(holder.getAdapterPosition()).getDate());
         holder.getTextViewDestination().setText(groups.get(holder.getAdapterPosition()).getDestination());
+        holder.getCardViewGroup().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent toThisGroup = new Intent(context, GroupActivity.class);
+                toThisGroup.putExtra("curGroup", groups.get(holder.getAdapterPosition()));
+                context.startActivity(toThisGroup);
+            }
+        });
         db.collection("user")
                 .document(groups.get(holder.getAdapterPosition()).getCreateBy())
                 .get()
@@ -100,7 +117,6 @@ public class GroupsListAdapter extends RecyclerView.Adapter<GroupsListAdapter.Vi
                                     .centerCrop()
                                     .into(holder.getImageViewPhoto());
                             holder.getTextViewHostName().setText(user.getName());
-
                         }
                     }
                 });

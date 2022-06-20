@@ -12,8 +12,7 @@ public class AccountActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account);
-        android.util.Log.d("TAG", "onCreate: " + 123);
-        Log.d(TAG, "onCreate: " + " my test");
+        setTitle("Account");
 
     }
 }

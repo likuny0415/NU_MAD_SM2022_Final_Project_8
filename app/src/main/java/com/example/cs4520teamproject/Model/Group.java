@@ -1,10 +1,14 @@
 package com.example.cs4520teamproject.Model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 
-public class Group {
+public class Group implements Serializable {
     private Date createAt;
     private String createAtDate;
     private String createAtTime;
@@ -145,4 +149,8 @@ public class Group {
     public void setCurNumberOfMembers(int curNumberOfMembers) {
         this.curNumberOfMembers = curNumberOfMembers;
     }
+
+
+
+
 }

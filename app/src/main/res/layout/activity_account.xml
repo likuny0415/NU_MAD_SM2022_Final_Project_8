@@ -4,16 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AccountActivity">
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/acountPageRecyclerViewGroupLists"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/containerIcon"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/accountPageContainerAccountInformation" />
+    tools:context=".AccountActivity"
+    android:layout_gravity="center">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/containerIcon"
@@ -22,7 +14,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
-
 
         <Button
             android:id="@+id/accountPageButtonGroups"
@@ -48,13 +39,148 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/accountPageContainerAccountInformation"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/containerIcon"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="64dp"
+            android:layout_height="62dp"
+            android:layout_marginTop="80dp"
+            android:src="@drawable/googleg_standard_color_18"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
+        <TextView
+            android:id="@+id/textViewEmailAccount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="152dp"
+            android:text="@string/accountInformation_text_email"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imageView" />
+
+        <TextView
+            android:id="@+id/textViewAccountEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="@string/accountInformation_text_emailDetail"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewEmailAccount"
+            app:layout_constraintStart_toEndOf="@+id/textViewEmailAccount"
+            app:layout_constraintTop_toTopOf="@+id/textViewEmailAccount" />
+
+        <TextView
+            android:id="@+id/textViewPhoneAccount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="@string/accountInformation_text_phone"
+            app:layout_constraintStart_toStartOf="@+id/textViewEmailAccount"
+            app:layout_constraintTop_toBottomOf="@+id/textViewEmailAccount" />
+
+        <TextView
+            android:id="@+id/textViewPhoneAccountDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="@string/accountInformation_text_phoneDetail"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewPhoneAccount"
+            app:layout_constraintStart_toEndOf="@+id/textViewPhoneAccount"
+            app:layout_constraintTop_toTopOf="@+id/textViewPhoneAccount" />
+
+        <TextView
+            android:id="@+id/textViewNameAccount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/accountInformation_text_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+        <Button
+            android:id="@+id/buttonEditAccount"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="20dp"
+            android:text="@string/accountInformation_button_editProfile"
+            android:textAllCaps="false"
+            app:layout_constraintEnd_toStartOf="@+id/button3"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button4" />
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="21dp"
+            android:layout_marginEnd="36dp"
+            android:text="@string/accountInformation_button_logOut"
+            android:textAllCaps="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/buttonEditAccount"
+            app:layout_constraintTop_toTopOf="@+id/buttonEditAccount" />
+
+        <TextView
+            android:id="@+id/textViewBioAccount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="@string/accountInformation_text_bio"
+            app:layout_constraintStart_toStartOf="@+id/textViewPhoneAccount"
+            app:layout_constraintTop_toBottomOf="@+id/textViewPhoneAccount" />
+
+        <TextView
+            android:id="@+id/textViewBioAccountDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="@string/accountInformation_text_bioDetail"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewBioAccount"
+            app:layout_constraintStart_toEndOf="@+id/textViewBioAccount"
+            app:layout_constraintTop_toTopOf="@+id/textViewBioAccount" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            android:textAllCaps="false"
+            android:text="@string/accountInformation_button_joinedList"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewBioAccountDetail" />
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:textAllCaps="false"
+            android:text="@string/accountInformation_button_createdList"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
