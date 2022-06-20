@@ -12,8 +12,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:text="@string/groupInformation_text_Resort"
-        android:textColor="@color/black"
-        android:textSize="20dp"
+        android:textColor="#2196F3"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -34,11 +34,12 @@
         android:id="@+id/groupInformationImageViewHostAvatar"
         android:layout_width="40dp"
         android:layout_height="39dp"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="72dp"
         android:src="@drawable/googleg_standard_color_18"
         app:layout_constraintBottom_toBottomOf="@+id/groupInformationTextViewHost"
         app:layout_constraintStart_toEndOf="@+id/groupInformationTextViewHost"
-        app:layout_constraintTop_toTopOf="@+id/groupInformationTextViewHost" />
+        app:layout_constraintTop_toTopOf="@+id/groupInformationTextViewHost"
+        app:layout_constraintVertical_bias="0.45" />
 
     <TextView
         android:id="@+id/groupInformationTextViewHostName"
@@ -66,34 +67,22 @@
         android:id="@+id/groupInformationTextViewEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
         android:text="@string/groupInformation_text_contactDetail"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="@+id/groupInformationTextViewEmail1"
-        app:layout_constraintStart_toEndOf="@+id/groupInformationTextViewEmail1"
+        app:layout_constraintStart_toStartOf="@+id/groupInformationImageViewHostAvatar"
         app:layout_constraintTop_toTopOf="@+id/groupInformationTextViewEmail1" />
 
     <TextView
         android:id="@+id/groupInformationTextViewDistance1"
-        android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:text="@string/groupInformation_text_distance"
+        android:text="@string/groupInformation_text_location"
         android:textColor="@color/black"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/groupInformationTextViewEmail1"
         app:layout_constraintTop_toBottomOf="@+id/groupInformationTextViewEmail1" />
-
-    <TextView
-        android:id="@+id/groupInformationTextViewDistance"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:text="@string/groupInformation_text_distanceNumber"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="@+id/groupInformationTextViewDistance1"
-        app:layout_constraintStart_toEndOf="@+id/groupInformationTextViewDistance1"
-        app:layout_constraintTop_toTopOf="@+id/groupInformationTextViewDistance1" />
 
     <TextView
         android:id="@+id/groupInformationTextViewMembers"
@@ -110,7 +99,7 @@
         android:id="@+id/groupInformationTextViewJoined"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="60dp"
         android:text="@string/groupInformation_text_joined"
         android:textColor="@color/black"
         android:textStyle="bold"
@@ -121,11 +110,10 @@
         android:id="@+id/groupInformationTextViewJoinedNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
         android:text="@string/groupInformation_text_joinedNumber"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="@+id/groupInformationTextViewJoined"
-        app:layout_constraintStart_toEndOf="@+id/groupInformationTextViewJoined"
+        app:layout_constraintStart_toStartOf="@+id/groupInformationImageViewLocation"
         app:layout_constraintTop_toTopOf="@+id/groupInformationTextViewJoined" />
 
     <TextView
@@ -165,11 +153,10 @@
         android:id="@+id/groupInformationTextViewDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
         android:text="@string/groupInformation_text_dateDetail"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="@+id/groupInformationTextViewDate1"
-        app:layout_constraintStart_toEndOf="@+id/groupInformationTextViewDate1"
+        app:layout_constraintStart_toStartOf="@+id/groupInformationTextViewJoinedNumber"
         app:layout_constraintTop_toTopOf="@+id/groupInformationTextViewDate1" />
 
     <TextView
@@ -187,11 +174,10 @@
         android:id="@+id/groupInformationTextViewAverageCost"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
         android:text="@string/groupInformation_text_averageCostNumber"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="@+id/groupInformationTextViewAverageCost1"
-        app:layout_constraintStart_toEndOf="@+id/groupInformationTextViewAverageCost1"
+        app:layout_constraintStart_toStartOf="@+id/groupInformationTextViewDate"
         app:layout_constraintTop_toTopOf="@+id/groupInformationTextViewAverageCost1" />
 
     <TextView
@@ -210,12 +196,10 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
 
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
         android:text="@string/groupInformation_text_noteDetail"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/groupInformationTextViewNote1"
+        app:layout_constraintStart_toStartOf="@+id/groupInformationTextViewAverageCost"
         app:layout_constraintTop_toTopOf="@+id/groupInformationTextViewNote1" />
 
     <Button
@@ -228,6 +212,25 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/groupInformationTextViewNote" />
+
+    <ImageView
+        android:id="@+id/groupInformationImageViewLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/groupInformationTextViewDistance1"
+        app:layout_constraintStart_toStartOf="@+id/groupInformationTextViewEmail"
+        app:layout_constraintTop_toTopOf="@+id/groupInformationTextViewDistance1"
+        app:srcCompat="@drawable/location_icon" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/groupRecyclerViewMembers"
+        android:layout_width="250dp"
+
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="@+id/groupInformationImageViewLocation"
+        app:layout_constraintTop_toBottomOf="@+id/groupInformationImageViewLocation" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

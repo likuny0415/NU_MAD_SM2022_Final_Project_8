@@ -11,7 +11,7 @@
     <string name="groupInformation_text_hostName">Apple_0612</string>
     <string name="groupInformation_text_contact">Contact:</string>
     <string name="groupInformation_text_contactDetail">Apple@gmail.com</string>
-    <string name="groupInformation_text_distance">Distance:</string>
+    <string name="groupInformation_text_location">Location:</string>
     <string name="groupInformation_text_distanceNumber">14.2mile</string>
     <string name="groupInformation_text_members">Members:</string>
     <string name="groupInformation_text_joined">Joined:</string>

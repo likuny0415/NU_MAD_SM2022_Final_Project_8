@@ -18,6 +18,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 
@@ -45,8 +46,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private final int PERMISSION_CODE = 0x001;
     private static final int REQUEST_GET_MAP_LOCATION = 0;
 
-
-    private LocationRequest locationRequest;
     private FusedLocationProviderClient fusedLocationClient;
     private GoogleMap mGoogleMap;
     private Geocoder geocoder;
@@ -55,6 +54,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     private EditText editTextSearch;
     private Button buttonSearch, buttonSave;
+    private RelativeLayout searchBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,32 +65,73 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         editTextSearch = findViewById(R.id.editTextMapsSearch);
         buttonSearch = findViewById(R.id.buttonMapsSearch);
         buttonSave = findViewById(R.id.buttonMapsSave);
+        searchBar = findViewById(R.id.mapsSearchBar);
+
 
         buttonSearch.setOnClickListener(this);
         buttonSave.setOnClickListener(this);
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         geocoder = new Geocoder(this);
-        locationRequest = LocationRequest.create();
-        locationRequest.setInterval(4000);
-        locationRequest.setFastestInterval(2000);
-        locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
 
         SupportMapFragment mapFragment = (SupportMapFragment)
                 getSupportFragmentManager().findFragmentById(R.id.maps);
         mapFragment.getMapAsync(this);
+
+
+
+
+    }
+
+    private void displayLocation(double longtitude, double latitude) {
+        LatLng curPos = new LatLng(latitude, longtitude);
+        mGoogleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(curPos, 18));
+    }
+
+    @Override
+    public void onMapReady(@NonNull GoogleMap googleMap) {
+        mGoogleMap = googleMap;
+        mGoogleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+        mGoogleMap.setOnMarkerDragListener(this);
+
+
+        if (getIntent() != null && getIntent().getExtras() != null) {
+            int type = getIntent().getIntExtra("type", 0);
+
+            if (type == 2) {
+                double longtitude = getIntent().getDoubleExtra("longitude", 0);
+                double latitude = getIntent().getDoubleExtra("latitude", 0);
+                LatLng latLng = new LatLng(latitude, longtitude);
+                TaskShowLocation myTask = new TaskShowLocation(this, mGoogleMap, geocoder);
+                try {
+                    myTask.execute(new LatLng[]{latLng}).get();
+                    searchBar.setVisibility(View.GONE);
+                    buttonSave.setVisibility(View.GONE);
+                    setTitle("Destination");
+                } catch (ExecutionException | InterruptedException e) {
+
+                }
+            }
+        }
     }
 
 
     @Override
     protected void onStart() {
         super.onStart();
+
+
         Boolean locationAllowed = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED;
         if (locationAllowed) {
             getLastLocation();
         } else {
             askLocationPermission();
         }
+    }
+
+    private void goThisLocation(double longti, double lati) {
+        LatLng curPos = new LatLng(lati, longti);
+        mGoogleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(curPos, 18));
     }
 
     @SuppressLint("MissingPermission")
@@ -140,15 +181,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
 
     @Override
-    public void onMapReady(@NonNull GoogleMap googleMap) {
-        mGoogleMap = googleMap;
-        mGoogleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-        mGoogleMap.setOnMarkerDragListener(this);
-
-    }
-
-
-    @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.buttonMapsSearch:
@@ -168,8 +200,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             setResult(RESULT_OK, toCreateGroup);
             finish();
         }
-
-
     }
 
     private void fetchLocation() {
@@ -268,7 +298,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         @Override
         protected Address doInBackground(LatLng... latLngs) {
             try {
-                List<Address> addresses = geocoder.getFromLocation(latLngs[0].latitude, latLngs[0].longitude,  1);
+                List<Address> addresses = geocoder.getFromLocation(latLngs[0].latitude, latLngs[0].longitude, 1);
                 if (addresses.size() > 0)
                     return addresses.get(0);
             } catch (IOException ex) {
@@ -287,7 +317,44 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 mGoogleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(curPos, 16));
             }
         }
+    }
 
+    private static class TaskShowLocation extends AsyncTask<LatLng, Void, Address> {
+
+        private WeakReference<MapsActivity> activityReference;
+        private GoogleMap mGoogleMap;
+        private Geocoder geocoder;
+
+        // only retain a weak reference to the activity
+        TaskShowLocation(MapsActivity context, GoogleMap mGoogleMap, Geocoder geocoder) {
+            activityReference = new WeakReference<>(context);
+            this.mGoogleMap = mGoogleMap;
+            this.geocoder = geocoder;
+        }
+
+        @Override
+        protected Address doInBackground(LatLng... latLngs) {
+            try {
+                List<Address> addresses = geocoder.getFromLocation(latLngs[0].latitude, latLngs[0].longitude, 1);
+                if (addresses.size() > 0)
+                    return addresses.get(0);
+            } catch (IOException ex) {
+
+            }
+            return null;
+        }
+
+
+        @Override
+        protected void onPostExecute(Address address) {
+            if (address == null) {
+                Toast.makeText(activityReference.get(), "Enter a valid position!", Toast.LENGTH_SHORT).show();
+            } else {
+                LatLng curPos = new LatLng(address.getLatitude(), address.getLongitude());
+                mGoogleMap.addMarker(new MarkerOptions().position(curPos).title(address.getThoroughfare()));
+                mGoogleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(curPos, 16));
+            }
+        }
     }
 }
 

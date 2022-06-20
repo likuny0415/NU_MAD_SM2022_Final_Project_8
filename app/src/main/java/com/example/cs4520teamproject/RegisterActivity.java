@@ -117,6 +117,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         user.put("email", email);
         user.put("name", name);
         user.put("mobile", mobile);
+        user.put("bio", "I am so happy to be here! ^_^");
         user.put("groups", new ArrayList<String>());
         user.put("profile_url", "https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg");
 
