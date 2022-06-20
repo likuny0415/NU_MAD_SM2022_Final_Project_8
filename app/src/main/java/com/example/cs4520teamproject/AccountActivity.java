@@ -87,6 +87,7 @@ public class AccountActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent goToGroups = new Intent(AccountActivity.this, GroupsActivity.class);
                 startActivity(goToGroups);
+                overridePendingTransition(0, 0);
             }
         });
 
