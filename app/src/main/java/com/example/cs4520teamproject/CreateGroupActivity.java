@@ -146,6 +146,7 @@ public class CreateGroupActivity extends AppCompatActivity implements View.OnCli
                 curGroup.put("latitude", address.getLatitude());
                 curGroup.put("longitude", address.getLongitude());
                 curGroup.put("isFull", false);
+                curGroup.put("averageCost", avgC);
 
                 db.collection("group")
                         .add(curGroup)

@@ -22,6 +22,9 @@ public class Group implements Serializable {
     private String note;
     private int totalNumberOfMembers;
     private int curNumberOfMembers;
+    private int averageCost;
+
+
 
     @Override
     public String toString() {
@@ -150,7 +153,11 @@ public class Group implements Serializable {
         this.curNumberOfMembers = curNumberOfMembers;
     }
 
+    public int getAverageCost() {
+        return averageCost;
+    }
 
-
-
+    public void setAverageCost(int averageCost) {
+        this.averageCost = averageCost;
+    }
 }
