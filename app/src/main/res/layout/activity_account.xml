@@ -2,10 +2,11 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/containerAccountProfile"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AccountActivity"
-    android:layout_gravity="center">
+    android:layout_gravity="center"
+    tools:context=".AccountActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/containerIcon"
@@ -48,7 +49,7 @@
         app:layout_constraintVertical_bias="0.0">
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/accountPageImageViewAvatar"
             android:layout_width="64dp"
             android:layout_height="62dp"
             android:layout_marginTop="80dp"
@@ -59,56 +60,56 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textViewEmailAccount"
+            android:id="@+id/accountPageTextViewEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="100dp"
             android:layout_marginTop="152dp"
             android:text="@string/accountInformation_text_email"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/imageView" />
+            app:layout_constraintTop_toTopOf="@+id/accountPageImageViewAvatar" />
 
         <TextView
-            android:id="@+id/textViewAccountEmail"
+            android:id="@+id/accountPageTextViewEmailDetail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:text="@string/accountInformation_text_emailDetail"
-            app:layout_constraintBottom_toBottomOf="@+id/textViewEmailAccount"
-            app:layout_constraintStart_toEndOf="@+id/textViewEmailAccount"
-            app:layout_constraintTop_toTopOf="@+id/textViewEmailAccount" />
+            app:layout_constraintBottom_toBottomOf="@+id/accountPageTextViewEmail"
+            app:layout_constraintStart_toEndOf="@+id/accountPageTextViewEmail"
+            app:layout_constraintTop_toTopOf="@+id/accountPageTextViewEmail" />
 
         <TextView
-            android:id="@+id/textViewPhoneAccount"
+            android:id="@+id/accountPageTextViewPhone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:text="@string/accountInformation_text_phone"
-            app:layout_constraintStart_toStartOf="@+id/textViewEmailAccount"
-            app:layout_constraintTop_toBottomOf="@+id/textViewEmailAccount" />
+            app:layout_constraintStart_toStartOf="@+id/accountPageTextViewEmail"
+            app:layout_constraintTop_toBottomOf="@+id/accountPageTextViewEmail" />
 
         <TextView
-            android:id="@+id/textViewPhoneAccountDetail"
+            android:id="@+id/accountPageTextViewPhoneDetail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:text="@string/accountInformation_text_phoneDetail"
-            app:layout_constraintBottom_toBottomOf="@+id/textViewPhoneAccount"
-            app:layout_constraintStart_toEndOf="@+id/textViewPhoneAccount"
-            app:layout_constraintTop_toTopOf="@+id/textViewPhoneAccount" />
+            app:layout_constraintBottom_toBottomOf="@+id/accountPageTextViewPhone"
+            app:layout_constraintStart_toEndOf="@+id/accountPageTextViewPhone"
+            app:layout_constraintTop_toTopOf="@+id/accountPageTextViewPhone" />
 
         <TextView
-            android:id="@+id/textViewNameAccount"
+            android:id="@+id/accountPageTextViewName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="@string/accountInformation_text_name"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+            app:layout_constraintTop_toBottomOf="@+id/accountPageImageViewAvatar" />
 
         <Button
-            android:id="@+id/buttonEditAccount"
+            android:id="@+id/accountPageButtonEdit"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="36dp"
@@ -116,13 +117,13 @@
             android:layout_marginEnd="20dp"
             android:text="@string/accountInformation_button_editProfile"
             android:textAllCaps="false"
-            app:layout_constraintEnd_toStartOf="@+id/button3"
+            app:layout_constraintEnd_toStartOf="@+id/accountPageButtonLogOut"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button4" />
+            app:layout_constraintTop_toBottomOf="@+id/accountPageButtonCreatedList" />
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/accountPageButtonLogOut"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="21dp"
@@ -130,51 +131,51 @@
             android:text="@string/accountInformation_button_logOut"
             android:textAllCaps="false"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/buttonEditAccount"
-            app:layout_constraintTop_toTopOf="@+id/buttonEditAccount" />
+            app:layout_constraintStart_toEndOf="@+id/accountPageButtonEdit"
+            app:layout_constraintTop_toTopOf="@+id/accountPageButtonEdit" />
 
         <TextView
-            android:id="@+id/textViewBioAccount"
+            android:id="@+id/accountPageTextViewBio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:text="@string/accountInformation_text_bio"
-            app:layout_constraintStart_toStartOf="@+id/textViewPhoneAccount"
-            app:layout_constraintTop_toBottomOf="@+id/textViewPhoneAccount" />
+            app:layout_constraintStart_toStartOf="@+id/accountPageTextViewPhone"
+            app:layout_constraintTop_toBottomOf="@+id/accountPageTextViewPhone" />
 
         <TextView
-            android:id="@+id/textViewBioAccountDetail"
+            android:id="@+id/accountPageTextViewBioDetail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:text="@string/accountInformation_text_bioDetail"
-            app:layout_constraintBottom_toBottomOf="@+id/textViewBioAccount"
-            app:layout_constraintStart_toEndOf="@+id/textViewBioAccount"
-            app:layout_constraintTop_toTopOf="@+id/textViewBioAccount" />
+            app:layout_constraintBottom_toBottomOf="@+id/accountPageTextViewBio"
+            app:layout_constraintStart_toEndOf="@+id/accountPageTextViewBio"
+            app:layout_constraintTop_toTopOf="@+id/accountPageTextViewBio" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/accountPageButtonJoinedList"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="48dp"
-            android:textAllCaps="false"
             android:text="@string/accountInformation_button_joinedList"
+            android:textAllCaps="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewBioAccountDetail" />
+            app:layout_constraintTop_toBottomOf="@+id/accountPageTextViewBioDetail" />
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/accountPageButtonCreatedList"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
-            android:textAllCaps="false"
             android:text="@string/accountInformation_button_createdList"
+            android:textAllCaps="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button" />
+            app:layout_constraintTop_toBottomOf="@+id/accountPageButtonJoinedList" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
