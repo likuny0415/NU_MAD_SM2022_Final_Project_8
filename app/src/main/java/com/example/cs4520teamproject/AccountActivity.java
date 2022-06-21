@@ -91,16 +91,14 @@ public class AccountActivity extends AppCompatActivity {
             }
         });
 
-        // edit profile
-//        editProfile.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                getSupportFragmentManager().beginTransaction()
-//                        .replace(R.id.containerAccountProfile, FragmentUpdateProfile.newInstance(), "profileFragment")
-//                        .commit();
-//            }
-//        });
+        editProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent toEditProfile = new Intent(AccountActivity.this, EditProfileActivity.class);
+                startActivity(toEditProfile);
+                overridePendingTransition(0, 0);
+            }
+        });
 
 
     }

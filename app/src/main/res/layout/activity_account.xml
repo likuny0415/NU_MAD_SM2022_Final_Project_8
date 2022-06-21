@@ -50,9 +50,9 @@
 
         <ImageView
             android:id="@+id/accountPageImageViewAvatar"
-            android:layout_width="64dp"
-            android:layout_height="62dp"
-            android:layout_marginTop="80dp"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:layout_marginTop="50dp"
             android:src="@drawable/googleg_standard_color_18"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"

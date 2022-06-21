@@ -95,6 +95,7 @@ public class GroupActivity extends AppCompatActivity implements View.OnClickList
         db.collection("user")
                 .document(mAuth.getUid())
                 .update("groups", FieldValue.arrayUnion(group.getId()));
+        finish();
     }
 
 

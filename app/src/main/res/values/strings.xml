@@ -4,7 +4,6 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
-
     // group information activity
     <string name="groupInformation_text_Resort">Ski Resort Name</string>
     <string name="groupInformation_text_host">Host:</string>
@@ -37,7 +36,6 @@
     <string name="joinedGroup_button_quit">Quit</string>
 
 
-
     //Account created group Information
     <string name="createdGroup_text_skiResort">Pats Peak Ski Area</string>
     <string name="createdGroup_text_hostName">Apple_0612</string>
@@ -64,6 +62,15 @@
     <string name="accountInformation_button_joinedList">View My Joined List</string>
     <string name="accountInformation_button_createdList">View My Created List</string>
 
+
+    //Edit profile
+    <string name="editProfile_text_name">Name:</string>
+    <string name="editProfile_text_hint_name">Edit your name!</string>
+    <string name="editProfile_text_email">Email:</string>
+    <string name="editProfile_text_phone">Phone:</string>
+    <string name="editProfile_text_bio">Bio:</string>
+    <string name="editProfile_text_hint_bio">Edit your bio!</string>
+    <string name="editProfile_button_save">Save</string>
 
     //Account joined group Information
     <string name="skiResortCGroup">Pats Peak Ski Area</string>

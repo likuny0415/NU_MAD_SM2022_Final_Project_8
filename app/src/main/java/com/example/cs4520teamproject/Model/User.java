@@ -10,8 +10,17 @@ public class User {
     private String profile_url;
     private String mobile;
     private String name;
+    private String bio;
 
     public User() {
+    }
+
+    public String getBio() {
+        return bio;
+    }
+
+    public void setBio(String bio) {
+        this.bio = bio;
     }
 
     public String getEmail() {

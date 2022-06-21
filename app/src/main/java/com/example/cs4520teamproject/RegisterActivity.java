@@ -101,7 +101,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                             // Sign in success, update UI with the signed-in user's information
 
                             FirebaseUser user = mAuth.getCurrentUser();
-                            registerUserInDB(user.getUid(), email, name, email);
+                            registerUserInDB(user.getUid(), email, name, mobile);
                         } else {
                             Toast.makeText(RegisterActivity.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
