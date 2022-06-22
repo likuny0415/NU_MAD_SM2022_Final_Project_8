@@ -109,7 +109,7 @@ public class AccountActivity extends AppCompatActivity {
         emailAddress.setText(currentUser.getEmail());
         userName.setText(currentUser.getName());
         phoneNumber.setText(currentUser.getMobile());
-//        bioText.setText(currentUser.get());
+        bioText.setText(currentUser.getBio());
         Picasso.get().load(currentUser.getProfile_url()).fit().into(userAvatar);
 
 

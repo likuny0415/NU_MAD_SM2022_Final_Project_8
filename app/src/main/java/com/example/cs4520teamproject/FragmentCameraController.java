@@ -1,6 +1,8 @@
 package com.example.cs4520teamproject;
 
 import android.content.ContentValues;
+import android.content.Context;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -29,7 +31,7 @@ import java.io.File;
 import java.util.concurrent.ExecutionException;
 
 
-public class CameraControllerFragment extends Fragment implements View.OnClickListener {
+public class FragmentCameraController extends Fragment implements View.OnClickListener {
 
     private ListenableFuture<ProcessCameraProvider> cameraProviderFuture;
     private PreviewView previewView;
@@ -46,12 +48,14 @@ public class CameraControllerFragment extends Fragment implements View.OnClickLi
     private FloatingActionButton buttonSwitchCamera;
     private FloatingActionButton buttonOpenGallery;
 
-    public CameraControllerFragment() {
+    private ICameraController mListener;
+
+    public FragmentCameraController() {
         // Required empty public constructor
     }
 
-    public static CameraControllerFragment newInstance() {
-        CameraControllerFragment fragment = new CameraControllerFragment();
+    public static FragmentCameraController newInstance() {
+        FragmentCameraController fragment = new FragmentCameraController();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
@@ -115,7 +119,7 @@ public class CameraControllerFragment extends Fragment implements View.OnClickLi
                 takePhoto();
                 break;
             case R.id.selectAvatarButtonOpenGallery:
-//                mListener.onOpenGalleryPressed();
+                mListener.openGallery();
                 break;
             case R.id.selectAvatarButtonSwitchCamera:
                 if(lenseFacing==lenseFacingBack){
@@ -138,7 +142,6 @@ public class CameraControllerFragment extends Fragment implements View.OnClickLi
             contentValues.put(MediaStore.Images.Media.RELATIVE_PATH,"Pictures/CameraX-Image");
         }
 
-        File f = new File("image/jpeg");
 
         ImageCapture.OutputFileOptions outputFileOptions = new ImageCapture.OutputFileOptions
                 .Builder(
@@ -154,8 +157,7 @@ public class CameraControllerFragment extends Fragment implements View.OnClickLi
                 new ImageCapture.OnImageSavedCallback() {
                     @Override
                     public void onImageSaved(@NonNull ImageCapture.OutputFileResults outputFileResults) {
-                        Log.d("demo", "onImageSaved: "+ outputFileResults.getSavedUri());
-//                        mListener.onTakePhoto(outputFileResults.getSavedUri());
+                        mListener.showTakePhoto(outputFileResults.getSavedUri());
                     }
 
                     @Override
@@ -165,5 +167,19 @@ public class CameraControllerFragment extends Fragment implements View.OnClickLi
                 });
     }
 
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        if (context instanceof ICameraController) {
+            mListener = (ICameraController) context;
+        } else {
+            throw new RuntimeException(context+" must implement ICameraController");
+        }
+    }
+
+    public interface ICameraController {
+        void showTakePhoto(Uri uri);
+        void openGallery();
+    }
 
 }

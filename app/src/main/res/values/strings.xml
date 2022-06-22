@@ -72,6 +72,10 @@
     <string name="editProfile_text_hint_bio">Edit your bio!</string>
     <string name="editProfile_button_save">Save</string>
 
+    // Display Avatar
+    <string name="displayAvatar_button_retake">Retake</string>
+    <string name="displayAvatar_button_upload">Select</string>
+
     //Account joined group Information
     <string name="skiResortCGroup">Pats Peak Ski Area</string>
     <string name="hostNameCGroup">Apple_0612</string>
