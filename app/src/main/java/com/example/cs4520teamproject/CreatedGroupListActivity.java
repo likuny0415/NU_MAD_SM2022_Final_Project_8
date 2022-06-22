@@ -19,13 +19,14 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 
-public class CreatedGroupListActivity extends AppCompatActivity {
+public class CreatedGroupListActivity extends AppCompatActivity implements CreatedGroupListAdapter.IRemoveButton{
 
 
     private FirebaseFirestore db;
@@ -71,7 +72,7 @@ public class CreatedGroupListActivity extends AppCompatActivity {
                                                                        recyclerView = findViewById(R.id.createdGroupListRecyclerView);
                                                                        layoutManager = new LinearLayoutManager(CreatedGroupListActivity.this);
                                                                        recyclerView.setLayoutManager(layoutManager);
-                                                                       createdGroupListAdapter = new CreatedGroupListAdapter(groups);
+                                                                       createdGroupListAdapter = new CreatedGroupListAdapter(groups, CreatedGroupListActivity.this);
                                                                        recyclerView.setAdapter(createdGroupListAdapter);
 
                                                                    }
@@ -82,6 +83,36 @@ public class CreatedGroupListActivity extends AppCompatActivity {
                                            }
                                        }
                 );
+
+
+    }
+
+    @Override
+    public void removeGroup(Group group) {
+
+        db.collection("group")
+                .document(group.getId())
+                .delete()
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        db.collection("user")
+                                .whereArrayContains("groups", group.getId())
+                                .get()
+                                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                        for (DocumentSnapshot document : task.getResult().getDocuments()) {
+                                            User u = document.toObject(User.class);
+                                            db.collection("user")
+                                                    .document(u.getId())
+                                                    .update("groups", FieldValue.arrayRemove(group.getId()));
+
+                                        }
+                                    }
+                                });
+                    }
+                });
 
 
     }

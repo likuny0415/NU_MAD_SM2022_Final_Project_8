@@ -27,6 +27,8 @@ public class CreatedGroupListAdapter extends RecyclerView.Adapter<CreatedGroupLi
     private Group currentGroup;
     User currentUser;
     private FirebaseFirestore db;
+    private IRemoveButton iRemoveButton;
+
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final TextView destination, userName, date, joinedNumber, totalNumber;
@@ -75,8 +77,9 @@ public class CreatedGroupListAdapter extends RecyclerView.Adapter<CreatedGroupLi
         }
     }
 
-    public CreatedGroupListAdapter(ArrayList<Group> createdGroups) {
+    public CreatedGroupListAdapter(ArrayList<Group> createdGroups, IRemoveButton iRemoveButton) {
         this.createdGroups = createdGroups;
+        this.iRemoveButton = iRemoveButton;
     }
 
     @NonNull
@@ -100,6 +103,7 @@ public class CreatedGroupListAdapter extends RecyclerView.Adapter<CreatedGroupLi
             @Override
             public void onClick(View v) {
                 createdGroups.remove(holder.getAdapterPosition());
+                iRemoveButton.removeGroup(currentGroup);
                 notifyDataSetChanged();
             }
         });
@@ -128,4 +132,8 @@ public class CreatedGroupListAdapter extends RecyclerView.Adapter<CreatedGroupLi
     }
 
 
+    // transfer the delete note to the notes activity
+    public interface IRemoveButton {
+        void removeGroup(Group group);
+    }
 }
