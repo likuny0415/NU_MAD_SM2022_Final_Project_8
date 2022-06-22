@@ -11,12 +11,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -51,7 +49,7 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
     private ImageView imageViewAvatar;
     private Button buttonSave;
     private FloatingActionButton buttonEdit;
-    private ProgressBar progressBar;
+
 
     private Uri avatarUri;
 
@@ -78,7 +76,7 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
         buttonSave = findViewById(R.id.editProfileButtonSave);
         buttonEdit = findViewById(R.id.editProfileFloatingButtonEdit);
         imageViewAvatar = findViewById(R.id.editProfileImageViewAvatar);
-        progressBar = findViewById(R.id.editProfileProgressbar);
+
 
         updateUI();
 
@@ -88,7 +86,7 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
     }
 
     private void updateUI() {
-        progressBar.setVisibility(View.GONE);
+
         db.collection("user")
                 .document(mAuth.getUid())
                 .addSnapshotListener(new EventListener<DocumentSnapshot>() {
@@ -173,7 +171,6 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
             StorageReference storageReference = storage.getReference()
                     .child("avatars/" + UUID.randomUUID().toString());
 
-            progressBar.setVisibility(View.VISIBLE);
             UploadTask uploadTask = storageReference.putFile(avatarUri);
 
             uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -196,7 +193,7 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
                                             transaction.update(sfDocRef, "bio", bio);
                                             transaction.update(sfDocRef, "profile_url", fileLink);
                                             finish();
-                                            progressBar.setVisibility(View.GONE);
+
 
                                             // Success
                                             return null;
@@ -205,8 +202,7 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
                                         @Override
                                         public void onSuccess(Void aVoid) {
                                         }
-                                    })
-                                    .addOnFailureListener(new OnFailureListener() {
+                                    }).addOnFailureListener(new OnFailureListener() {
                                         @Override
                                         public void onFailure(@NonNull Exception e) {
 
@@ -215,12 +211,6 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
                         }
                     });
 
-                }
-            }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
-                    double progress = (100.0 * snapshot.getBytesTransferred()) / snapshot.getTotalByteCount();
-                    progressBar.setProgress((int) progress);
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
