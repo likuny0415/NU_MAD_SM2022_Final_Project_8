@@ -14,6 +14,7 @@ public class Group implements Serializable {
     private String createAtTime;
     private String createBy;
     private ArrayList<String> members;
+    private String id;
     private String date;
     private double  latitude;
     private double longitude;
@@ -139,6 +140,14 @@ public class Group implements Serializable {
 
     public int getTotalNumberOfMembers() {
         return totalNumberOfMembers;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public void setTotalNumberOfMembers(int totalNumberOfMembers) {

@@ -19,7 +19,7 @@
             android:padding="2dp">
 
             <TextView
-                android:id="@+id/joinedGroupListTextViewMountain"
+                android:id="@+id/createdGroupListTextViewMountain"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -33,48 +33,48 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/joinedGroupListTextViewName"
+                android:id="@+id/createdGroupListTextViewName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:text="@string/createdGroup_text_hostName"
                 android:textColor="@color/black"
-                app:layout_constraintBottom_toBottomOf="@+id/joinedGroupListImageViewAvatar"
-                app:layout_constraintStart_toEndOf="@+id/joinedGroupListImageViewAvatar"
-                app:layout_constraintTop_toTopOf="@+id/joinedGroupListImageViewAvatar" />
+                app:layout_constraintBottom_toBottomOf="@+id/createdGroupListImageViewAvatar"
+                app:layout_constraintStart_toEndOf="@+id/createdGroupListImageViewAvatar"
+                app:layout_constraintTop_toTopOf="@+id/createdGroupListImageViewAvatar" />
 
             <TextView
-                android:id="@+id/joinedGroupListTextViewDate"
+                android:id="@+id/createdGroupListTextViewDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
                 android:text="@string/createdGroup_text_date"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/joinedGroupListImageViewAvatar"
-                app:layout_constraintTop_toBottomOf="@+id/joinedGroupListTextViewName" />
+                app:layout_constraintStart_toStartOf="@+id/createdGroupListImageViewAvatar"
+                app:layout_constraintTop_toBottomOf="@+id/createdGroupListTextViewName" />
 
             <TextView
-                android:id="@+id/joinedGroupListTextViewJoined"
+                android:id="@+id/createdGroupListTextViewJoined"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="50dp"
                 android:text="@string/createdGroup_text_joined"
-                app:layout_constraintBottom_toBottomOf="@+id/joinedGroupListTextViewDate"
-                app:layout_constraintStart_toEndOf="@+id/joinedGroupListTextViewDate"
-                app:layout_constraintTop_toTopOf="@+id/joinedGroupListTextViewDate" />
+                app:layout_constraintBottom_toBottomOf="@+id/createdGroupListTextViewDate"
+                app:layout_constraintStart_toEndOf="@+id/createdGroupListTextViewDate"
+                app:layout_constraintTop_toTopOf="@+id/createdGroupListTextViewDate" />
 
             <ImageView
-                android:id="@+id/joinedGroupListImageViewAvatar"
+                android:id="@+id/createdGroupListImageViewAvatar"
                 android:layout_width="25dp"
                 android:layout_height="28dp"
                 android:layout_marginTop="15dp"
-                app:layout_constraintStart_toStartOf="@+id/joinedGroupListTextViewMountain"
-                app:layout_constraintTop_toBottomOf="@+id/joinedGroupListTextViewMountain"
+                app:layout_constraintStart_toStartOf="@+id/createdGroupListTextViewMountain"
+                app:layout_constraintTop_toBottomOf="@+id/createdGroupListTextViewMountain"
                 app:srcCompat="@drawable/googleg_standard_color_18" />
 
             <Button
-                android:id="@+id/joinedGroupListButtonQuit"
+                android:id="@+id/createdGroupListButtonEdit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
@@ -85,24 +85,24 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/joinedGroupListTextViewOutOf"
+                android:id="@+id/createdGroupListTextViewOutOf"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
                 android:text="@string/createdGroup_text_outOf"
-                app:layout_constraintBottom_toBottomOf="@+id/joinedGroupListTextViewJoined"
-                app:layout_constraintStart_toEndOf="@+id/joinedGroupListTextViewJoined"
-                app:layout_constraintTop_toTopOf="@+id/joinedGroupListTextViewJoined" />
+                app:layout_constraintBottom_toBottomOf="@+id/createdGroupListTextViewJoined"
+                app:layout_constraintStart_toEndOf="@+id/createdGroupListTextViewJoined"
+                app:layout_constraintTop_toTopOf="@+id/createdGroupListTextViewJoined" />
 
             <TextView
-                android:id="@+id/joinedGroupListTextViewTotal"
+                android:id="@+id/createdGroupListTextViewTotal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
                 android:text="@string/createdGroup_text_capacity"
-                app:layout_constraintBottom_toBottomOf="@+id/joinedGroupListTextViewOutOf"
-                app:layout_constraintStart_toEndOf="@+id/joinedGroupListTextViewOutOf"
-                app:layout_constraintTop_toTopOf="@+id/joinedGroupListTextViewOutOf" />
+                app:layout_constraintBottom_toBottomOf="@+id/createdGroupListTextViewOutOf"
+                app:layout_constraintStart_toEndOf="@+id/createdGroupListTextViewOutOf"
+                app:layout_constraintTop_toTopOf="@+id/createdGroupListTextViewOutOf" />
 
             <Button
                 android:id="@+id/createdGroupListButtonDelete"
@@ -111,9 +111,9 @@
                 android:text="@string/createdGroup_button_delete"
                 android:textAllCaps="false"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/joinedGroupListButtonQuit"
-                app:layout_constraintStart_toStartOf="@+id/joinedGroupListButtonQuit"
-                app:layout_constraintTop_toBottomOf="@+id/joinedGroupListButtonQuit" />
+                app:layout_constraintEnd_toEndOf="@+id/createdGroupListButtonEdit"
+                app:layout_constraintStart_toStartOf="@+id/createdGroupListButtonEdit"
+                app:layout_constraintTop_toBottomOf="@+id/createdGroupListButtonEdit" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>

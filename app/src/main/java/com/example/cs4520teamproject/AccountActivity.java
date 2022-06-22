@@ -26,11 +26,11 @@ public class AccountActivity extends AppCompatActivity {
 
     private FirebaseFirestore db;
     private FirebaseAuth mAuth;
-
+    User currentUser;
     private TextView userName, emailAddress, phoneNumber, bioText;
     private Button joinedList, createdList, editProfile, logOut, groups, account;
     private ImageView userAvatar;
-    User currentUser;
+
 
 
     @Override
@@ -90,6 +90,22 @@ public class AccountActivity extends AppCompatActivity {
             }
         });
 
+        createdList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent goToCreatedGroups = new Intent(AccountActivity.this, CreatedGroupListActivity.class);
+                startActivity(goToCreatedGroups);
+            }
+        });
+
+        joinedList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent goToJoinedGroups = new Intent(AccountActivity.this, JoinedGroupListActivity.class);
+                startActivity(goToJoinedGroups);
+            }
+        });
+
         // edit profile
 //        editProfile.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -110,7 +126,7 @@ public class AccountActivity extends AppCompatActivity {
         emailAddress.setText(currentUser.getEmail());
         userName.setText(currentUser.getName());
         phoneNumber.setText(currentUser.getMobile());
-//        bioText.setText(currentUser.get());
+//        bioText.setText(currentUser.get);
         Picasso.get().load(currentUser.getProfile_url()).fit().into(userAvatar);
 
 

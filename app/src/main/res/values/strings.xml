@@ -4,7 +4,6 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
-
     // group information activity
     <string name="groupInformation_text_Resort">Ski Resort Name</string>
     <string name="groupInformation_text_host">Host:</string>
@@ -35,7 +34,6 @@
     <string name="joinedGroup_text_outOf">Out of</string>
     <string name="joinedGroup_text_capacity">6</string>
     <string name="joinedGroup_button_quit">Quit</string>
-
 
 
     //Account created group Information
