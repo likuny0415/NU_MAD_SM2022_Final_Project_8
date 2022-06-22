@@ -85,11 +85,10 @@
                 android:id="@+id/joinedGroupListButtonQuit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="16dp"
                 android:text="@string/joinedGroup_button_quit"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintEnd_toEndOf="@+id/joinedGroupListButtonDetail" />
 
             <TextView
                 android:id="@+id/joinedGroupListTextViewMountain"
@@ -103,6 +102,16 @@
                 android:textStyle="bold"
 
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/joinedGroupListButtonDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:text="@string/joinedGroup_button_detail"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

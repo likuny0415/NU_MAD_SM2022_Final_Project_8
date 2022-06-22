@@ -26,6 +26,7 @@ import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Calendar;
@@ -37,7 +38,7 @@ public class CreateGroupActivity extends AppCompatActivity implements View.OnCli
 
     private static final int REQUEST_GET_MAP_LOCATION = 0;
     private ImageView imageViewRequestLocation, imageViewDate;
-    private EditText editTextTotalMembers, editTextCurrentMembers, editTextAvgCost, editTextNote;
+    private EditText editTextTotalMembers, editTextAvgCost, editTextNote;
     private Button buttonPost;
     private TextView textViewDestination, textViewDate;
 
@@ -61,10 +62,12 @@ public class CreateGroupActivity extends AppCompatActivity implements View.OnCli
         textViewDestination = findViewById(R.id.createGroupTextViewDestination);
         textViewDate = findViewById(R.id.createGroupTextViewDate);
         editTextTotalMembers = findViewById(R.id.createGroupEditTextTotalNumbers);
-        editTextCurrentMembers = findViewById(R.id.createGroupEditTextCurrentNumbers);
         editTextAvgCost = findViewById(R.id.createGroupEditTextAvgCost);
         editTextNote = findViewById(R.id.createGroupEditTextNote);
         buttonPost = findViewById(R.id.createGroupButtonPost);
+
+
+
 
 
         imageViewRequestLocation.setOnClickListener(this);
@@ -97,50 +100,60 @@ public class CreateGroupActivity extends AppCompatActivity implements View.OnCli
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                 month = month + 1;
-                String date = dayOfMonth + "/" + month + "/" + year;
+                String date = dayOfMonth + "/" + monthTransfrom(month) + "/" + year;
                 textViewDate.setText(date);
             }
         }, year, month, day);
         dialog.show();
     }
 
+    private String monthTransfrom(int month) {
+        if (month < 10) {
+            return "0" + month;
+        } else {
+            return "" + month;
+        }
+    }
+
     private void createGroup() {
         String totalMembers = editTextTotalMembers.getText().toString();
-        String currentMembers = editTextCurrentMembers.getText().toString();
         String avgCost = editTextAvgCost.getText().toString();
         String note = editTextNote.getText().toString();
         String selectDestination = textViewDestination.getText().toString();
         String selectDate = textViewDate.getText().toString();
 
-        if (totalMembers.isEmpty() || currentMembers.isEmpty() || avgCost.isEmpty() || note.isEmpty()
+        if (totalMembers.isEmpty() ||avgCost.isEmpty() || note.isEmpty()
                 || selectDestination.equals("Find destination") || selectDate.equals("Select Date")) {
             Toast.makeText(this, "Fields can't be empty", Toast.LENGTH_SHORT).show();
         } else {
             int totalM = Integer.valueOf(totalMembers);
-            int curM = Integer.valueOf(currentMembers);
             int avgC = Integer.valueOf(avgCost);
 
-            if (Integer.valueOf(totalMembers) > 10) {
-                Toast.makeText(this, "Total number of members must less than 10", Toast.LENGTH_SHORT).show();
-            } else if (curM >= totalM) {
-                Toast.makeText(this, "Current number of members should less than total number of members", Toast.LENGTH_SHORT).show();
-            } else if (avgC > 1000) {
+            if (totalM > 10) {
+                Toast.makeText(this, "Total number of members must less than 10!", Toast.LENGTH_SHORT).show();
+            } else if (totalM < 2) {
+                Toast.makeText(this, "A group at least have two members!", Toast.LENGTH_SHORT).show();
+            }
+            else if (avgC > 1000) {
                 Toast.makeText(this, "Average cost can't more than 1000 dollars", Toast.LENGTH_SHORT).show();
             } else {
                 Map<String, Object> curGroup = new HashMap<>();
 
-                Date time = Calendar.getInstance().getTime();
-                SimpleDateFormat formatDate = new SimpleDateFormat("MMM d");
-                SimpleDateFormat formatTime = new SimpleDateFormat("k:mm");
+                Date d = new Date();
+
+                SimpleDateFormat formatDate = new SimpleDateFormat("dd/MM/yyyy");
+                try {
+                    d = formatDate.parse(selectDate);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
 
                 curGroup.put("createBy", mAuth.getUid());
                 curGroup.put("members", Arrays.asList(mAuth.getUid()));
-                curGroup.put("createAtDate", formatDate.format(time).toString());
-                curGroup.put("createAtTime", formatTime.format(time).toString());
-                curGroup.put("createAt", time);
+                curGroup.put("groupDate", d);
                 curGroup.put("date", selectDate);
                 curGroup.put("totalNumberOfMembers", totalM);
-                curGroup.put("curNumberOfMembers", curM);
+                curGroup.put("curNumberOfMembers", 1);
                 curGroup.put("note", note);
                 curGroup.put("destination", selectDestination);
                 curGroup.put("latitude", address.getLatitude());

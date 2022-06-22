@@ -56,6 +56,7 @@ public class CreatedGroupListActivity extends AppCompatActivity {
                                                    curUser = document.toObject(User.class);
                                                    db.collection("group")
                                                            .whereEqualTo("createBy", curUser.getId())
+                                                           .orderBy("groupDate")
                                                            .addSnapshotListener(new EventListener<QuerySnapshot>() {
                                                                @Override
                                                                public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {

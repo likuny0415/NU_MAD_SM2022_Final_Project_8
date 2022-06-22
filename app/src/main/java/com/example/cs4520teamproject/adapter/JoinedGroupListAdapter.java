@@ -1,5 +1,8 @@
 package com.example.cs4520teamproject.adapter;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +13,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.cs4520teamproject.GroupActivity;
 import com.example.cs4520teamproject.Model.Group;
 import com.example.cs4520teamproject.Model.User;
 import com.example.cs4520teamproject.R;
@@ -28,14 +32,13 @@ public class JoinedGroupListAdapter extends RecyclerView.Adapter<JoinedGroupList
     User currentUser;
     private FirebaseFirestore db;
     private IQuitButton iQuitButton;
+    private Context context;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final TextView destination, userName, date, joinedNumber, totalNumber;
         private final ImageView avatar;
         private final Button buttonQuit;
-
-
-
+        private final Button buttonDetail;
 
 
         public ViewHolder(@NonNull View itemView) {
@@ -48,7 +51,11 @@ public class JoinedGroupListAdapter extends RecyclerView.Adapter<JoinedGroupList
             totalNumber = itemView.findViewById(R.id.joinedGroupListTextViewTotal);
             avatar = itemView.findViewById(R.id.joinedGroupListImageViewAvatar);
             buttonQuit = itemView.findViewById(R.id.joinedGroupListButtonQuit);
+            buttonDetail = itemView.findViewById(R.id.joinedGroupListButtonDetail);
+        }
 
+        public Button getButtonDetail() {
+            return buttonDetail;
         }
 
         public TextView getDestination() {
@@ -80,9 +87,10 @@ public class JoinedGroupListAdapter extends RecyclerView.Adapter<JoinedGroupList
         }
     }
 
-    public JoinedGroupListAdapter(ArrayList<Group> joinedGroups, IQuitButton iQuitButton) {
+    public JoinedGroupListAdapter(ArrayList<Group> joinedGroups, IQuitButton iQuitButton, Context context) {
         this.joinedGroups = joinedGroups;
         this.iQuitButton = iQuitButton;
+        this.context = context;
     }
 
     @NonNull
@@ -107,6 +115,15 @@ public class JoinedGroupListAdapter extends RecyclerView.Adapter<JoinedGroupList
                 joinedGroups.remove(holder.getAdapterPosition());
                 iQuitButton.quitGroup(currentGroup);
                 notifyDataSetChanged();
+            }
+        });
+        holder.getButtonDetail().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent toThisGroup = new Intent(context, GroupActivity.class);
+                toThisGroup.putExtra("curGroup", currentGroup);
+                toThisGroup.putExtra("type", 2);
+                context.startActivity(toThisGroup);
             }
         });
 

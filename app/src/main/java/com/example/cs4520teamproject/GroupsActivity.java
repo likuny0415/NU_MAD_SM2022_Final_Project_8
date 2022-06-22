@@ -24,6 +24,8 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 public class GroupsActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -51,8 +53,12 @@ public class GroupsActivity extends AppCompatActivity implements View.OnClickLis
         buttonAdd.setOnClickListener(this);
         buttonToAccount.setOnClickListener(this);
 
+        Date time = Calendar.getInstance().getTime();
+
         db.collection("group")
                 .whereEqualTo("isFull", false)
+                .whereGreaterThan("groupDate", time)
+                .orderBy("groupDate")
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
                     public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {

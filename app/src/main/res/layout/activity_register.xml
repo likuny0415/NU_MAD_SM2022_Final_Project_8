@@ -116,7 +116,7 @@
         android:id="@+id/registerPageEditTextConfirmPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="15dp"
         android:ems="10"
         android:hint="@string/register_hint_confirm_email"
         android:inputType="textPassword"

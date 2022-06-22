@@ -100,6 +100,7 @@ public class GroupsListAdapter extends RecyclerView.Adapter<GroupsListAdapter.Vi
             public void onClick(View v) {
                 Intent toThisGroup = new Intent(context, GroupActivity.class);
                 toThisGroup.putExtra("curGroup", groups.get(holder.getAdapterPosition()));
+                toThisGroup.putExtra("type", 1);
                 context.startActivity(toThisGroup);
             }
         });

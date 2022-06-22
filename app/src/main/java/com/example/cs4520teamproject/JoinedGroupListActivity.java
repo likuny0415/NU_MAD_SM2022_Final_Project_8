@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.widget.Button;
 
 import com.example.cs4520teamproject.Model.Group;
 import com.example.cs4520teamproject.Model.User;
@@ -32,6 +33,7 @@ public class JoinedGroupListActivity extends AppCompatActivity implements Joined
     private RecyclerView recyclerView;
     private JoinedGroupListAdapter joinedGroupListAdapter;
     private RecyclerView.LayoutManager layoutManager;
+    private Button buttonDetail;
     private ArrayList<Group> joinedGroups = new ArrayList<>();
     User curUser;
 
@@ -55,6 +57,7 @@ public class JoinedGroupListActivity extends AppCompatActivity implements Joined
 
                             db.collection("group")
                                     .whereArrayContains("members", curUser.getId())
+                                    .orderBy("groupDate")
                                     .get()
                                     .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                                         @Override
@@ -70,7 +73,7 @@ public class JoinedGroupListActivity extends AppCompatActivity implements Joined
                                             recyclerView = findViewById(R.id.recyclerViewJoinedGroupList);
                                             layoutManager = new LinearLayoutManager(JoinedGroupListActivity.this);
                                             recyclerView.setLayoutManager(layoutManager);
-                                            joinedGroupListAdapter = new JoinedGroupListAdapter(joinedGroups, JoinedGroupListActivity.this);
+                                            joinedGroupListAdapter = new JoinedGroupListAdapter(joinedGroups, JoinedGroupListActivity.this, JoinedGroupListActivity.this);
                                             recyclerView.setAdapter(joinedGroupListAdapter);
                                         }
                                     });

@@ -102,18 +102,6 @@
         tools:ignore="SpeakableTextPresentCheck" />
 
     <EditText
-        android:id="@+id/createGroupEditTextCurrentNumbers"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="number"
-        android:minHeight="48dp"
-        app:layout_constraintBottom_toBottomOf="@+id/textViewUpdateGroup10"
-        app:layout_constraintStart_toStartOf="@+id/createGroupEditTextTotalNumbers"
-        app:layout_constraintTop_toTopOf="@+id/textViewUpdateGroup10"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-    <EditText
         android:id="@+id/createGroupEditTextAvgCost"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -165,7 +153,7 @@
         android:textSize="15dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/textViewUpdateGroup7"
-        app:layout_constraintStart_toStartOf="@+id/createGroupEditTextCurrentNumbers"
+        app:layout_constraintStart_toStartOf="@+id/textView4"
         app:layout_constraintTop_toTopOf="@+id/textViewUpdateGroup7" />
 
     <ImageView
@@ -177,5 +165,15 @@
         app:layout_constraintStart_toEndOf="@+id/createGroupTextViewDate"
         app:layout_constraintTop_toTopOf="@+id/createGroupTextViewDate"
         app:srcCompat="@drawable/calendar_icon" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="36dp"
+        android:layout_height="17dp"
+        android:text="@string/createGroup_text_current_number"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewUpdateGroup10"
+        app:layout_constraintStart_toStartOf="@+id/createGroupEditTextTotalNumbers"
+        app:layout_constraintTop_toTopOf="@+id/textViewUpdateGroup10" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

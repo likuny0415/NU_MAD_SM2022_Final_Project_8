@@ -71,7 +71,8 @@
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="@+id/groupInformationTextViewEmail1"
         app:layout_constraintStart_toStartOf="@+id/groupInformationImageViewHostAvatar"
-        app:layout_constraintTop_toTopOf="@+id/groupInformationTextViewEmail1" />
+        app:layout_constraintTop_toTopOf="@+id/groupInformationTextViewEmail1"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/groupInformationTextViewDistance1"
@@ -227,7 +228,7 @@
         android:layout_width="250dp"
 
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="@+id/groupInformationImageViewLocation"
         app:layout_constraintTop_toBottomOf="@+id/groupInformationImageViewLocation" />
