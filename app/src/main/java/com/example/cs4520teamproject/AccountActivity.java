@@ -87,8 +87,10 @@ public class AccountActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent goToGroups = new Intent(AccountActivity.this, GroupsActivity.class);
                 startActivity(goToGroups);
+                overridePendingTransition(0, 0);
             }
         });
+
 
         createdList.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,16 +108,15 @@ public class AccountActivity extends AppCompatActivity {
             }
         });
 
-        // edit profile
-//        editProfile.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                getSupportFragmentManager().beginTransaction()
-//                        .replace(R.id.containerAccountProfile, FragmentUpdateProfile.newInstance(), "profileFragment")
-//                        .commit();
-//            }
-//        });
+
+        editProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent toEditProfile = new Intent(AccountActivity.this, EditProfileActivity.class);
+                startActivity(toEditProfile);
+                overridePendingTransition(0, 0);
+            }
+        });
 
 
     }
@@ -126,7 +127,7 @@ public class AccountActivity extends AppCompatActivity {
         emailAddress.setText(currentUser.getEmail());
         userName.setText(currentUser.getName());
         phoneNumber.setText(currentUser.getMobile());
-//        bioText.setText(currentUser.get);
+        bioText.setText(currentUser.getBio());
         Picasso.get().load(currentUser.getProfile_url()).fit().into(userAvatar);
 
 

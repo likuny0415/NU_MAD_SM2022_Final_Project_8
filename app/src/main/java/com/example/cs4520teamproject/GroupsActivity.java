@@ -90,6 +90,7 @@ public class GroupsActivity extends AppCompatActivity implements View.OnClickLis
     private void toAccount() {
         Intent toAccount = new Intent(GroupsActivity.this, AccountActivity.class);
         startActivity(toAccount);
+        overridePendingTransition(0, 0);
     }
 
     private void toCreatePage() {

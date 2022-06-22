@@ -24,6 +24,7 @@ public class Group implements Serializable {
     private int totalNumberOfMembers;
     private int curNumberOfMembers;
     private int averageCost;
+    private String id;
 
 
 
@@ -49,6 +50,13 @@ public class Group implements Serializable {
     public Group() {
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public Date getCreateAt() {
         return createAt;
