@@ -26,11 +26,11 @@ public class AccountActivity extends AppCompatActivity {
 
     private FirebaseFirestore db;
     private FirebaseAuth mAuth;
-
+    User currentUser;
     private TextView userName, emailAddress, phoneNumber, bioText;
     private Button joinedList, createdList, editProfile, logOut, groups, account;
     private ImageView userAvatar;
-    User currentUser;
+
 
 
     @Override
@@ -90,6 +90,24 @@ public class AccountActivity extends AppCompatActivity {
                 overridePendingTransition(0, 0);
             }
         });
+
+
+        createdList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent goToCreatedGroups = new Intent(AccountActivity.this, CreatedGroupListActivity.class);
+                startActivity(goToCreatedGroups);
+            }
+        });
+
+        joinedList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent goToJoinedGroups = new Intent(AccountActivity.this, JoinedGroupListActivity.class);
+                startActivity(goToJoinedGroups);
+            }
+        });
+
 
         editProfile.setOnClickListener(new View.OnClickListener() {
             @Override

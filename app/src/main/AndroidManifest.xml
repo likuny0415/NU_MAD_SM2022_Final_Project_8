@@ -24,6 +24,12 @@
         android:theme="@style/Theme.CS4520TeamProject"
         tools:targetApi="31">
         <activity
+            android:name=".JoinedGroupListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CreatedGroupListActivity"
+            android:exported="false" />
+        <activity
             android:name=".SelectAvatarActivity"
             android:exported="false" />
         <activity
