@@ -103,6 +103,7 @@ public class GroupActivity extends AppCompatActivity implements View.OnClickList
                 .document(mAuth.getUid())
                 .update("groups", FieldValue.arrayUnion(group.getId()));
 
+
         DocumentReference sfDocRef = db.collection("group").document(group.getId());
 
         db.runTransaction(new Transaction.Function<Double>() {
@@ -163,7 +164,7 @@ public class GroupActivity extends AppCompatActivity implements View.OnClickList
                             DocumentSnapshot document = task.getResult();
                             User user = document.toObject(User.class);
                             textViewName.setText(user.getName());
-                            textViewContact.setText(user.getMobile()  + " & " + user.getEmail());
+                            textViewContact.setText("Phone: " + user.getMobile()  + " \n" + "Email: " + user.getEmail());
                             Glide.with(GroupActivity.this)
                                     .load(user.getProfile_url())
                                     .centerCrop()

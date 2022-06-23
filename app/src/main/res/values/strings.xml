@@ -35,6 +35,8 @@
     <string name="joinedGroup_text_capacity">6</string>
     <string name="joinedGroup_button_quit">Quit</string>
     <string name="joinedGroup_button_detail">Detail</string>
+    <string name="joinedGroup_button_joinedAGroup">Join a Group</string>
+    <string name="joinedGroup_text_notFound">Oops! No joined group found...</string>
 
 
     //Account created group Information
@@ -44,8 +46,10 @@
     <string name="createdGroup_text_joined">4</string>
     <string name="createdGroup_text_outOf">Out of</string>
     <string name="createdGroup_text_capacity">7</string>
+    <string name="createdGroup_text_notFound">Oops! No created group found...</string>
     <string name="createdGroup_button_edit">Edit</string>
     <string name="createdGroup_button_delete">Delete</string>
+    <string name="createdGroup_button_createMyGroup">Create My Group</string>
 
     // Edit Group
     <string name="editGroup_text_destination">Destination</string>
