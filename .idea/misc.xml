@@ -3,15 +3,19 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/account_icon.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/calendar_icon.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/created_icon.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/group.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_account.xml" value="0.28602447509765627" />
+        <entry key="app/src/main/res/drawable/groups_icon.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/joined_icon.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_account.xml" value="0.2545196533203127" />
         <entry key="app/src/main/res/layout/activity_create_group.xml" value="0.23415052625868057" />
-        <entry key="app/src/main/res/layout/activity_created_group_list.xml" value="0.3639724731445313" />
+        <entry key="app/src/main/res/layout/activity_created_group_list.xml" value="0.18333333333333332" />
+        <entry key="app/src/main/res/layout/activity_edit_group.xml" value="0.2904388427734375" />
         <entry key="app/src/main/res/layout/activity_edit_profile.xml" value="0.21354172318070025" />
         <entry key="app/src/main/res/layout/activity_group.xml" value="0.2670913696289063" />
-        <entry key="app/src/main/res/layout/activity_groups.xml" value="0.43364461263020837" />
-        <entry key="app/src/main/res/layout/activity_joined_group_list.xml" value="0.3128205128205128" />
+        <entry key="app/src/main/res/layout/activity_groups.xml" value="0.20936787923177083" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.20625" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_maps.xml" value="0.25405405405405407" />
@@ -27,8 +31,10 @@
         <entry key="app/src/main/res/layout/fragment_update_group.xml" value="0.24747325755931715" />
         <entry key="app/src/main/res/layout/fragment_update_profile.xml" value="0.28050548412181714" />
         <entry key="app/src/main/res/layout/groups_created_row.xml" value="0.25706990559895837" />
-        <entry key="app/src/main/res/layout/groups_joined_row.xml" value="0.43424987792968756" />
+        <entry key="app/src/main/res/layout/groups_joined_row.xml" value="0.24940032958984376" />
         <entry key="app/src/main/res/layout/groups_list.xml" value="0.3124267578125" />
+        <entry key="app/src/main/res/layout/groups_list_full.xml" value="0.23905723905723905" />
+        <entry key="app/src/main/res/layout/groups_list_not_full.xml" value="0.21450151057401812" />
         <entry key="app/src/main/res/layout/members_list.xml" value="0.34800369827835653" />
       </map>
     </option>

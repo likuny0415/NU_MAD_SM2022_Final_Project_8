@@ -169,9 +169,13 @@
     <string name="updateProfile_button_update">Update profile</string>
 
 
+    <string name="group_full_text_host">Host:</string>
+    <string name="group_full_text_full">Full</string>
+
     <string name="switch_text_group">Groups</string>
     <string name="switch_text_created">Created</string>
     <string name="switch_text_joined">Joined</string>
     <string name="switch_text_account">Account</string>
+
 
 </resources>

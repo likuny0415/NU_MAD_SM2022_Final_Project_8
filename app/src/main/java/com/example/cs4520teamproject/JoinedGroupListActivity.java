@@ -192,7 +192,7 @@ public class JoinedGroupListActivity extends AppCompatActivity implements Joined
                                 .update("members", FieldValue.arrayRemove(currentUser.getId()));
                         db.collection("group")
                                 .document(group.getId())
-                                .update("isFull",false);
+                                .update("hasFull",false);
 
                     }
                 });

@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.example.cs4520teamproject.Model.Group;
 import com.example.cs4520teamproject.adapter.GroupsListAdapter;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
@@ -71,9 +72,9 @@ public class GroupsActivity extends AppCompatActivity implements View.OnClickLis
     private void display() {
         Date time = Calendar.getInstance().getTime();
         db.collection("group")
-                .whereEqualTo("isFull", false)
                 .whereGreaterThan("groupDate", time)
                 .orderBy("groupDate")
+                .orderBy("hasFull")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -82,7 +83,9 @@ public class GroupsActivity extends AppCompatActivity implements View.OnClickLis
                             ArrayList<Group> curGroups= new ArrayList<>();
                             for (DocumentSnapshot document : task.getResult()) {
                                 Group g = document.toObject(Group.class);
+                                Log.d("TAG", "onComplete: " + g);
                                 curGroups.add(g);
+
                             }
                             recyclerView = findViewById(R.id.groupsRecyclerView);
                             recyclerViewLayoutManager = new LinearLayoutManager(GroupsActivity.this);
@@ -94,6 +97,10 @@ public class GroupsActivity extends AppCompatActivity implements View.OnClickLis
 
                         }
                     }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                    }
                 });
 
 
@@ -102,9 +109,9 @@ public class GroupsActivity extends AppCompatActivity implements View.OnClickLis
     private void updateUI() {
         Date time = Calendar.getInstance().getTime();
         db.collection("group")
-                .whereEqualTo("isFull", false)
                 .whereGreaterThan("groupDate", time)
                 .orderBy("groupDate")
+                .orderBy("hasFull")
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
                     public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {

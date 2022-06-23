@@ -24,11 +24,14 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 
-public class GroupsListAdapter extends RecyclerView.Adapter<GroupsListAdapter.ViewHolder> {
+public class GroupsListAdapter extends RecyclerView.Adapter {
+
+    private static final int FULL_GROUP = 0x001;
+    private static final int NOT_FULL_GROUP = 0x002;
 
     private ArrayList<Group> groups;
     private Context context;
-    private FirebaseFirestore db;
+
 
     public GroupsListAdapter(ArrayList<Group> groups, Context context) {
         this.groups = groups;
@@ -39,12 +42,13 @@ public class GroupsListAdapter extends RecyclerView.Adapter<GroupsListAdapter.Vi
         this.groups = groups;
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class NotFullGroupList extends RecyclerView.ViewHolder {
         private TextView textViewDate, textViewDestination, textViewTotal, textViewCurrent, textViewHostName;
         private ImageView imageViewPhoto;
         private CardView cardViewGroup;
+        private FirebaseFirestore db;
 
-        public ViewHolder(@NonNull View v) {
+        NotFullGroupList(@NonNull View v) {
             super(v);
             textViewDate = v.findViewById(R.id.groupTextViewDate);
             textViewDestination = v.findViewById(R.id.groupTextViewDestination1);
@@ -53,78 +57,154 @@ public class GroupsListAdapter extends RecyclerView.Adapter<GroupsListAdapter.Vi
             textViewHostName = v.findViewById(R.id.groupTextViewHostName);
             imageViewPhoto = v.findViewById(R.id.groupImageViewPhoto);
             cardViewGroup = v.findViewById(R.id.cardViewGroup);
+            db = FirebaseFirestore.getInstance();
         }
 
-        public CardView getCardViewGroup() {
-            return cardViewGroup;
-        }
-
-        public TextView getTextViewHostName() {
-            return textViewHostName;
-        }
-
-        public TextView getTextViewDate() {
-            return textViewDate;
-        }
-
-        public TextView getTextViewDestination() {
-            return textViewDestination;
-        }
-
-        public TextView getTextViewTotal() {
-            return textViewTotal;
-        }
-
-        public TextView getTextViewCurrent() {
-            return textViewCurrent;
-        }
-
-        public ImageView getImageViewPhoto() {
-            return imageViewPhoto;
+        void bind(Group group) {
+            textViewCurrent.setText("" + group.getCurNumberOfMembers());
+            textViewTotal.setText("" + group.getTotalNumberOfMembers());
+            textViewDate.setText(group.getDate());
+            textViewDestination.setText(group.getDestination());
+           cardViewGroup.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent toThisGroup = new Intent(context, GroupActivity.class);
+                    toThisGroup.putExtra("curGroup", group);
+                    toThisGroup.putExtra("type", 1);
+                    context.startActivity(toThisGroup);
+                }
+            });
+            db.collection("user")
+                    .document(group.getCreateBy())
+                    .get()
+                    .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                            if (task.isSuccessful()) {
+                                DocumentSnapshot doc = task.getResult();
+                                User user = doc.toObject(User.class);
+                                Glide.with(context)
+                                        .load(user.getProfile_url())
+                                        .centerCrop()
+                                        .into(imageViewPhoto);
+                               textViewHostName.setText(user.getName());
+                            }
+                        }
+                    });
         }
     }
+
+    public class FullGroupList extends RecyclerView.ViewHolder {
+        private TextView textViewDate, textViewDestination, textViewHostName;
+        private ImageView imageViewPhoto;
+        private CardView cardViewGroup;
+        private FirebaseFirestore db;
+
+        FullGroupList(@NonNull View v) {
+            super(v);
+            textViewDate = v.findViewById(R.id.groupFullTextViewDate);
+            textViewDestination = v.findViewById(R.id.groupFullTextViewDestination);
+            textViewHostName = v.findViewById(R.id.groupFullTextViewHostName);
+            imageViewPhoto = v.findViewById(R.id.groupFullImageViewAvatar);
+            cardViewGroup = v.findViewById(R.id.groupFullCardView);
+            db = FirebaseFirestore.getInstance();
+        }
+
+        void bind(Group group) {
+            textViewDate.setText(group.getDate());
+            textViewDestination.setText(group.getDestination());
+            cardViewGroup.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent toThisGroup = new Intent(context, GroupActivity.class);
+                    toThisGroup.putExtra("curGroup", group);
+                    toThisGroup.putExtra("type", 1);
+                    context.startActivity(toThisGroup);
+                }
+            });
+            db.collection("user")
+                    .document(group.getCreateBy())
+                    .get()
+                    .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                            if (task.isSuccessful()) {
+                                DocumentSnapshot doc = task.getResult();
+                                User user = doc.toObject(User.class);
+                                Glide.with(context)
+                                        .load(user.getProfile_url())
+                                        .centerCrop()
+                                        .into(imageViewPhoto);
+                                textViewHostName.setText(user.getName());
+                            }
+                        }
+                    });
+        }
+    }
+
+
 
     @NonNull
     @Override
-    public GroupsListAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.groups_list, parent, false);
-        db = FirebaseFirestore.getInstance();
-        return new ViewHolder(view);
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+
+        View view;
+        if (viewType == FULL_GROUP) {
+            view = LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.groups_list_full, parent, false);
+            return new FullGroupList(view);
+        } else if (viewType == NOT_FULL_GROUP) {
+            view = LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.groups_list_not_full, parent, false);
+            return new NotFullGroupList(view);
+        }
+
+        return null;
     }
 
+//    @Override
+//    public void onBindViewHolder(@NonNull GroupsListAdapter.ViewHolder holder, int position) {
+//        holder.getTextViewCurrent().setText("" + groups.get(holder.getAdapterPosition()).getCurNumberOfMembers());
+//        holder.getTextViewTotal().setText("" + groups.get(holder.getAdapterPosition()).getTotalNumberOfMembers());
+//        holder.getTextViewDate().setText(groups.get(holder.getAdapterPosition()).getDate());
+//        holder.getTextViewDestination().setText(groups.get(holder.getAdapterPosition()).getDestination());
+//        holder.getCardViewGroup().setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent toThisGroup = new Intent(context, GroupActivity.class);
+//                toThisGroup.putExtra("curGroup", groups.get(holder.getAdapterPosition()));
+//                toThisGroup.putExtra("type", 1);
+//                context.startActivity(toThisGroup);
+//            }
+//        });
+//        db.collection("user")
+//                .document(groups.get(holder.getAdapterPosition()).getCreateBy())
+//                .get()
+//                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+//                        if (task.isSuccessful()) {
+//                            DocumentSnapshot doc = task.getResult();
+//                            User user = doc.toObject(User.class);
+//                            Glide.with(context)
+//                                    .load(user.getProfile_url())
+//                                    .centerCrop()
+//                                    .into(holder.getImageViewPhoto());
+//                            holder.getTextViewHostName().setText(user.getName());
+//                        }
+//                    }
+//                });
+//    }
+
+
     @Override
-    public void onBindViewHolder(@NonNull GroupsListAdapter.ViewHolder holder, int position) {
-        holder.getTextViewCurrent().setText("" + groups.get(holder.getAdapterPosition()).getCurNumberOfMembers());
-        holder.getTextViewTotal().setText("" + groups.get(holder.getAdapterPosition()).getTotalNumberOfMembers());
-        holder.getTextViewDate().setText(groups.get(holder.getAdapterPosition()).getDate());
-        holder.getTextViewDestination().setText(groups.get(holder.getAdapterPosition()).getDestination());
-        holder.getCardViewGroup().setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent toThisGroup = new Intent(context, GroupActivity.class);
-                toThisGroup.putExtra("curGroup", groups.get(holder.getAdapterPosition()));
-                toThisGroup.putExtra("type", 1);
-                context.startActivity(toThisGroup);
-            }
-        });
-        db.collection("user")
-                .document(groups.get(holder.getAdapterPosition()).getCreateBy())
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                        if (task.isSuccessful()) {
-                            DocumentSnapshot doc = task.getResult();
-                            User user = doc.toObject(User.class);
-                            Glide.with(context)
-                                    .load(user.getProfile_url())
-                                    .centerCrop()
-                                    .into(holder.getImageViewPhoto());
-                            holder.getTextViewHostName().setText(user.getName());
-                        }
-                    }
-                });
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+        Group group = groups.get(position);
+        if (holder.getItemViewType() == FULL_GROUP) {
+            ((FullGroupList) holder).bind(group);
+        } else if (holder.getItemViewType() == NOT_FULL_GROUP) {
+            ((NotFullGroupList) holder).bind(group);
+        }
     }
 
     @Override
@@ -132,5 +212,13 @@ public class GroupsListAdapter extends RecyclerView.Adapter<GroupsListAdapter.Vi
         return groups.size();
     }
 
-
+    @Override
+    public int getItemViewType(int position) {
+        Group group = groups.get(position);
+        if (group.isHasFull()) {
+            return FULL_GROUP;
+        } else {
+            return NOT_FULL_GROUP;
+        }
+    }
 }

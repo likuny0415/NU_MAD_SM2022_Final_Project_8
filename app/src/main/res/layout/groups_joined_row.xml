@@ -8,16 +8,17 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="3dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="5dp"
         app:cardBackgroundColor="#B4D8E8"
         app:cardCornerRadius="10dp"
         app:cardElevation="4dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="2dp"
-            android:padding="2dp">
+            android:layout_height="match_parent">
 
 
             <TextView
@@ -34,8 +35,8 @@
                 android:id="@+id/joinedGroupListTextViewDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 android:text="@string/joinedGroup_text_date"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/joinedGroupListImageViewAvatar"
@@ -83,17 +84,18 @@
                 android:id="@+id/joinedGroupListButtonQuit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
+                android:layout_marginBottom="8dp"
                 android:text="@string/joinedGroup_button_quit"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/joinedGroupListButtonDetail" />
+                app:layout_constraintEnd_toEndOf="@+id/joinedGroupListButtonDetail"
+                app:layout_constraintTop_toBottomOf="@+id/joinedGroupListButtonDetail" />
 
             <TextView
                 android:id="@+id/joinedGroupListTextViewMountain"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -105,7 +107,7 @@
                 android:id="@+id/joinedGroupListButtonDetail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginEnd="20dp"
                 android:text="@string/joinedGroup_button_detail"
                 app:layout_constraintEnd_toEndOf="parent"

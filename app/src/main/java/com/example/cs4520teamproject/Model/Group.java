@@ -1,24 +1,18 @@
 package com.example.cs4520teamproject.Model;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 
 public class Group implements Serializable {
     private Date createAt;
-    private String createAtDate;
-    private String createAtTime;
     private String createBy;
     private ArrayList<String> members;
     private String id;
     private String date;
     private double  latitude;
     private double longitude;
-    private boolean isFull;
+    private boolean hasFull;
     private String destination;
     private String note;
     private int totalNumberOfMembers;
@@ -31,14 +25,12 @@ public class Group implements Serializable {
     public String toString() {
         return "Group{" +
                 "createAt=" + createAt +
-                ", createAtDate='" + createAtDate + '\'' +
-                ", createAtTime='" + createAtTime + '\'' +
                 ", createBy='" + createBy + '\'' +
                 ", members=" + members +
                 ", date='" + date + '\'' +
                 ", latitude=" + latitude +
                 ", longitude=" + longitude +
-                ", isFull=" + isFull +
+                ", isFull=" + hasFull +
                 ", destination='" + destination + '\'' +
                 ", note='" + note + '\'' +
                 ", totalNumberOfMembers=" + totalNumberOfMembers +
@@ -63,22 +55,6 @@ public class Group implements Serializable {
 
     public void setCreateAt(Date createAt) {
         this.createAt = createAt;
-    }
-
-    public String getCreateAtDate() {
-        return createAtDate;
-    }
-
-    public void setCreateAtDate(String createAtDate) {
-        this.createAtDate = createAtDate;
-    }
-
-    public String getCreateAtTime() {
-        return createAtTime;
-    }
-
-    public void setCreateAtTime(String createAtTime) {
-        this.createAtTime = createAtTime;
     }
 
     public String getCreateBy() {
@@ -121,12 +97,12 @@ public class Group implements Serializable {
         this.longitude = longitude;
     }
 
-    public boolean isFull() {
-        return isFull;
+    public boolean isHasFull() {
+        return hasFull;
     }
 
-    public void setFull(boolean full) {
-        isFull = full;
+    public void setHasFull(boolean hasFull) {
+        this.hasFull = hasFull;
     }
 
     public String getDestination() {

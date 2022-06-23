@@ -113,7 +113,7 @@ public class GroupActivity extends AppCompatActivity implements View.OnClickList
                         double currentNumOfGroupMembers = snapshot.getDouble("curNumberOfMembers") + 1;
                         transaction.update(sfDocRef, "curNumberOfMembers", currentNumOfGroupMembers);
                         if (currentNumOfGroupMembers == group.getTotalNumberOfMembers()) {
-                            transaction.update(sfDocRef, "isFull", true);
+                            transaction.update(sfDocRef, "hasFull", true);
                         }
                         return null;
                     }
