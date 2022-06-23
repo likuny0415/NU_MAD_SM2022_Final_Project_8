@@ -6,6 +6,90 @@
     android:layout_height="match_parent"
     tools:context=".CreatedGroupListActivity">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+
+        <ImageView
+            android:id="@+id/createdGroupImageViewGroups"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginBottom="24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/groups_icon" />
+
+        <TextView
+            android:id="@+id/createdGroupTextViewGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/switch_text_group"
+            app:layout_constraintEnd_toEndOf="@+id/createdGroupImageViewGroups"
+            app:layout_constraintStart_toStartOf="@+id/createdGroupImageViewGroups"
+            app:layout_constraintTop_toBottomOf="@+id/createdGroupImageViewGroups" />
+
+        <ImageView
+            android:id="@+id/createdGroupImageViewCreated"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="50dp"
+            app:layout_constraintBottom_toTopOf="@+id/createdGroupTextViewGroup"
+            app:layout_constraintStart_toEndOf="@+id/createdGroupImageViewGroups"
+            app:srcCompat="@drawable/created_icon" />
+
+        <TextView
+            android:id="@+id/createdGroupTextViewCreate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/switch_text_created"
+            app:layout_constraintEnd_toEndOf="@+id/createdGroupImageViewCreated"
+            app:layout_constraintStart_toStartOf="@+id/createdGroupImageViewCreated"
+            app:layout_constraintTop_toBottomOf="@+id/createdGroupImageViewCreated" />
+
+        <ImageView
+            android:id="@+id/createdGroupImageViewJoined"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="50dp"
+            app:layout_constraintBottom_toBottomOf="@+id/createdGroupImageViewCreated"
+            app:layout_constraintStart_toEndOf="@+id/createdGroupImageViewCreated"
+            app:srcCompat="@drawable/joined_icon" />
+
+        <TextView
+            android:id="@+id/createdGroupTextViewJoined"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/switch_text_joined"
+            app:layout_constraintEnd_toEndOf="@+id/createdGroupImageViewJoined"
+            app:layout_constraintStart_toStartOf="@+id/createdGroupImageViewJoined"
+            app:layout_constraintTop_toBottomOf="@+id/createdGroupImageViewJoined" />
+
+        <ImageView
+            android:id="@+id/createdGroupImageViewAccount"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="50dp"
+            app:layout_constraintBottom_toBottomOf="@+id/createdGroupImageViewJoined"
+            app:layout_constraintStart_toEndOf="@+id/createdGroupImageViewJoined"
+            app:srcCompat="@drawable/account_icon" />
+
+        <TextView
+            android:id="@+id/createdGroupTextViewAccount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/switch_text_account"
+            app:layout_constraintEnd_toEndOf="@+id/createdGroupImageViewAccount"
+            app:layout_constraintStart_toStartOf="@+id/createdGroupImageViewAccount"
+            app:layout_constraintTop_toBottomOf="@+id/createdGroupImageViewAccount" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/createdGroupListRecyclerView"
         android:layout_width="match_parent"
