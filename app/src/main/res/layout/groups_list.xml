@@ -54,15 +54,15 @@
                 tools:srcCompat="@tools:sample/avatars" />
 
             <TextView
-                android:id="@+id/groupTextViewTotal"
+                android:id="@+id/groupTextViewCurrent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="5dp"
                 app:layout_constraintEnd_toStartOf="@+id/textView3"
-                app:layout_constraintTop_toTopOf="@+id/groupTextViewCurrent" />
+                app:layout_constraintTop_toTopOf="@+id/groupTextViewTotal" />
 
             <TextView
-                android:id="@+id/groupTextViewCurrent"
+                android:id="@+id/groupTextViewTotal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="20dp"
@@ -75,8 +75,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="5dp"
                 android:text="@string/group_text_current_number_members"
-                app:layout_constraintEnd_toStartOf="@+id/groupTextViewCurrent"
-                app:layout_constraintTop_toTopOf="@+id/groupTextViewTotal" />
+                app:layout_constraintEnd_toStartOf="@+id/groupTextViewTotal"
+                app:layout_constraintTop_toTopOf="@+id/groupTextViewCurrent" />
 
             <TextView
                 android:id="@+id/groupTextViewHostName"

@@ -41,50 +41,57 @@ public class CreatedGroupListActivity extends AppCompatActivity implements Creat
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_created_group_list);
+        setTitle("Your created groups");
 
         db = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
 
         // find current user profile information
-        db.collection("user")
-                .document(mAuth.getUid())
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                                           @Override
-                                           public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                                               if (task.isSuccessful()) {
-                                                   DocumentSnapshot document = task.getResult();
-                                                   curUser = document.toObject(User.class);
-                                                   db.collection("group")
-                                                           .whereEqualTo("createBy", curUser.getId())
-                                                           .orderBy("groupDate")
-                                                           .addSnapshotListener(new EventListener<QuerySnapshot>() {
-                                                               @Override
-                                                               public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
-                                                                   if (error != null) {
-                                                                       Toast.makeText(CreatedGroupListActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
-                                                                   } else {
-                                                                       for (DocumentSnapshot document : value.getDocuments()) {
-                                                                           Group g = document.toObject(Group.class);
-                                                                           groups.add(g);
-                                                                       }
-
-                                                                       recyclerView = findViewById(R.id.createdGroupListRecyclerView);
-                                                                       layoutManager = new LinearLayoutManager(CreatedGroupListActivity.this);
-                                                                       recyclerView.setLayoutManager(layoutManager);
-                                                                       createdGroupListAdapter = new CreatedGroupListAdapter(groups, CreatedGroupListActivity.this);
-                                                                       recyclerView.setAdapter(createdGroupListAdapter);
-
-                                                                   }
-                                                               }
-                                                           });
-
-                                               }
-                                           }
-                                       }
-                );
+//        db.collection("user")
+//                .document(mAuth.getUid())
+//                .get()
+//                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+//                                           @Override
+//                                           public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+//                                               if (task.isSuccessful()) {
+//                                                   DocumentSnapshot document = task.getResult();
+//                                                   curUser = document.toObject(User.class);
+//
+//
+//                                               }
+//                                           }
+//                                       }
+//                );
 
 
+        display();
+
+    }
+
+    private void display() {
+        db.collection("group")
+                .whereEqualTo("createBy", mAuth.getUid())
+                .orderBy("groupDate")
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                        if (error != null) {
+                            Toast.makeText(CreatedGroupListActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                        } else {
+                            for (DocumentSnapshot document : value.getDocuments()) {
+                                Group g = document.toObject(Group.class);
+                                groups.add(g);
+                            }
+
+                            recyclerView = findViewById(R.id.createdGroupListRecyclerView);
+                            layoutManager = new LinearLayoutManager(CreatedGroupListActivity.this);
+                            recyclerView.setLayoutManager(layoutManager);
+                            createdGroupListAdapter = new CreatedGroupListAdapter(groups, CreatedGroupListActivity.this, CreatedGroupListActivity.this);
+                            recyclerView.setAdapter(createdGroupListAdapter);
+
+                        }
+                    }
+                });
     }
 
     @Override

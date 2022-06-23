@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EditGroupActivity">
+
+
+    <TextView
+        android:id="@+id/editGroupTextViewDestination"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:textColor="#2196F3"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/groupInformationTextViewDistance1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="52dp"
+        android:text="@string/editGroup_text_location"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editGroupTextViewDestination" />
+
+    <TextView
+        android:id="@+id/editGroupTextViewMembers"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="@string/groupInformation_text_members"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="@+id/groupInformationTextViewDistance1"
+        app:layout_constraintTop_toBottomOf="@+id/groupInformationTextViewDistance1" />
+
+    <TextView
+        android:id="@+id/groupInformationTextViewDate1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="@string/editGroup_text_date"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/textView7"
+        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+    <TextView
+        android:id="@+id/groupInformationTextViewAverageCost1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="@string/editGroup_text_avg_cost"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/groupInformationTextViewDate1"
+        app:layout_constraintTop_toBottomOf="@+id/groupInformationTextViewDate1" />
+
+    <TextView
+        android:id="@+id/groupInformationTextViewNote1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="@string/editGroup_text_note"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/groupInformationTextViewAverageCost1"
+        app:layout_constraintTop_toBottomOf="@+id/groupInformationTextViewAverageCost1" />
+
+    <Button
+        android:id="@+id/editGroupButtonSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+
+        android:text="@string/editGroup_button_save"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editGroupEditTextNote" />
+
+    <ImageView
+        android:id="@+id/editGroupImageViewLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="104dp"
+        app:layout_constraintBottom_toBottomOf="@+id/groupInformationTextViewDistance1"
+        app:layout_constraintStart_toEndOf="@+id/groupInformationTextViewDistance1"
+        app:layout_constraintTop_toTopOf="@+id/groupInformationTextViewDistance1"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/location_icon" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="@string/editGroup_text_total_members"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/editGroupTextViewMembers"
+        app:layout_constraintTop_toBottomOf="@+id/editGroupTextViewMembers" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:text="@string/editGroup_text_current_members"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/textView6"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <EditText
+        android:id="@+id/editGroupEditTextNote"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        app:layout_constraintBottom_toBottomOf="@+id/groupInformationTextViewNote1"
+        app:layout_constraintStart_toStartOf="@+id/editGroupEditTextAvgCost"
+        app:layout_constraintTop_toTopOf="@+id/groupInformationTextViewNote1"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <EditText
+        android:id="@+id/editGroupEditTextAvgCost"
+        android:layout_width="48dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number"
+        android:minHeight="48dp"
+        app:layout_constraintBottom_toBottomOf="@+id/groupInformationTextViewAverageCost1"
+        app:layout_constraintStart_toStartOf="@+id/editGroupTextViewDate"
+        app:layout_constraintTop_toTopOf="@+id/groupInformationTextViewAverageCost1"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <TextView
+        android:id="@+id/editGroupTextViewDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/editGroupTextViewCurrentMembers"
+        app:layout_constraintTop_toTopOf="@+id/groupInformationTextViewDate1" />
+
+    <ImageView
+        android:id="@+id/editGroupImageViewDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        app:layout_constraintBottom_toBottomOf="@+id/editGroupTextViewDate"
+        app:layout_constraintStart_toEndOf="@+id/editGroupTextViewDate"
+        app:layout_constraintTop_toTopOf="@+id/editGroupTextViewDate"
+        app:layout_constraintVertical_bias="0.6"
+        app:srcCompat="@drawable/calendar_icon" />
+
+    <TextView
+        android:id="@+id/editGroupTextViewCurrentMembers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/editGroupEditTextTotalMembers"
+        app:layout_constraintTop_toTopOf="@+id/textView7" />
+
+    <EditText
+        android:id="@+id/editGroupEditTextTotalMembers"
+        android:layout_width="48dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number"
+        android:minHeight="48dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView6"
+        app:layout_constraintStart_toStartOf="@+id/editGroupImageViewLocation"
+        app:layout_constraintTop_toTopOf="@+id/textView6"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/editGroupRecyclerViewMembers"
+        android:layout_width="250dp"
+
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="@+id/editGroupImageViewLocation"
+        app:layout_constraintTop_toBottomOf="@+id/editGroupImageViewLocation" />
+</androidx.constraintlayout.widget.ConstraintLayout>

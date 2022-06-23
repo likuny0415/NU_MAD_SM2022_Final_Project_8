@@ -63,7 +63,7 @@ public class GroupActivity extends AppCompatActivity implements View.OnClickList
 
         textViewDestination = findViewById(R.id.groupInformationTextViewDestination);
         textViewName = findViewById(R.id.groupInformationTextViewHostName);
-        textViewContact = findViewById(R.id.groupInformationTextViewEmail);
+        textViewContact = findViewById(R.id.groupInformationTextViewContact);
         textViewCurrentNumber = findViewById(R.id.groupInformationTextViewJoinedNumber);
         textViewTotalNumber = findViewById(R.id.groupInformationTextViewJoinedTotalNumber);
         textViewDate = findViewById(R.id.groupInformationTextViewDate);
@@ -72,7 +72,7 @@ public class GroupActivity extends AppCompatActivity implements View.OnClickList
         buttonJoin = findViewById(R.id.groupInformationButtonJoin);
         imageViewHostAvatar = findViewById(R.id.groupInformationImageViewHostAvatar);
         imageViewLocation = findViewById(R.id.groupInformationImageViewLocation);
-        recyclerViewMembers = findViewById(R.id.groupRecyclerViewMembers);
+        recyclerViewMembers = findViewById(R.id.groupInformationRecyclerViewMembers);
 
         if (getIntent() != null && getIntent().getExtras() != null)  {
             group = (Group) getIntent().getSerializableExtra("curGroup");
@@ -103,7 +103,7 @@ public class GroupActivity extends AppCompatActivity implements View.OnClickList
                 .document(mAuth.getUid())
                 .update("groups", FieldValue.arrayUnion(group.getId()));
 
-       DocumentReference sfDocRef = db.collection("group").document(group.getId());
+        DocumentReference sfDocRef = db.collection("group").document(group.getId());
 
         db.runTransaction(new Transaction.Function<Double>() {
                     @Override

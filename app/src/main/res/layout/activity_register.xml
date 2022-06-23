@@ -37,7 +37,7 @@
         android:layout_marginTop="15dp"
         android:ems="10"
         android:hint="@string/register_hint_mobile"
-        android:inputType="textPersonName"
+        android:inputType="phone"
         android:minHeight="48dp"
         app:layout_constraintStart_toStartOf="@+id/registerPageEditTextName"
         app:layout_constraintTop_toBottomOf="@+id/registerPageEditTextName" />
@@ -124,5 +124,6 @@
         app:layout_constraintStart_toStartOf="@+id/registerPageEditTextPassword"
         app:layout_constraintTop_toBottomOf="@+id/registerPageEditTextPassword"
         tools:ignore="SpeakableTextPresentCheck" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

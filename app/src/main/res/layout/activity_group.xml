@@ -64,7 +64,7 @@
         app:layout_constraintTop_toBottomOf="@+id/groupInformationTextViewHost" />
 
     <TextView
-        android:id="@+id/groupInformationTextViewEmail"
+        android:id="@+id/groupInformationTextViewContact"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/groupInformation_text_contactDetail"
@@ -219,14 +219,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="@+id/groupInformationTextViewDistance1"
-        app:layout_constraintStart_toStartOf="@+id/groupInformationTextViewEmail"
+        app:layout_constraintStart_toStartOf="@+id/groupInformationTextViewContact"
         app:layout_constraintTop_toTopOf="@+id/groupInformationTextViewDistance1"
         app:srcCompat="@drawable/location_icon" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/groupRecyclerViewMembers"
+        android:id="@+id/groupInformationRecyclerViewMembers"
         android:layout_width="250dp"
-
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:orientation="horizontal"

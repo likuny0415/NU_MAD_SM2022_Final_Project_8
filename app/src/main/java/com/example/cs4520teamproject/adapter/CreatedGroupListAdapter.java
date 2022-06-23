@@ -1,5 +1,7 @@
 package com.example.cs4520teamproject.adapter;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +12,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.cs4520teamproject.EditGroupActivity;
+import com.example.cs4520teamproject.GroupActivity;
 import com.example.cs4520teamproject.Model.Group;
 import com.example.cs4520teamproject.Model.User;
 import com.example.cs4520teamproject.R;
@@ -28,12 +32,13 @@ public class CreatedGroupListAdapter extends RecyclerView.Adapter<CreatedGroupLi
     User currentUser;
     private FirebaseFirestore db;
     private IRemoveButton iRemoveButton;
+    private Context context;
 
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final TextView destination, userName, date, joinedNumber, totalNumber;
         private final ImageView avatar;
-        private final Button buttonDelete;
+        private final Button buttonDelete, buttonEdit;
 
 
         public ViewHolder(@NonNull View itemView) {
@@ -45,7 +50,12 @@ public class CreatedGroupListAdapter extends RecyclerView.Adapter<CreatedGroupLi
             totalNumber = itemView.findViewById(R.id.createdGroupListTextViewTotal);
             avatar = itemView.findViewById(R.id.createdGroupListImageViewAvatar);
             buttonDelete = itemView.findViewById(R.id.createdGroupListButtonDelete);
+            buttonEdit = itemView.findViewById(R.id.createdGroupListButtonEdit);
 
+        }
+
+        public Button getButtonEdit() {
+            return buttonEdit;
         }
 
         public TextView getDestination() {
@@ -77,9 +87,10 @@ public class CreatedGroupListAdapter extends RecyclerView.Adapter<CreatedGroupLi
         }
     }
 
-    public CreatedGroupListAdapter(ArrayList<Group> createdGroups, IRemoveButton iRemoveButton) {
+    public CreatedGroupListAdapter(ArrayList<Group> createdGroups, IRemoveButton iRemoveButton, Context context) {
         this.createdGroups = createdGroups;
         this.iRemoveButton = iRemoveButton;
+        this.context = context;
     }
 
     @NonNull
@@ -108,6 +119,14 @@ public class CreatedGroupListAdapter extends RecyclerView.Adapter<CreatedGroupLi
             }
         });
 
+        holder.getButtonEdit().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent toThisGroup = new Intent(context, EditGroupActivity.class);
+                toThisGroup.putExtra("curGroup", currentGroup);
+                context.startActivity(toThisGroup);
+            }
+        });
 
 
         db.collection("user")

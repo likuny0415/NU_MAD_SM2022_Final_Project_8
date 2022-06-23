@@ -67,9 +67,6 @@ public class CreateGroupActivity extends AppCompatActivity implements View.OnCli
         buttonPost = findViewById(R.id.createGroupButtonPost);
 
 
-
-
-
         imageViewRequestLocation.setOnClickListener(this);
         buttonPost.setOnClickListener(this);
         imageViewDate.setOnClickListener(this);
