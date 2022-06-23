@@ -108,13 +108,13 @@ public class GroupsActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     private void toJoinedList() {
-        Intent toCreatedList = new Intent(GroupsActivity.this, CreatedGroupListActivity.class);
+        Intent toCreatedList = new Intent(GroupsActivity.this, JoinedGroupListActivity.class);
         startActivity(toCreatedList);
         overridePendingTransition(0, 0);
     }
 
     private void toCreatedList() {
-        Intent toJoinedList = new Intent(GroupsActivity.this, JoinedGroupListActivity.class);
+        Intent toJoinedList = new Intent(GroupsActivity.this, CreatedGroupListActivity.class);
         startActivity(toJoinedList);
         overridePendingTransition(0, 0);
     }

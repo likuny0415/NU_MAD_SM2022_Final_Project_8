@@ -8,9 +8,10 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="3dp"
         app:cardBackgroundColor="#E4CBCB"
-        app:cardCornerRadius="4dp"
-        app:cardElevation="2dp">
+        app:cardCornerRadius="10dp"
+        app:cardElevation="4dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -19,13 +20,11 @@
             android:padding="2dp">
 
 
-
             <TextView
                 android:id="@+id/joinedGroupListTextViewName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:text="@string/joinedGroup_text_hostName"
                 android:textColor="@color/black"
                 app:layout_constraintBottom_toBottomOf="@+id/joinedGroupListImageViewAvatar"
                 app:layout_constraintStart_toEndOf="@+id/joinedGroupListImageViewAvatar"
@@ -56,10 +55,9 @@
                 android:id="@+id/joinedGroupListImageViewAvatar"
                 android:layout_width="25dp"
                 android:layout_height="28dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="12dp"
                 app:layout_constraintStart_toStartOf="@+id/joinedGroupListTextViewMountain"
-                app:layout_constraintTop_toBottomOf="@+id/joinedGroupListTextViewMountain"
-                app:srcCompat="@drawable/googleg_standard_color_18" />
+                app:layout_constraintTop_toBottomOf="@+id/joinedGroupListTextViewMountain" />
 
             <TextView
                 android:id="@+id/joinedGroupListTextViewOutOf"
@@ -96,7 +94,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
-                android:text="@string/joinedGroup_text_skiResort"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold"

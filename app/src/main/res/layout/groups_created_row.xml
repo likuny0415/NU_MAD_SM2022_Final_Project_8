@@ -8,9 +8,11 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="3dp"
         app:cardBackgroundColor="#E4CBCB"
-        app:cardCornerRadius="4dp"
-        app:cardElevation="2dp">
+        app:cardCornerRadius="10dp"
+        app:cardElevation="4dp"
+        app:contentPadding="2dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -24,7 +26,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
-                android:text="@string/createdGroup_text_skiResort"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -37,7 +38,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:text="@string/createdGroup_text_hostName"
                 android:textColor="@color/black"
                 app:layout_constraintBottom_toBottomOf="@+id/createdGroupListImageViewAvatar"
                 app:layout_constraintStart_toEndOf="@+id/createdGroupListImageViewAvatar"
@@ -70,8 +70,7 @@
                 android:layout_height="28dp"
                 android:layout_marginTop="15dp"
                 app:layout_constraintStart_toStartOf="@+id/createdGroupListTextViewMountain"
-                app:layout_constraintTop_toBottomOf="@+id/createdGroupListTextViewMountain"
-                app:srcCompat="@drawable/googleg_standard_color_18" />
+                app:layout_constraintTop_toBottomOf="@+id/createdGroupListTextViewMountain" />
 
             <Button
                 android:id="@+id/createdGroupListButtonEdit"

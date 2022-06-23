@@ -6,8 +6,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -37,6 +40,7 @@ public class CreatedGroupListActivity extends AppCompatActivity implements Creat
     private RecyclerView.LayoutManager layoutManager;
     private ArrayList<Group> groups = new ArrayList<>();
     User curUser;
+    private ImageView created, joined, group, account;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,8 +48,40 @@ public class CreatedGroupListActivity extends AppCompatActivity implements Creat
         setContentView(R.layout.activity_created_group_list);
         setTitle("Created groups");
 
+
         db = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
+
+        account = findViewById(R.id.createdGroupImageViewAccount);
+        joined = findViewById(R.id.createdGroupImageViewJoined);
+        group = findViewById(R.id.createdGroupImageViewGroups);
+
+
+        account.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toAccount();
+            }
+        });
+
+        joined.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toJoinedList();
+            }
+        });
+
+        group.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toGroups();
+            }
+        });
+
+
+
+
+
 
         display();
 
@@ -134,4 +170,26 @@ public class CreatedGroupListActivity extends AppCompatActivity implements Creat
 
 
     }
+
+
+    private void toJoinedList() {
+        Intent toCreatedList = new Intent(CreatedGroupListActivity.this, JoinedGroupListActivity.class);
+        startActivity(toCreatedList);
+        overridePendingTransition(0, 0);
+    }
+
+
+
+    private void toAccount() {
+        Intent toAccount = new Intent(CreatedGroupListActivity.this, AccountActivity.class);
+        startActivity(toAccount);
+        overridePendingTransition(0, 0);
+    }
+
+    private void toGroups() {
+        Intent toGroups = new Intent(CreatedGroupListActivity.this, GroupsActivity.class);
+        startActivity(toGroups);
+        overridePendingTransition(0, 0);
+    }
+
 }

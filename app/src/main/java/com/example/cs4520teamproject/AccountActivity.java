@@ -99,6 +99,7 @@ public class AccountActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent goToCreatedGroups = new Intent(AccountActivity.this, CreatedGroupListActivity.class);
                 startActivity(goToCreatedGroups);
+                overridePendingTransition(0, 0);
             }
         });
 
@@ -107,6 +108,7 @@ public class AccountActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent goToJoinedGroups = new Intent(AccountActivity.this, JoinedGroupListActivity.class);
                 startActivity(goToJoinedGroups);
+                overridePendingTransition(0, 0);
             }
         });
 
