@@ -78,11 +78,6 @@ public class CreatedGroupListActivity extends AppCompatActivity implements Creat
             }
         });
 
-
-
-
-
-
         display();
 
     }
@@ -167,8 +162,6 @@ public class CreatedGroupListActivity extends AppCompatActivity implements Creat
                                 });
                     }
                 });
-
-
     }
 
 
@@ -177,7 +170,6 @@ public class CreatedGroupListActivity extends AppCompatActivity implements Creat
         startActivity(toCreatedList);
         overridePendingTransition(0, 0);
     }
-
 
 
     private void toAccount() {

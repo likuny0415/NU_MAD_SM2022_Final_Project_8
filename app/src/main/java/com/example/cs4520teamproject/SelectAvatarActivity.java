@@ -58,7 +58,9 @@ public class SelectAvatarActivity extends AppCompatActivity implements FragmentC
 
     @Override
     public void showTakePhoto(Uri uri) {
-
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.containerPhoto,FragmentDisplayAvatar.newInstance(uri),"displayFragment")
+                .commit();
     }
 
     ActivityResultLauncher<Intent> galleryLauncher = registerForActivityResult(
