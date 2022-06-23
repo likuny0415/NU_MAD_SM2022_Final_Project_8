@@ -141,7 +141,7 @@ public class GroupActivity extends AppCompatActivity implements View.OnClickList
         textViewDate.setText(group.getDate());
         textViewCurrentNumber.setText("" + group.getCurNumberOfMembers());
         textViewTotalNumber.setText("" + group.getTotalNumberOfMembers());
-        textViewAvgCost.setText("" + group.getAverageCost());
+        textViewAvgCost.setText("$" + group.getAverageCost()+"/person");
 
         if (type == 2) {
             buttonJoin.setVisibility(View.GONE);
