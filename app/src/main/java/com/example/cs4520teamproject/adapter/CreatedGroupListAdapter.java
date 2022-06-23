@@ -34,6 +34,9 @@ public class CreatedGroupListAdapter extends RecyclerView.Adapter<CreatedGroupLi
     private IRemoveButton iRemoveButton;
     private Context context;
 
+    public void setCreatedGroups(ArrayList<Group> createdGroups) {
+        this.createdGroups = createdGroups;
+    }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final TextView destination, userName, date, joinedNumber, totalNumber;

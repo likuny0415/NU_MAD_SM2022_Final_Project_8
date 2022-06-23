@@ -15,6 +15,7 @@ import com.example.cs4520teamproject.Model.Group;
 import com.example.cs4520teamproject.Model.User;
 import com.example.cs4520teamproject.adapter.CreatedGroupListAdapter;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -68,7 +69,7 @@ public class CreatedGroupListActivity extends AppCompatActivity implements Creat
 
     }
 
-    private void display() {
+    private void updateUI() {
         db.collection("group")
                 .whereEqualTo("createBy", mAuth.getUid())
                 .orderBy("groupDate")
@@ -78,18 +79,46 @@ public class CreatedGroupListActivity extends AppCompatActivity implements Creat
                         if (error != null) {
                             Toast.makeText(CreatedGroupListActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
                         } else {
+                            ArrayList<Group> curGroups= new ArrayList<>();
                             for (DocumentSnapshot document : value.getDocuments()) {
+                                Group g = document.toObject(Group.class);
+                                curGroups.add(g);
+                            }
+                            createdGroupListAdapter.setCreatedGroups(curGroups);
+                            createdGroupListAdapter.notifyDataSetChanged();
+
+                        }
+                    }
+                });
+
+    }
+
+    private void display() {
+        db.collection("group")
+                .whereEqualTo("createBy", mAuth.getUid())
+                .orderBy("groupDate")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (DocumentSnapshot document : task.getResult()) {
                                 Group g = document.toObject(Group.class);
                                 groups.add(g);
                             }
-
                             recyclerView = findViewById(R.id.createdGroupListRecyclerView);
                             layoutManager = new LinearLayoutManager(CreatedGroupListActivity.this);
                             recyclerView.setLayoutManager(layoutManager);
                             createdGroupListAdapter = new CreatedGroupListAdapter(groups, CreatedGroupListActivity.this, CreatedGroupListActivity.this);
                             recyclerView.setAdapter(createdGroupListAdapter);
 
+                            updateUI();
                         }
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+
                     }
                 });
     }

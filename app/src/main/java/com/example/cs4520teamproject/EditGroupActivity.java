@@ -139,9 +139,7 @@ public class EditGroupActivity extends AppCompatActivity implements View.OnClick
                 db.collection("group").document(group.getId()).update("totalNumberOfMembers", totalM);
                 db.collection("group").document(group.getId()).update("date", date);
                 db.collection("group").document(group.getId()).update("note", note);
-                Intent toCreatedGroup = new Intent(this, CreatedGroupListActivity.class);
-                startActivity(toCreatedGroup);
-                overridePendingTransition(0, 0);
+                finish();
             }
         }
     }
