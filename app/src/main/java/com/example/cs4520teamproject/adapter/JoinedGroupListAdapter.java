@@ -1,7 +1,9 @@
 package com.example.cs4520teamproject.adapter;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -112,9 +114,23 @@ public class JoinedGroupListAdapter extends RecyclerView.Adapter<JoinedGroupList
         holder.getButtonQuit().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                joinedGroups.remove(holder.getAdapterPosition());
-                iQuitButton.quitGroup(currentGroup);
-                notifyDataSetChanged();
+
+                new AlertDialog.Builder(context)
+                        .setTitle("Confirm Quit")
+                        .setMessage("Are you sure you want to quit the group to "+currentGroup.getDestination()+"?")
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                // Continue with delete operation
+                                joinedGroups.remove(holder.getAdapterPosition());
+                                iQuitButton.quitGroup(currentGroup);
+                                notifyDataSetChanged();
+                            }
+                        })
+
+                        .setNegativeButton(android.R.string.no, null)
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .show();
+
             }
         });
         holder.getButtonDetail().setOnClickListener(new View.OnClickListener() {
