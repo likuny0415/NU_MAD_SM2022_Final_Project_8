@@ -25,26 +25,80 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <Button
-            android:id="@+id/accountPageButtonGroups"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginBottom="8dp"
-            android:backgroundTint="#2196F3"
-            android:text="@string/group_button_groups"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
 
-        <Button
-            android:id="@+id/accountPageButtonToAccount"
+        <ImageView
+            android:id="@+id/groupsImageViewGroups"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginBottom="24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/groups_icon" />
+
+        <TextView
+            android:id="@+id/textView14"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
-            android:text="@string/group_button_Account"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            android:text="@string/switch_text_group"
+            app:layout_constraintEnd_toEndOf="@+id/groupsImageViewGroups"
+            app:layout_constraintStart_toStartOf="@+id/groupsImageViewGroups"
+            app:layout_constraintTop_toBottomOf="@+id/groupsImageViewGroups" />
+
+        <ImageView
+            android:id="@+id/groupsImageViewCreated"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="50dp"
+            app:layout_constraintBottom_toTopOf="@+id/textView14"
+            app:layout_constraintStart_toEndOf="@+id/groupsImageViewGroups"
+            app:srcCompat="@drawable/created_icon" />
+
+        <TextView
+            android:id="@+id/textView16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/switch_text_created"
+            app:layout_constraintEnd_toEndOf="@+id/groupsImageViewCreated"
+            app:layout_constraintStart_toStartOf="@+id/groupsImageViewCreated"
+            app:layout_constraintTop_toBottomOf="@+id/groupsImageViewCreated" />
+
+        <ImageView
+            android:id="@+id/groupsImageViewJoined"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="50dp"
+            app:layout_constraintBottom_toBottomOf="@+id/groupsImageViewCreated"
+            app:layout_constraintStart_toEndOf="@+id/groupsImageViewCreated"
+            app:srcCompat="@drawable/joined_icon" />
+
+        <TextView
+            android:id="@+id/textView17"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/switch_text_joined"
+            app:layout_constraintEnd_toEndOf="@+id/groupsImageViewJoined"
+            app:layout_constraintStart_toStartOf="@+id/groupsImageViewJoined"
+            app:layout_constraintTop_toBottomOf="@+id/groupsImageViewJoined" />
+
+        <ImageView
+            android:id="@+id/groupsImageViewAccount"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="50dp"
+            app:layout_constraintBottom_toBottomOf="@+id/groupsImageViewJoined"
+            app:layout_constraintStart_toEndOf="@+id/groupsImageViewJoined"
+            app:srcCompat="@drawable/account_icon" />
+
+        <TextView
+            android:id="@+id/textView19"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/switch_text_account"
+            app:layout_constraintEnd_toEndOf="@+id/groupsImageViewAccount"
+            app:layout_constraintStart_toStartOf="@+id/groupsImageViewAccount"
+            app:layout_constraintTop_toBottomOf="@+id/groupsImageViewAccount" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton

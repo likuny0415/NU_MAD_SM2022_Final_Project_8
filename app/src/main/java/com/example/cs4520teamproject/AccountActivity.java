@@ -30,6 +30,7 @@ public class AccountActivity extends AppCompatActivity {
     private TextView userName, emailAddress, phoneNumber, bioText;
     private Button joinedList, createdList, editProfile, logOut, groups, account;
     private ImageView userAvatar;
+    private ImageView imageViewGroups, imageViewCreated, imageViewJoined, imageViewAccount;
 
 
 
@@ -45,13 +46,14 @@ public class AccountActivity extends AppCompatActivity {
         emailAddress = findViewById(R.id.accountPageTextViewEmailDetail);
         phoneNumber = findViewById(R.id.accountPageTextViewPhoneDetail);
         bioText = findViewById(R.id.accountPageTextViewBioDetail);
-        joinedList = findViewById(R.id.accountPageButtonJoinedList);
-        createdList = findViewById(R.id.accountPageButtonCreatedList);
         editProfile = findViewById(R.id.accountPageButtonEdit);
         logOut = findViewById(R.id.accountPageButtonLogOut);
-//        groups = findViewById(R.id.accountPageButtonGroups);
-        account = findViewById(R.id.accountPageButtonAccount);
         userAvatar = findViewById(R.id.accountPageImageViewAvatar);
+
+        imageViewAccount = findViewById(R.id.accountImageViewAccount);
+        imageViewGroups = findViewById(R.id.accountImageViewGroups);
+        imageViewJoined = findViewById(R.id.accountImageViewJoined);
+        imageViewCreated = findViewById(R.id.accountImageViewCreated);
 
 
 
@@ -81,18 +83,18 @@ public class AccountActivity extends AppCompatActivity {
             }
         });
 
-        // got to groups
-//        groups.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent goToGroups = new Intent(AccountActivity.this, GroupsActivity.class);
-//                startActivity(goToGroups);
-//                overridePendingTransition(0, 0);
-//            }
-//        });
+//         got to groups
+        imageViewGroups.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent goToGroups = new Intent(AccountActivity.this, GroupsActivity.class);
+                startActivity(goToGroups);
+                overridePendingTransition(0, 0);
+            }
+        });
 
 
-        createdList.setOnClickListener(new View.OnClickListener() {
+        imageViewCreated.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent goToCreatedGroups = new Intent(AccountActivity.this, CreatedGroupListActivity.class);
@@ -100,7 +102,7 @@ public class AccountActivity extends AppCompatActivity {
             }
         });
 
-        joinedList.setOnClickListener(new View.OnClickListener() {
+        imageViewJoined.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent goToJoinedGroups = new Intent(AccountActivity.this, JoinedGroupListActivity.class);

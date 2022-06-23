@@ -5,10 +5,11 @@
       <map>
         <entry key="app/src/main/res/drawable/account_icon.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/calendar_icon.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/created_icon.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/group.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/groups_icon.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/joined_icon.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_account.xml" value="0.2901702880859377" />
+        <entry key="app/src/main/res/layout/activity_account.xml" value="0.2545196533203127" />
         <entry key="app/src/main/res/layout/activity_create_group.xml" value="0.23415052625868057" />
         <entry key="app/src/main/res/layout/activity_created_group_list.xml" value="0.18333333333333332" />
         <entry key="app/src/main/res/layout/activity_edit_group.xml" value="0.2904388427734375" />

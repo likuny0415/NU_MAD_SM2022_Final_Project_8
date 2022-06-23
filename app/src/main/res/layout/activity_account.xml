@@ -16,52 +16,78 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <Button
-            android:id="@+id/accountPageButtonAccount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
-            android:text="@string/group_button_Account"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
-
         <ImageView
-            android:id="@+id/accountPageButtonGroups"
+            android:id="@+id/accountImageViewGroups"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_marginStart="30dp"
+            android:layout_marginStart="40dp"
             android:layout_marginBottom="24dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:srcCompat="@drawable/groups_icon" />
 
         <TextView
-            android:id="@+id/textView8"
+            android:id="@+id/textView14"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Groups"
-            app:layout_constraintEnd_toEndOf="@+id/accountPageButtonGroups"
-            app:layout_constraintStart_toStartOf="@+id/accountPageButtonGroups"
-            app:layout_constraintTop_toBottomOf="@+id/accountPageButtonGroups" />
+            android:text="@string/switch_text_group"
+            app:layout_constraintEnd_toEndOf="@+id/accountImageViewGroups"
+            app:layout_constraintStart_toStartOf="@+id/accountImageViewGroups"
+            app:layout_constraintTop_toBottomOf="@+id/accountImageViewGroups" />
 
         <ImageView
-            android:id="@+id/imageView4"
+            android:id="@+id/accountImageViewCreated"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginStart="50dp"
-            app:layout_constraintBottom_toTopOf="@+id/textView8"
-            app:layout_constraintStart_toEndOf="@+id/accountPageButtonGroups"
+            app:layout_constraintBottom_toTopOf="@+id/textView14"
+            app:layout_constraintStart_toEndOf="@+id/accountImageViewGroups"
             app:srcCompat="@drawable/created_icon" />
 
         <TextView
-            android:id="@+id/textView10"
+            android:id="@+id/textView16"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView"
-            app:layout_constraintEnd_toEndOf="@+id/imageView4"
-            app:layout_constraintStart_toStartOf="@+id/imageView4"
-            app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+            android:text="@string/switch_text_created"
+            app:layout_constraintEnd_toEndOf="@+id/accountImageViewCreated"
+            app:layout_constraintStart_toStartOf="@+id/accountImageViewCreated"
+            app:layout_constraintTop_toBottomOf="@+id/accountImageViewCreated" />
+
+        <ImageView
+            android:id="@+id/accountImageViewJoined"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="50dp"
+            app:layout_constraintBottom_toBottomOf="@+id/accountImageViewCreated"
+            app:layout_constraintStart_toEndOf="@+id/accountImageViewCreated"
+            app:srcCompat="@drawable/joined_icon" />
+
+        <TextView
+            android:id="@+id/textView17"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/switch_text_joined"
+            app:layout_constraintEnd_toEndOf="@+id/accountImageViewJoined"
+            app:layout_constraintStart_toStartOf="@+id/accountImageViewJoined"
+            app:layout_constraintTop_toBottomOf="@+id/accountImageViewJoined" />
+
+        <ImageView
+            android:id="@+id/accountImageViewAccount"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="50dp"
+            app:layout_constraintBottom_toBottomOf="@+id/accountImageViewJoined"
+            app:layout_constraintStart_toEndOf="@+id/accountImageViewJoined"
+            app:srcCompat="@drawable/account_icon" />
+
+        <TextView
+            android:id="@+id/textView19"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/switch_text_account"
+            app:layout_constraintEnd_toEndOf="@+id/accountImageViewAccount"
+            app:layout_constraintStart_toStartOf="@+id/accountImageViewAccount"
+            app:layout_constraintTop_toBottomOf="@+id/accountImageViewAccount" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -138,29 +164,27 @@
 
         <Button
             android:id="@+id/accountPageButtonEdit"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="36dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="20dp"
+            android:layout_marginTop="52dp"
             android:text="@string/accountInformation_button_editProfile"
             android:textAllCaps="false"
-            app:layout_constraintEnd_toStartOf="@+id/accountPageButtonLogOut"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.501"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/accountPageButtonCreatedList" />
+            app:layout_constraintTop_toBottomOf="@+id/accountPageTextViewBioDetail" />
 
         <Button
             android:id="@+id/accountPageButtonLogOut"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="21dp"
-            android:layout_marginEnd="36dp"
+            android:layout_marginTop="84dp"
             android:text="@string/accountInformation_button_logOut"
             android:textAllCaps="false"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/accountPageButtonEdit"
-            app:layout_constraintTop_toTopOf="@+id/accountPageButtonEdit" />
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/accountPageButtonEdit" />
 
         <TextView
             android:id="@+id/accountPageTextViewBio"
@@ -180,30 +204,6 @@
             app:layout_constraintBottom_toBottomOf="@+id/accountPageTextViewBio"
             app:layout_constraintStart_toEndOf="@+id/accountPageTextViewBio"
             app:layout_constraintTop_toTopOf="@+id/accountPageTextViewBio" />
-
-        <Button
-            android:id="@+id/accountPageButtonJoinedList"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="48dp"
-            android:text="@string/accountInformation_button_joinedList"
-            android:textAllCaps="false"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/accountPageTextViewBioDetail" />
-
-        <Button
-            android:id="@+id/accountPageButtonCreatedList"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:text="@string/accountInformation_button_createdList"
-            android:textAllCaps="false"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/accountPageButtonJoinedList" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
