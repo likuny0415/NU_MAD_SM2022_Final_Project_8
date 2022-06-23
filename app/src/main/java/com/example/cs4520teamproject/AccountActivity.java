@@ -49,7 +49,7 @@ public class AccountActivity extends AppCompatActivity {
         createdList = findViewById(R.id.accountPageButtonCreatedList);
         editProfile = findViewById(R.id.accountPageButtonEdit);
         logOut = findViewById(R.id.accountPageButtonLogOut);
-        groups = findViewById(R.id.accountPageButtonGroups);
+//        groups = findViewById(R.id.accountPageButtonGroups);
         account = findViewById(R.id.accountPageButtonAccount);
         userAvatar = findViewById(R.id.accountPageImageViewAvatar);
 
@@ -82,14 +82,14 @@ public class AccountActivity extends AppCompatActivity {
         });
 
         // got to groups
-        groups.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent goToGroups = new Intent(AccountActivity.this, GroupsActivity.class);
-                startActivity(goToGroups);
-                overridePendingTransition(0, 0);
-            }
-        });
+//        groups.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent goToGroups = new Intent(AccountActivity.this, GroupsActivity.class);
+//                startActivity(goToGroups);
+//                overridePendingTransition(0, 0);
+//            }
+//        });
 
 
         createdList.setOnClickListener(new View.OnClickListener() {
