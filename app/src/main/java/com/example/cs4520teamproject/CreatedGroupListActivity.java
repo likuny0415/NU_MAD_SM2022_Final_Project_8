@@ -42,28 +42,10 @@ public class CreatedGroupListActivity extends AppCompatActivity implements Creat
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_created_group_list);
-        setTitle("Your created groups");
+        setTitle("Created groups");
 
         db = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
-
-        // find current user profile information
-//        db.collection("user")
-//                .document(mAuth.getUid())
-//                .get()
-//                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-//                                           @Override
-//                                           public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-//                                               if (task.isSuccessful()) {
-//                                                   DocumentSnapshot document = task.getResult();
-//                                                   curUser = document.toObject(User.class);
-//
-//
-//                                               }
-//                                           }
-//                                       }
-//                );
-
 
         display();
 

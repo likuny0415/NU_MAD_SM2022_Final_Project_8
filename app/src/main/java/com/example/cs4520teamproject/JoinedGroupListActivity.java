@@ -41,7 +41,7 @@ public class JoinedGroupListActivity extends AppCompatActivity implements Joined
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_joined_group_list);
-        setTitle("Your joined groups");
+        setTitle("Joined groups");
 
         db = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
