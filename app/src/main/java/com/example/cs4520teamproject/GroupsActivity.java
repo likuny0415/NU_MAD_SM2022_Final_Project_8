@@ -1,5 +1,6 @@
 package com.example.cs4520teamproject;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -15,6 +16,8 @@ import android.widget.Toast;
 
 import com.example.cs4520teamproject.Model.Group;
 import com.example.cs4520teamproject.adapter.GroupsListAdapter;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -61,8 +64,43 @@ public class GroupsActivity extends AppCompatActivity implements View.OnClickLis
         imageViewCreated.setOnClickListener(this);
         imageViewJoined.setOnClickListener(this);
 
-        Date time = Calendar.getInstance().getTime();
 
+        display();
+    }
+
+    private void display() {
+        Date time = Calendar.getInstance().getTime();
+        db.collection("group")
+                .whereEqualTo("isFull", false)
+                .whereGreaterThan("groupDate", time)
+                .orderBy("groupDate")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            ArrayList<Group> curGroups= new ArrayList<>();
+                            for (DocumentSnapshot document : task.getResult()) {
+                                Group g = document.toObject(Group.class);
+                                curGroups.add(g);
+                            }
+                            recyclerView = findViewById(R.id.groupsRecyclerView);
+                            recyclerViewLayoutManager = new LinearLayoutManager(GroupsActivity.this);
+                            recyclerView.setLayoutManager(recyclerViewLayoutManager);
+                            groupsListAdapter = new GroupsListAdapter(curGroups, GroupsActivity.this);
+                            recyclerView.setAdapter(groupsListAdapter);
+
+                            updateUI();
+
+                        }
+                    }
+                });
+
+
+    }
+
+    private void updateUI() {
+        Date time = Calendar.getInstance().getTime();
         db.collection("group")
                 .whereEqualTo("isFull", false)
                 .whereGreaterThan("groupDate", time)
@@ -79,11 +117,8 @@ public class GroupsActivity extends AppCompatActivity implements View.OnClickLis
                                 groups.add(g);
                             }
 
-                            recyclerView = findViewById(R.id.groupsRecyclerView);
-                            recyclerViewLayoutManager = new LinearLayoutManager(GroupsActivity.this);
-                            recyclerView.setLayoutManager(recyclerViewLayoutManager);
-                            groupsListAdapter = new GroupsListAdapter(groups, GroupsActivity.this);
-                            recyclerView.setAdapter(groupsListAdapter);
+                            groupsListAdapter.setGroups(groups);
+                            groupsListAdapter.notifyDataSetChanged();
                         }
                     }
                 });

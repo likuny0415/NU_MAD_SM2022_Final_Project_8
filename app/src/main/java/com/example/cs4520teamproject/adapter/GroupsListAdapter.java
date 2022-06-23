@@ -35,6 +35,10 @@ public class GroupsListAdapter extends RecyclerView.Adapter<GroupsListAdapter.Vi
         this.context = context;
     }
 
+    public void setGroups(ArrayList<Group> groups) {
+        this.groups = groups;
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
         private TextView textViewDate, textViewDestination, textViewTotal, textViewCurrent, textViewHostName;
         private ImageView imageViewPhoto;

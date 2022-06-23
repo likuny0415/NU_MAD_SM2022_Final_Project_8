@@ -125,9 +125,9 @@ public class CreatedGroupListAdapter extends RecyclerView.Adapter<CreatedGroupLi
         holder.getButtonEdit().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent toThisGroup = new Intent(context, EditGroupActivity.class);
-                toThisGroup.putExtra("curGroup", currentGroup);
-                context.startActivity(toThisGroup);
+                Intent toEditGroup = new Intent(context, EditGroupActivity.class);
+                toEditGroup.putExtra("curGroup", currentGroup);
+                context.startActivity(toEditGroup);
             }
         });
 

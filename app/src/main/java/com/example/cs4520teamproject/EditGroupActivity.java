@@ -31,8 +31,11 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Transaction;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 public class EditGroupActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -127,7 +130,14 @@ public class EditGroupActivity extends AppCompatActivity implements View.OnClick
         } else {
             int totalM = Integer.valueOf(totalMembers);
             int avgC = Integer.valueOf(avgCost);
+            Date d = new Date();
+            SimpleDateFormat formatDate = new SimpleDateFormat("dd/MM/yyyy");
 
+            try {
+                d = formatDate.parse(date);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
             if (totalM > 10) {
                 Toast.makeText(this, "Total number of members must less than 10!", Toast.LENGTH_SHORT).show();
             } else if (totalM < 2) {
@@ -139,6 +149,7 @@ public class EditGroupActivity extends AppCompatActivity implements View.OnClick
                 db.collection("group").document(group.getId()).update("totalNumberOfMembers", totalM);
                 db.collection("group").document(group.getId()).update("date", date);
                 db.collection("group").document(group.getId()).update("note", note);
+                db.collection("group").document(group.getId()).update("groupDate", d);
                 finish();
             }
         }
