@@ -11,6 +11,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.cs4520teamproject.Model.Group;
 import com.example.cs4520teamproject.Model.User;
@@ -29,7 +31,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class JoinedGroupListActivity extends AppCompatActivity implements JoinedGroupListAdapter.IQuitButton{
+public class JoinedGroupListActivity extends AppCompatActivity implements JoinedGroupListAdapter.IQuitButton {
 
     private FirebaseFirestore db;
     private FirebaseAuth mAuth;
@@ -37,15 +39,16 @@ public class JoinedGroupListActivity extends AppCompatActivity implements Joined
     private JoinedGroupListAdapter joinedGroupListAdapter;
     private RecyclerView.LayoutManager layoutManager;
     private Button buttonDetail;
-    private ArrayList<Group> joinedGroups = new ArrayList<>();
     User curUser;
     private ImageView created, joined, group, account;
+    private TextView noFound;
+    private Button joinAGroup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_joined_group_list);
-        setTitle("Joined groups");
+        setTitle("Joined Groups List");
 
         db = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
@@ -53,7 +56,8 @@ public class JoinedGroupListActivity extends AppCompatActivity implements Joined
         account = findViewById(R.id.joinedGroupImageViewAccount);
         created = findViewById(R.id.joinedGroupImageViewCreated);
         group = findViewById(R.id.joinedGroupImageViewGroups);
-
+        joinAGroup = findViewById(R.id.joinedGroupListJoinAGroup);
+        noFound = findViewById(R.id.joinedGroupListNoFound);
 
         account.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,6 +80,13 @@ public class JoinedGroupListActivity extends AppCompatActivity implements Joined
             }
         });
 
+        joinAGroup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toGroups();
+            }
+        });
+
 
         db.collection("user")
                 .document(mAuth.getUid())
@@ -90,25 +101,66 @@ public class JoinedGroupListActivity extends AppCompatActivity implements Joined
                             db.collection("group")
                                     .whereArrayContains("members", curUser.getId())
                                     .orderBy("groupDate")
-                                    .get()
-                                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                    .addSnapshotListener(new EventListener<QuerySnapshot>() {
                                         @Override
-                                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                                            for (DocumentSnapshot document : task.getResult().getDocuments()) {
-
-                                                Group g = document.toObject(Group.class);
-
-                                                if (!Objects.equals(curUser.getId(), g.getCreateBy())) {
-                                                    joinedGroups.add(g);
+                                        public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                                            if (error != null) {
+                                                Toast.makeText(JoinedGroupListActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                                            } else {
+                                                ArrayList<Group> groups = new ArrayList<>();
+                                                for (DocumentSnapshot document : value.getDocuments()) {
+                                                    Group g = document.toObject(Group.class);
+                                                    if (!Objects.equals(curUser.getId(), g.getCreateBy())) {
+                                                        groups.add(g);
+                                                    }
                                                 }
+
+                                                if (groups == null || groups.isEmpty()) {
+                                                    joinAGroup.setVisibility(View.VISIBLE);
+                                                    noFound.setVisibility(View.VISIBLE);
+                                                } else {
+                                                    joinAGroup.setVisibility(View.GONE);
+                                                    noFound.setVisibility(View.GONE);
+
+                                                }
+                                                recyclerView = findViewById(R.id.recyclerViewJoinedGroupList);
+                                                layoutManager = new LinearLayoutManager(JoinedGroupListActivity.this);
+                                                recyclerView.setLayoutManager(layoutManager);
+                                                joinedGroupListAdapter = new JoinedGroupListAdapter(groups, JoinedGroupListActivity.this, JoinedGroupListActivity.this);
+                                                recyclerView.setAdapter(joinedGroupListAdapter);
+
                                             }
-                                            recyclerView = findViewById(R.id.recyclerViewJoinedGroupList);
-                                            layoutManager = new LinearLayoutManager(JoinedGroupListActivity.this);
-                                            recyclerView.setLayoutManager(layoutManager);
-                                            joinedGroupListAdapter = new JoinedGroupListAdapter(joinedGroups, JoinedGroupListActivity.this, JoinedGroupListActivity.this);
-                                            recyclerView.setAdapter(joinedGroupListAdapter);
                                         }
                                     });
+//                                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+//                                        @Override
+//                                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+//                                            for (DocumentSnapshot document : task.getResult().getDocuments()) {
+//
+//                                                Group g = document.toObject(Group.class);
+//
+//                                                if (!Objects.equals(curUser.getId(), g.getCreateBy())) {
+//                                                    joinedGroups.add(g);
+//                                                }
+//
+//
+//                                            }
+//
+//                                            if (joinedGroups == null || joinedGroups.isEmpty()) {
+//                                                joinAGroup.setVisibility(View.VISIBLE);
+//                                                noFound.setVisibility(View.VISIBLE);
+//                                            } else {
+//                                                joinAGroup.setVisibility(View.GONE);
+//                                                noFound.setVisibility(View.GONE);
+//
+//                                            }
+//                                            recyclerView = findViewById(R.id.recyclerViewJoinedGroupList);
+//                                            layoutManager = new LinearLayoutManager(JoinedGroupListActivity.this);
+//                                            recyclerView.setLayoutManager(layoutManager);
+//                                            joinedGroupListAdapter = new JoinedGroupListAdapter(joinedGroups, JoinedGroupListActivity.this, JoinedGroupListActivity.this);
+//                                            recyclerView.setAdapter(joinedGroupListAdapter);
+//                                        }
+//                                    });
 
                         }
 
@@ -134,7 +186,7 @@ public class JoinedGroupListActivity extends AppCompatActivity implements Joined
                         User currentUser = value.toObject(User.class);
                         db.collection("group")
                                 .document(group.getId())
-                                .update("curNumberOfMembers", group.getCurNumberOfMembers()-1);
+                                .update("curNumberOfMembers", group.getCurNumberOfMembers() - 1);
                         db.collection("group")
                                 .document(group.getId())
                                 .update("members", FieldValue.arrayRemove(currentUser.getId()));
@@ -150,7 +202,6 @@ public class JoinedGroupListActivity extends AppCompatActivity implements Joined
         startActivity(toCreatedList);
         overridePendingTransition(0, 0);
     }
-
 
 
     private void toAccount() {

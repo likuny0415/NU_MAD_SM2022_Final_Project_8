@@ -10,13 +10,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.cs4520teamproject.Model.Group;
 import com.example.cs4520teamproject.Model.User;
 import com.example.cs4520teamproject.adapter.CreatedGroupListAdapter;
+import com.example.cs4520teamproject.adapter.GroupsListAdapter;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
@@ -41,12 +44,15 @@ public class CreatedGroupListActivity extends AppCompatActivity implements Creat
     private ArrayList<Group> groups = new ArrayList<>();
     User curUser;
     private ImageView created, joined, group, account;
+    private Button createMyGroup;
+    private TextView noFound;
+    private String link;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_created_group_list);
-        setTitle("Created groups");
+        setTitle("Created Groups List");
 
 
         db = FirebaseFirestore.getInstance();
@@ -55,7 +61,15 @@ public class CreatedGroupListActivity extends AppCompatActivity implements Creat
         account = findViewById(R.id.createdGroupImageViewAccount);
         joined = findViewById(R.id.createdGroupImageViewJoined);
         group = findViewById(R.id.createdGroupImageViewGroups);
+        createMyGroup = findViewById(R.id.createdGroupListCreateMyGroup);
+        noFound = findViewById(R.id.createdGroupListNotFound);
 
+        createMyGroup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toCreateMyOwn();
+            }
+        });
 
         account.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -110,15 +124,26 @@ public class CreatedGroupListActivity extends AppCompatActivity implements Creat
         db.collection("group")
                 .whereEqualTo("createBy", mAuth.getUid())
                 .orderBy("groupDate")
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            for (DocumentSnapshot document : task.getResult()) {
+                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                        if (error != null) {
+                            Toast.makeText(CreatedGroupListActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                        } else {
+                            ArrayList<Group> groups = new ArrayList<>();
+                            for (DocumentSnapshot document: value.getDocuments()) {
                                 Group g = document.toObject(Group.class);
                                 groups.add(g);
                             }
+
+                            if (groups == null || groups.isEmpty()) {
+                                createMyGroup.setVisibility(View.VISIBLE);
+                                noFound.setVisibility(View.VISIBLE);
+                            } else {
+                                createMyGroup.setVisibility(View.GONE);
+                                noFound.setVisibility(View.GONE);
+                            }
+
                             recyclerView = findViewById(R.id.createdGroupListRecyclerView);
                             layoutManager = new LinearLayoutManager(CreatedGroupListActivity.this);
                             recyclerView.setLayoutManager(layoutManager);
@@ -128,12 +153,8 @@ public class CreatedGroupListActivity extends AppCompatActivity implements Creat
                             updateUI();
                         }
                     }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-
-                    }
                 });
+
     }
 
     @Override
@@ -180,6 +201,12 @@ public class CreatedGroupListActivity extends AppCompatActivity implements Creat
 
     private void toGroups() {
         Intent toGroups = new Intent(CreatedGroupListActivity.this, GroupsActivity.class);
+        startActivity(toGroups);
+        overridePendingTransition(0, 0);
+    }
+
+    private void toCreateMyOwn() {
+        Intent toGroups = new Intent(CreatedGroupListActivity.this, CreateGroupActivity.class);
         startActivity(toGroups);
         overridePendingTransition(0, 0);
     }

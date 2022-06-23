@@ -11,7 +11,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/containerIcon"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="70dp"
+        android:background="#E8E8E8"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -106,7 +107,7 @@
             android:id="@+id/accountPageImageViewAvatar"
             android:layout_width="110dp"
             android:layout_height="110dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="70dp"
             android:src="@drawable/googleg_standard_color_18"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
@@ -118,10 +119,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="100dp"
-            android:layout_marginTop="152dp"
+            android:layout_marginTop="30dp"
             android:text="@string/accountInformation_text_email"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/accountPageImageViewAvatar" />
+            app:layout_constraintTop_toBottomOf="@+id/accountPageTextViewName" />
 
         <TextView
             android:id="@+id/accountPageTextViewEmailDetail"
@@ -166,7 +167,7 @@
             android:id="@+id/accountPageButtonEdit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="52dp"
+            android:layout_marginTop="60dp"
             android:text="@string/accountInformation_button_editProfile"
             android:textAllCaps="false"
             app:layout_constraintEnd_toEndOf="parent"
@@ -178,12 +179,12 @@
             android:id="@+id/accountPageButtonLogOut"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="84dp"
+            android:layout_marginTop="30dp"
             android:text="@string/accountInformation_button_logOut"
             android:textAllCaps="false"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/accountPageButtonEdit"
             app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/accountPageButtonEdit"
             app:layout_constraintTop_toBottomOf="@+id/accountPageButtonEdit" />
 
         <TextView
