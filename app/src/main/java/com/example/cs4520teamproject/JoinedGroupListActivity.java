@@ -19,14 +19,18 @@ import com.example.cs4520teamproject.Model.User;
 import com.example.cs4520teamproject.adapter.CreatedGroupListAdapter;
 import com.example.cs4520teamproject.adapter.JoinedGroupListAdapter;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.Transaction;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -174,25 +178,28 @@ public class JoinedGroupListActivity extends AppCompatActivity implements Joined
     @Override
     public void quitGroup(Group group) {
 
-        // find current user profile information
-        db.collection("user")
-                .document(mAuth.getUid())
-                .addSnapshotListener(new EventListener<DocumentSnapshot>() {
+        DocumentReference sfDocRef = db.collection("group").document(group.getId());
+        db.runTransaction(new Transaction.Function<Void>() {
                     @Override
-                    public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
-                        if (error != null) {
-                            return;
-                        }
-                        User currentUser = value.toObject(User.class);
-                        db.collection("group")
-                                .document(group.getId())
-                                .update("curNumberOfMembers", group.getCurNumberOfMembers() - 1);
-                        db.collection("group")
-                                .document(group.getId())
-                                .update("members", FieldValue.arrayRemove(currentUser.getId()));
-                        db.collection("group")
-                                .document(group.getId())
-                                .update("hasFull",false);
+                    public Void apply(Transaction transaction) throws FirebaseFirestoreException {
+                        DocumentSnapshot snapshot = transaction.get(sfDocRef);
+
+                        double currentNumOfGroupMembers = snapshot.getDouble("curNumberOfMembers") - 1;
+
+                        transaction.update(sfDocRef, "curNumberOfMembers", currentNumOfGroupMembers);
+                        transaction.update(sfDocRef, "members", FieldValue.arrayRemove(mAuth.getCurrentUser().getUid()));
+                        transaction.update(sfDocRef,"hasFull",false);
+                        finish();
+                        return null;
+                    }
+                }).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
 
                     }
                 });

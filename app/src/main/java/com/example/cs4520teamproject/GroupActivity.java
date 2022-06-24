@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.cs4520teamproject.Model.Group;
@@ -115,12 +116,13 @@ public class GroupActivity extends AppCompatActivity implements View.OnClickList
                         if (currentNumOfGroupMembers == group.getTotalNumberOfMembers()) {
                             transaction.update(sfDocRef, "hasFull", true);
                         }
+
                         return null;
                     }
                 }).addOnSuccessListener(new OnSuccessListener<Double>() {
                     @Override
                     public void onSuccess(Double result) {
-
+                        Toast.makeText(GroupActivity.this, "You have joined the group", Toast.LENGTH_SHORT).show();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {

@@ -56,7 +56,7 @@ public class EditGroupActivity extends AppCompatActivity implements View.OnClick
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_group);
-
+        setTitle("Current group");
 
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
