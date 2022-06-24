@@ -75,7 +75,6 @@ public class EditGroupActivity extends AppCompatActivity implements View.OnClick
         if (getIntent() != null && getIntent().getExtras() != null) {
 
             group = (Group) getIntent().getSerializableExtra("curGroup");
-            setTitle(group.getDestination());
             imageViewLocation.setOnClickListener(this);
             imageViewDate.setOnClickListener(this);
             buttonSave.setOnClickListener(this);
