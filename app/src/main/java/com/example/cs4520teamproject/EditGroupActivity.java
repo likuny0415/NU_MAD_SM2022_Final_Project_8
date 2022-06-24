@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -56,6 +57,7 @@ public class EditGroupActivity extends AppCompatActivity implements View.OnClick
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_group);
 
+
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
 
@@ -71,11 +73,15 @@ public class EditGroupActivity extends AppCompatActivity implements View.OnClick
         buttonSave = findViewById(R.id.editGroupButtonSave);
 
         if (getIntent() != null && getIntent().getExtras() != null) {
+
             group = (Group) getIntent().getSerializableExtra("curGroup");
-            displayInfo();
+            setTitle(group.getDestination());
             imageViewLocation.setOnClickListener(this);
             imageViewDate.setOnClickListener(this);
             buttonSave.setOnClickListener(this);
+
+            displayInfo();
+
         }
     }
 

@@ -18,8 +18,7 @@ public class Group implements Serializable {
     private int totalNumberOfMembers;
     private int curNumberOfMembers;
     private int averageCost;
-
-
+    private Date groupDate;
 
     @Override
     public String toString() {
@@ -27,18 +26,29 @@ public class Group implements Serializable {
                 "createAt=" + createAt +
                 ", createBy='" + createBy + '\'' +
                 ", members=" + members +
+                ", id='" + id + '\'' +
                 ", date='" + date + '\'' +
                 ", latitude=" + latitude +
                 ", longitude=" + longitude +
-                ", isFull=" + hasFull +
+                ", hasFull=" + hasFull +
                 ", destination='" + destination + '\'' +
                 ", note='" + note + '\'' +
                 ", totalNumberOfMembers=" + totalNumberOfMembers +
                 ", curNumberOfMembers=" + curNumberOfMembers +
+                ", averageCost=" + averageCost +
+                ", groupDate=" + groupDate +
                 '}';
     }
 
     public Group() {
+    }
+
+    public Date getGroupDate() {
+        return groupDate;
+    }
+
+    public void setGroupDate(Date groupDate) {
+        this.groupDate = groupDate;
     }
 
     public String getId() {

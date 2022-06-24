@@ -2,6 +2,7 @@ package com.example.cs4520teamproject.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,7 +43,7 @@ public class GroupsListAdapter extends RecyclerView.Adapter {
         this.groups = groups;
     }
 
-    public class NotFullGroupList extends RecyclerView.ViewHolder {
+    private class NotFullGroupList extends RecyclerView.ViewHolder {
         private TextView textViewDate, textViewDestination, textViewTotal, textViewCurrent, textViewHostName;
         private ImageView imageViewPhoto;
         private CardView cardViewGroup;
@@ -94,7 +95,7 @@ public class GroupsListAdapter extends RecyclerView.Adapter {
         }
     }
 
-    public class FullGroupList extends RecyclerView.ViewHolder {
+    private class FullGroupList extends RecyclerView.ViewHolder {
         private TextView textViewDate, textViewDestination, textViewHostName;
         private ImageView imageViewPhoto;
         private CardView cardViewGroup;
@@ -153,56 +154,24 @@ public class GroupsListAdapter extends RecyclerView.Adapter {
             view = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.groups_list_full, parent, false);
             return new FullGroupList(view);
-        } else if (viewType == NOT_FULL_GROUP) {
+        } else if (viewType == NOT_FULL_GROUP)  {
             view = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.groups_list_not_full, parent, false);
             return new NotFullGroupList(view);
         }
 
         return null;
-    }
 
-//    @Override
-//    public void onBindViewHolder(@NonNull GroupsListAdapter.ViewHolder holder, int position) {
-//        holder.getTextViewCurrent().setText("" + groups.get(holder.getAdapterPosition()).getCurNumberOfMembers());
-//        holder.getTextViewTotal().setText("" + groups.get(holder.getAdapterPosition()).getTotalNumberOfMembers());
-//        holder.getTextViewDate().setText(groups.get(holder.getAdapterPosition()).getDate());
-//        holder.getTextViewDestination().setText(groups.get(holder.getAdapterPosition()).getDestination());
-//        holder.getCardViewGroup().setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent toThisGroup = new Intent(context, GroupActivity.class);
-//                toThisGroup.putExtra("curGroup", groups.get(holder.getAdapterPosition()));
-//                toThisGroup.putExtra("type", 1);
-//                context.startActivity(toThisGroup);
-//            }
-//        });
-//        db.collection("user")
-//                .document(groups.get(holder.getAdapterPosition()).getCreateBy())
-//                .get()
-//                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-//                        if (task.isSuccessful()) {
-//                            DocumentSnapshot doc = task.getResult();
-//                            User user = doc.toObject(User.class);
-//                            Glide.with(context)
-//                                    .load(user.getProfile_url())
-//                                    .centerCrop()
-//                                    .into(holder.getImageViewPhoto());
-//                            holder.getTextViewHostName().setText(user.getName());
-//                        }
-//                    }
-//                });
-//    }
+    }
 
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        Group group = groups.get(position);
-        if (holder.getItemViewType() == FULL_GROUP) {
+        Group group = groups.get(holder.getAdapterPosition());
+
+        if (group.isHasFull()) {
             ((FullGroupList) holder).bind(group);
-        } else if (holder.getItemViewType() == NOT_FULL_GROUP) {
+        } else if (!group.isHasFull()) {
             ((NotFullGroupList) holder).bind(group);
         }
     }
@@ -215,10 +184,12 @@ public class GroupsListAdapter extends RecyclerView.Adapter {
     @Override
     public int getItemViewType(int position) {
         Group group = groups.get(position);
+
         if (group.isHasFull()) {
             return FULL_GROUP;
-        } else {
+        } else if (!group.isHasFull()) {
             return NOT_FULL_GROUP;
         }
+        return - 1;
     }
 }

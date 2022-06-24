@@ -90,7 +90,7 @@
         android:id="@+id/editGroupImageViewLocation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="104dp"
+        android:layout_marginStart="65dp"
         app:layout_constraintBottom_toBottomOf="@+id/groupInformationTextViewDistance1"
         app:layout_constraintStart_toEndOf="@+id/groupInformationTextViewDistance1"
         app:layout_constraintTop_toTopOf="@+id/groupInformationTextViewDistance1"
@@ -187,6 +187,8 @@
 
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/editGroupImageViewLocation"
         app:layout_constraintTop_toBottomOf="@+id/editGroupImageViewLocation" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,6 +2,7 @@ package com.example.cs4520teamproject.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,8 +29,6 @@ import java.util.ArrayList;
 public class CreatedGroupListAdapter extends RecyclerView.Adapter<CreatedGroupListAdapter.ViewHolder> {
 
     private ArrayList<Group> createdGroups;
-    private Group currentGroup;
-    User currentUser;
     private FirebaseFirestore db;
     private IRemoveButton iRemoveButton;
     private Context context;
@@ -108,7 +107,7 @@ public class CreatedGroupListAdapter extends RecyclerView.Adapter<CreatedGroupLi
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        currentGroup = createdGroups.get(position);
+        Group currentGroup = createdGroups.get(holder.getAdapterPosition());
         holder.getDestination().setText(currentGroup.getDestination());
         holder.getDate().setText(currentGroup.getDate());
         holder.getJoinedNumber().setText("" + currentGroup.getCurNumberOfMembers());
@@ -128,6 +127,7 @@ public class CreatedGroupListAdapter extends RecyclerView.Adapter<CreatedGroupLi
                 Intent toEditGroup = new Intent(context, EditGroupActivity.class);
                 toEditGroup.putExtra("curGroup", currentGroup);
                 context.startActivity(toEditGroup);
+
             }
         });
 
@@ -140,7 +140,7 @@ public class CreatedGroupListAdapter extends RecyclerView.Adapter<CreatedGroupLi
                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                         if (task.isSuccessful()) {
                             DocumentSnapshot doc = task.getResult();
-                            currentUser = doc.toObject(User.class);
+                            User currentUser = doc.toObject(User.class);
                             Picasso.get().load(currentUser.getProfile_url()).fit().into(holder.avatar);
                             holder.getUserName().setText(currentUser.getName());
                         }

@@ -29,13 +29,14 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 
 public class GroupsActivity extends AppCompatActivity implements View.OnClickListener {
 
     private FloatingActionButton buttonAdd;
-    private ImageView imageViewRequestLocation;
-    private Button buttonToGroups, buttonToAccount;
 
     private ImageView imageViewGroups, imageViewCreated, imageViewJoined, imageViewAccount;
 
@@ -44,6 +45,7 @@ public class GroupsActivity extends AppCompatActivity implements View.OnClickLis
     private GroupsListAdapter groupsListAdapter;
     private FirebaseAuth mAuth;
     private FirebaseFirestore db;
+    private Calendar time;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +55,12 @@ public class GroupsActivity extends AppCompatActivity implements View.OnClickLis
 
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
+
+        time = Calendar.getInstance();
+        time.set(Calendar.MILLISECOND, 0);
+        time.set(Calendar.SECOND, 0);
+        time.set(Calendar.MINUTE, 0);
+        time.set(Calendar.HOUR_OF_DAY, 0);
 
         buttonAdd = findViewById(R.id.buttonGroupsPageAdd);
         imageViewAccount = findViewById(R.id.groupsImageViewAccount);
@@ -70,27 +78,26 @@ public class GroupsActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     private void display() {
-        Date time = Calendar.getInstance().getTime();
         db.collection("group")
-                .whereGreaterThan("groupDate", time)
-                .orderBy("groupDate")
                 .orderBy("hasFull")
+                .orderBy("groupDate")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
-                            ArrayList<Group> curGroups= new ArrayList<>();
+                            ArrayList<Group> groups= new ArrayList<>();
                             for (DocumentSnapshot document : task.getResult()) {
                                 Group g = document.toObject(Group.class);
-                                Log.d("TAG", "onComplete: " + g);
-                                curGroups.add(g);
-
+                                if (g.getGroupDate().compareTo(time.getTime()) >= 0) {
+                                    groups.add(g);
+                                }
                             }
+
                             recyclerView = findViewById(R.id.groupsRecyclerView);
                             recyclerViewLayoutManager = new LinearLayoutManager(GroupsActivity.this);
                             recyclerView.setLayoutManager(recyclerViewLayoutManager);
-                            groupsListAdapter = new GroupsListAdapter(curGroups, GroupsActivity.this);
+                            groupsListAdapter = new GroupsListAdapter(groups, GroupsActivity.this);
                             recyclerView.setAdapter(groupsListAdapter);
 
                             updateUI();
@@ -107,11 +114,10 @@ public class GroupsActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     private void updateUI() {
-        Date time = Calendar.getInstance().getTime();
         db.collection("group")
-                .whereGreaterThan("groupDate", time)
-                .orderBy("groupDate")
                 .orderBy("hasFull")
+                .orderBy("groupDate")
+
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
                     public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
@@ -121,7 +127,9 @@ public class GroupsActivity extends AppCompatActivity implements View.OnClickLis
                             ArrayList<Group> groups = new ArrayList<>();
                             for (DocumentSnapshot document: value.getDocuments()) {
                                 Group g = document.toObject(Group.class);
-                                groups.add(g);
+                                if (g.getGroupDate().compareTo(time.getTime()) >= 0) {
+                                    groups.add(g);
+                                }
                             }
 
                             groupsListAdapter.setGroups(groups);
@@ -130,6 +138,7 @@ public class GroupsActivity extends AppCompatActivity implements View.OnClickLis
                     }
                 });
     }
+
 
     @Override
     public void onClick(View v) {

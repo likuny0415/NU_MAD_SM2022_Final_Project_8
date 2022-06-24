@@ -41,12 +41,9 @@ public class CreatedGroupListActivity extends AppCompatActivity implements Creat
     private RecyclerView recyclerView;
     private CreatedGroupListAdapter createdGroupListAdapter;
     private RecyclerView.LayoutManager layoutManager;
-    private ArrayList<Group> groups = new ArrayList<>();
-    User curUser;
     private ImageView created, joined, group, account;
     private Button createMyGroup;
     private TextView noFound;
-    private String link;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,29 +93,6 @@ public class CreatedGroupListActivity extends AppCompatActivity implements Creat
 
     }
 
-    private void updateUI() {
-        db.collection("group")
-                .whereEqualTo("createBy", mAuth.getUid())
-                .orderBy("groupDate")
-                .addSnapshotListener(new EventListener<QuerySnapshot>() {
-                    @Override
-                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
-                        if (error != null) {
-                            Toast.makeText(CreatedGroupListActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
-                        } else {
-                            ArrayList<Group> curGroups= new ArrayList<>();
-                            for (DocumentSnapshot document : value.getDocuments()) {
-                                Group g = document.toObject(Group.class);
-                                curGroups.add(g);
-                            }
-                            createdGroupListAdapter.setCreatedGroups(curGroups);
-                            createdGroupListAdapter.notifyDataSetChanged();
-
-                        }
-                    }
-                });
-
-    }
 
     private void display() {
         db.collection("group")
@@ -156,6 +130,31 @@ public class CreatedGroupListActivity extends AppCompatActivity implements Creat
                 });
 
     }
+
+    private void updateUI() {
+        db.collection("group")
+                .whereEqualTo("createBy", mAuth.getUid())
+                .orderBy("groupDate")
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                        if (error != null) {
+                            Toast.makeText(CreatedGroupListActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                        } else {
+                            ArrayList<Group> groups= new ArrayList<>();
+                            for (DocumentSnapshot document : value.getDocuments()) {
+                                Group g = document.toObject(Group.class);
+                                groups.add(g);
+                            }
+                            createdGroupListAdapter.setCreatedGroups(groups);
+                            createdGroupListAdapter.notifyDataSetChanged();
+
+                        }
+                    }
+                });
+
+    }
+
 
     @Override
     public void removeGroup(Group group) {

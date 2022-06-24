@@ -28,7 +28,6 @@ import java.util.ArrayList;
 public class JoinedGroupListAdapter extends RecyclerView.Adapter<JoinedGroupListAdapter.ViewHolder>{
 
     private ArrayList<Group> joinedGroups;
-    private Group currentGroup;
     User currentUser;
     private FirebaseFirestore db;
     private IQuitButton iQuitButton;
@@ -104,7 +103,7 @@ public class JoinedGroupListAdapter extends RecyclerView.Adapter<JoinedGroupList
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        currentGroup = joinedGroups.get(position);
+        Group currentGroup = joinedGroups.get(position);
         holder.getDestination().setText(currentGroup.getDestination());
         holder.getDate().setText(currentGroup.getDate());
         holder.getJoinedNumber().setText("" + currentGroup.getCurNumberOfMembers());
