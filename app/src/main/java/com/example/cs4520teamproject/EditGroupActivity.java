@@ -130,12 +130,14 @@ public class EditGroupActivity extends AppCompatActivity implements View.OnClick
         String avgCost = editTextAvgCost.getText().toString();
         String note = editTextNote.getText().toString();
         String date = textViewDate.getText().toString();
+        String currentMembers = textViewCurrentNumber.getText().toString();
 
         if (totalMembers.isEmpty() || avgCost.isEmpty() || note.isEmpty() || date.isEmpty()) {
             Toast.makeText(this, "Fields can't be empty", Toast.LENGTH_SHORT).show();
         } else {
             int totalM = Integer.valueOf(totalMembers);
             int avgC = Integer.valueOf(avgCost);
+            int currentM = Integer.parseInt(currentMembers);
             Date d = new Date();
             SimpleDateFormat formatDate = new SimpleDateFormat("dd/MM/yyyy");
 
@@ -150,7 +152,14 @@ public class EditGroupActivity extends AppCompatActivity implements View.OnClick
                 Toast.makeText(this, "A group at least have two members!", Toast.LENGTH_SHORT).show();
             } else if (avgC > 1000) {
                 Toast.makeText(this, "Average cost can't more than 1000 dollars", Toast.LENGTH_SHORT).show();
+            } else if (totalM < currentM) {
+                Toast.makeText(this, "Total number of members can't less than current number of members in the group", Toast.LENGTH_SHORT).show();
             } else {
+                if (totalM > currentM) {
+                    db.collection("group").document(group.getId()).update("hasFull", false);
+                } else if (totalM == currentM) {
+                    db.collection("group").document(group.getId()).update("hasFull", true);
+                }
                 db.collection("group").document(group.getId()).update("averageCost", avgC);
                 db.collection("group").document(group.getId()).update("totalNumberOfMembers", totalM);
                 db.collection("group").document(group.getId()).update("date", date);

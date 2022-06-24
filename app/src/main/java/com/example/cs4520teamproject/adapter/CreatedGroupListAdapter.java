@@ -1,6 +1,8 @@
 package com.example.cs4520teamproject.adapter;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -115,9 +117,25 @@ public class CreatedGroupListAdapter extends RecyclerView.Adapter<CreatedGroupLi
         holder.getButtonDelete().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                createdGroups.remove(holder.getAdapterPosition());
-                iRemoveButton.removeGroup(currentGroup);
-                notifyDataSetChanged();
+
+                new AlertDialog.Builder(context)
+                        .setTitle("Delete group")
+                        .setMessage("Are you sure you want to delete this group?")
+
+                        // Specifying a listener allows you to take an action before dismissing the dialog.
+                        // The dialog is automatically dismissed when a dialog button is clicked.
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                createdGroups.remove(holder.getAdapterPosition());
+                                iRemoveButton.removeGroup(currentGroup);
+                                notifyDataSetChanged();
+                            }
+                        })
+
+                        // A null listener allows the button to dismiss the dialog and take no further action.
+                        .setNegativeButton(android.R.string.no, null)
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .show();
             }
         });
 

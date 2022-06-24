@@ -1,7 +1,9 @@
 package com.example.cs4520teamproject.adapter;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -111,9 +113,26 @@ public class JoinedGroupListAdapter extends RecyclerView.Adapter<JoinedGroupList
         holder.getButtonQuit().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                joinedGroups.remove(holder.getAdapterPosition());
-                iQuitButton.quitGroup(currentGroup);
-                notifyDataSetChanged();
+
+
+                new AlertDialog.Builder(context)
+                        .setTitle("Quit group")
+                        .setMessage("Are you sure you want to quit from this group?")
+
+                        // Specifying a listener allows you to take an action before dismissing the dialog.
+                        // The dialog is automatically dismissed when a dialog button is clicked.
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                joinedGroups.remove(holder.getAdapterPosition());
+                                iQuitButton.quitGroup(currentGroup);
+                                notifyDataSetChanged();
+                            }
+                        })
+
+                        // A null listener allows the button to dismiss the dialog and take no further action.
+                        .setNegativeButton(android.R.string.no, null)
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .show();
             }
         });
         holder.getButtonDetail().setOnClickListener(new View.OnClickListener() {
