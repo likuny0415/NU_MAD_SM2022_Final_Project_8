@@ -149,7 +149,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Log.d("TAG", "onFailure: " + e.getLocalizedMessage());
             }
         });
     }
